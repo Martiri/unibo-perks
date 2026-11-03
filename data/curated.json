@@ -1,0 +1,989 @@
+[
+  {
+    "id": "github-student-pack",
+    "title": "GitHub Student Developer Pack + GitHub Copilot Pro",
+    "provider": "GitHub Education",
+    "category": "AI & Dev Tools",
+    "circuit": "GitHub Pack",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "100% Gratis",
+    "summary": "Accesso gratuito a GitHub Copilot Pro (autocomplete e chat AI negli IDE), GitHub Pro, Namecheap dominio gratis, DataCamp, Frontend Masters e oltre 80 tool per sviluppatori.",
+    "reliability": {
+      "score": 5,
+      "reason": "Programma globale ufficiale verificabile istantaneamente con email @studio.unibo.it."
+    },
+    "eligibility": [
+      "Email istituzionale attiva (@studio.unibo.it)",
+      "Certificato di iscrizione UniBo (PDF da Studenti Online) o badge universitario",
+      "Iscrizione attiva a corso di laurea, magistrale o dottorato"
+    ],
+    "steps": [
+      "Accedi al tuo account GitHub e vai in Settings > Emails per aggiungere e verificare l'indirizzo @studio.unibo.it.",
+      "Vai su education.github.com/pack e clicca su 'Sign up for Student Developer Pack'.",
+      "Seleziona l'email @studio.unibo.it, consenti la geolocalizzazione quando ti trovi a Bologna e carica il certificato di iscrizione scaricato da Studenti Online.",
+      "Una volta approvato, attiva GitHub Copilot gratuitamente dalle impostazioni del tuo profilo GitHub e salva qui sotto i coupon riscattati."
+    ],
+    "url": "https://education.github.com/pack",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "github-pack-cloud-domains",
+    "title": "DigitalOcean ($200), Microsoft Azure ($100) & Dominio Namecheap Gratis",
+    "provider": "GitHub Pack · DigitalOcean / Azure / Namecheap",
+    "category": "AI & Dev Tools",
+    "circuit": "GitHub Pack",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "300$ Cloud + Dominio",
+    "summary": "Pacchetto infrastruttura cloud incluso nel GitHub Student Developer Pack: 200$ di crediti VPS DigitalOcean (1 anno), 100$ su Azure for Students senza carta di credito e 1 dominio .me + SSL gratis su Namecheap.",
+    "reliability": {
+      "score": 5,
+      "reason": "Partner ufficiali storici del GitHub Student Developer Pack riscattabili via OAuth GitHub."
+    },
+    "eligibility": [
+      "GitHub Student Developer Pack attivo (verificato con @studio.unibo.it)"
+    ],
+    "steps": [
+      "Accedi a education.github.com/pack/offers con il tuo account GitHub Student verificato.",
+      "Scorri fino a DigitalOcean, Microsoft Azure e Namecheap e clicca sul link di attivazione OAuth per generare i codici promo univoci.",
+      "Salva i codici voucher DigitalOcean e Namecheap nella 'Cassaforte Codice Privato' di questa scheda prima di applicarli."
+    ],
+    "url": "https://education.github.com/pack/offers",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "jetbrains-student-pack",
+    "title": "JetBrains All Products Pack for Students",
+    "provider": "JetBrains",
+    "category": "AI & Dev Tools",
+    "circuit": "GitHub Pack",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "100% Gratis",
+    "summary": "Licenza annuale gratuita rinnovabile per tutti gli IDE professionali JetBrains: IntelliJ IDEA Ultimate, PyCharm Pro, WebStorm, CLion, DataGrip, GoLand e Rider.",
+    "reliability": {
+      "score": 5,
+      "reason": "Attivazione immediata tramite dominio @studio.unibo.it o collegamento diretto al GitHub Student Pack."
+    },
+    "eligibility": [
+      "Indirizzo email istituzionale @studio.unibo.it",
+      "Oppure account GitHub Student Developer Pack attivo"
+    ],
+    "steps": [
+      "Vai alla pagina di richiesta licenza Education di JetBrains e seleziona 'University email address' o 'GitHub'.",
+      "Inserisci il tuo indirizzo nome.cognome@studio.unibo.it e invia il modulo.",
+      "Apri la webmail UniBo (outlook.office.com), clicca sul link di verifica inviato da JetBrains e associa la licenza al tuo JetBrains Account.",
+      "Scarica JetBrains Toolbox o effettua il login direttamente nell'IDE per attivare la licenza."
+    ],
+    "url": "https://www.jetbrains.com/community/education/#students",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "figma-education",
+    "title": "Figma Professional for Education + FigJam",
+    "provider": "Figma",
+    "category": "AI & Dev Tools",
+    "circuit": "GitHub Pack",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "100% Gratis",
+    "summary": "Accesso gratuito al piano Professional di Figma e FigJam: progetti illimitati, librerie di design condivise, Dev Mode completo e prototipazione avanzata.",
+    "reliability": {
+      "score": 5,
+      "reason": "Verifica immediata per studenti universitari con @studio.unibo.it o tramite GitHub Student Pack."
+    },
+    "eligibility": [
+      "Email @studio.unibo.it e verifica stato studente"
+    ],
+    "steps": [
+      "Crea o accedi al tuo account Figma con l'email @studio.unibo.it.",
+      "Vai su figma.com/education/apply e compila il breve modulo selezionando 'Higher Education' e 'Alma Mater Studiorum - Università di Bologna'.",
+      "Una volta verificato, crea un nuovo Team o aggiorna un team esistente scegliendo l'opzione gratuita Education."
+    ],
+    "url": "https://www.figma.com/education/",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "ai-assistants-free-tiers-pro",
+    "title": "Google AI Studio, Claude, ChatGPT & Perplexity (Free Tier & Promo)",
+    "provider": "Google / Anthropic / OpenAI / Perplexity",
+    "category": "AI & Dev Tools",
+    "circuit": "Brand Club (Tutti)",
+    "isUniboOfficial": false,
+    "student_only": false,
+    "discountBadge": "Gratis / Promo AI",
+    "summary": "Accesso gratuito per tutti al Free Tier di Google AI Studio (API Gemini con limiti giornalieri generosi), piani gratuiti di Claude e ChatGPT, più mesi gratuiti o scontati su Perplexity Pro tramite convenzioni.",
+    "reliability": {
+      "score": 5,
+      "reason": "Piani gratuiti ufficiali aperti a tutti gli sviluppatori e utenti senza obbligo di tessera universitaria."
+    },
+    "eligibility": [
+      "Accessibile a tutti (non richiede status di studente per Google AI Studio e piani base)",
+      "Email @studio.unibo.it opzionale per riscattare promo Education periodiche su Perplexity Pro o Cursor"
+    ],
+    "steps": [
+      "Per API e prototipazione a costo zero: accedi a aistudio.google.com con il tuo account Google personale per usare i modelli Gemini nel piano gratuito.",
+      "Per coding assistito su desktop: abbina il piano gratuito di Cursor/VS Code con GitHub Copilot o con una chiave API gratuita.",
+      "Salva nel box 'Cassaforte Codice Privato' eventuali codici promo o note sulle quote mensili dei tuoi abbonamenti AI."
+    ],
+    "url": "https://aistudio.google.com/",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-matlab-campus",
+    "title": "MATLAB & Simulink Total Academic Headcount",
+    "provider": "Università di Bologna / MathWorks",
+    "category": "AI & Dev Tools",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Incluso UniBo",
+    "summary": "Licenza Campus-Wide completa per MATLAB, Simulink e oltre 100 toolbox aggiuntivi + accesso a MATLAB Online, MATLAB Mobile e corsi certificati MathWorks Self-Paced.",
+    "reliability": {
+      "score": 5,
+      "reason": "Contratto Campus ufficiale dell'Università di Bologna con autenticazione Single Sign-On (Shibboleth)."
+    },
+    "eligibility": [
+      "Credenziali istituzionali @studio.unibo.it"
+    ],
+    "steps": [
+      "Visita il portale MATLAB dedicato all'Università di Bologna su mathworks.com/academia/tah-portal/universita-di-bologna-30856975.html.",
+      "Clicca su 'Accedi per iniziare' e autenticati tramite il Single Sign-On di Ateneo (@studio.unibo.it).",
+      "Crea o collega il tuo MathWorks Account con la mail istituzionale per scaricare l'installer o usare MATLAB Online."
+    ],
+    "url": "https://it.mathworks.com/academia/tah-portal/universita-di-bologna-30856975.html",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "notion-education-plus",
+    "title": "Notion Plus Plan for Education",
+    "provider": "Notion",
+    "category": "AI & Dev Tools",
+    "circuit": "SheerID / Diretto",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "100% Gratis",
+    "summary": "Upgrade gratuito al piano Plus per uso individuale: caricamento file illimitato, cronologia pagine di 30 giorni e fino a 100 ospiti collaboratori per appunti e progetti.",
+    "reliability": {
+      "score": 5,
+      "reason": "Riconoscimento automatico del dominio accademico @studio.unibo.it nelle impostazioni di fatturazione."
+    },
+    "eligibility": [
+      "Account Notion registrato o migrato su indirizzo @studio.unibo.it"
+    ],
+    "steps": [
+      "Apri Notion da desktop/web e vai in Settings & Members > Settings > My Account.",
+      "Assicurati che l'indirizzo email dell'account sia impostato su @studio.unibo.it.",
+      "Vai nella scheda 'Upgrade plan' (o 'Plans') e clicca su 'Get free education plan' per attivare subito il piano Plus a costo zero."
+    ],
+    "url": "https://www.notion.so/product/notion-for-education",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "autodesk-adobe-education-direct",
+    "title": "Autodesk Education (100% Gratis) & Adobe Creative Cloud (-65%)",
+    "provider": "Autodesk / Adobe (Verifica SheerID)",
+    "category": "AI & Dev Tools",
+    "circuit": "SheerID / Diretto",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "Autodesk Gratis / Adobe -65%",
+    "summary": "Licenza studentesca gratuita completa per AutoCAD, Fusion 360, Maya e Revit su Autodesk Education + sconto oltre il 65% sulla suite completa Adobe Creative Cloud (Photoshop, Illustrator, Premiere, Acrobat Pro).",
+    "reliability": {
+      "score": 5,
+      "reason": "Verifica accademica diretta tramite SheerID con selezione ufficiale dell'Università di Bologna."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna (@studio.unibo.it + verifica SheerID)"
+    ],
+    "steps": [
+      "Per Autodesk: vai su autodesk.com/education/edu-software, crea un account con @studio.unibo.it e completa la verifica SheerID per scaricare gratis AutoCAD/Fusion 360.",
+      "Per Adobe CC: visita adobe.com/it/creativecloud/buy/students.html per accedere alla tariffa agevolata Student & Teacher."
+    ],
+    "url": "https://www.autodesk.com/education/edu-software/overview",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "salomon-splus-outdoor-discount",
+    "title": "Salomon S/PLUS & Promo Scarpe Trail / Trekking",
+    "provider": "Salomon",
+    "category": "Outdoor & Trekking",
+    "circuit": "Brand Club (Tutti)",
+    "isUniboOfficial": false,
+    "student_only": false,
+    "discountBadge": "-10% a Tutti / -20% Student",
+    "summary": "Sconto di benvenuto -10% e spedizione gratuita aperta a tutti iscrivendosi gratuitamente al programma Salomon S/PLUS (scarpe GORE-TEX, X Ultra, Speedcross, zaini trail), più codici fino al -20% su UNiDAYS per studenti.",
+    "reliability": {
+      "score": 5,
+      "reason": "Programma fedeltà ufficiale Salomon aperto a tutti gli utenti, cumulabile con iniziative dedicate agli iscritti."
+    },
+    "eligibility": [
+      "Aperto a tutti tramite registrazione gratuita a Salomon S/PLUS",
+      "Sconto maggiorato opzionale se si possiede un profilo UNiDAYS / Student Beans"
+    ],
+    "steps": [
+      "Vai su salomon.com/it-it e registrati gratuitamente al programma membro S/PLUS per ricevere subito via email il codice sconto di benvenuto e la spedizione gratuita.",
+      "Se hai anche un account studente UNiDAYS, verifica se è attivo il voucher stagionale del 15%-20%.",
+      "Copia il codice ricevuto nella 'Cassaforte Codice Privato' di questa scheda per averlo pronto al checkout."
+    ],
+    "url": "https://www.salomon.com/it-it/s-plus",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "decathlon-membership-secondhand",
+    "title": "Decathlon Membership, Second Hand & Buoni Fedeltà Trekking",
+    "provider": "Decathlon Italia",
+    "category": "Outdoor & Trekking",
+    "circuit": "Brand Club (Tutti)",
+    "isUniboOfficial": false,
+    "student_only": false,
+    "discountBadge": "Buoni 5€-10€ / Second Hand",
+    "summary": "Programma gratuito aperto a tutti: accumulo punti per ogni acquisto o sessione sportiva (convertibili in buoni da 5€ e 10€), reso esteso a 365 giorni e reparto Second Hand garantito su tende, zaini Forclaz/Simond e abbigliamento montagna.",
+    "reliability": {
+      "score": 5,
+      "reason": "Servizio ufficiale Decathlon attivo online e nei negozi fisici di Bologna e provincia."
+    },
+    "eligibility": [
+      "Aperto a tutti (nessun requisito universitario)",
+      "Account gratuito Decathlon / Carta fedeltà"
+    ],
+    "steps": [
+      "Accedi all'app Decathlon o al sito decathlon.it con il tuo profilo gratuito.",
+      "Collega eventualmente il tuo account Garmin/Strava su Decathlon per ottenere punti extra facendo attività fisica settimanale.",
+      "Converti i punti accumulati in voucher digitali e annota il codice e la scadenza del buono nel box privato di questa scheda."
+    ],
+    "url": "https://www.decathlon.it/landing/membership/_/R-a-membership",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "komoot-world-pack-promo",
+    "title": "Komoot Mappe Offline Escursionismo (1 Regione Gratis + Sconto Mondo)",
+    "provider": "Komoot",
+    "category": "Outdoor & Trekking",
+    "circuit": "Brand Club (Tutti)",
+    "isUniboOfficial": false,
+    "student_only": false,
+    "discountBadge": "1 Regione Gratis / -33% Mondo",
+    "summary": "Sblocco permanente gratuito della prima regione geografica (es. Bologna e Appennino Bolognese) con navigazione vocale e mappe offline per trekking/MTB, più sconto benvenuto di 10€ sul Pacchetto Mondo una tantum.",
+    "reliability": {
+      "score": 5,
+      "reason": "Offerta strutturale di Komoot valida per chiunque registri un account, senza abbonamento obbligatorio."
+    },
+    "eligibility": [
+      "Aperto a tutti (nessun requisito universitario)"
+    ],
+    "steps": [
+      "Crea un account gratuito su komoot.com o tramite l'app Android sul POCO F7.",
+      "Vai nella sezione 'Regioni' e riscatta gratuitamente la tua prima regione locale per scaricare le tracce GPX e le mappe offline.",
+      "Se desideri l'intero Pacchetto Mondo a vita (pagamento unico senza canone), attendi l'offerta da 19,99€ invece di 29,99€ riservata ai nuovi iscritti."
+    ],
+    "url": "https://www.komoot.com/it-it/product",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "adidas-adiclub-unidays",
+    "title": "Adidas Originals, Running & Terrex Outdoor (-25% UNiDAYS / -15% Tutti)",
+    "provider": "Adidas · UNiDAYS",
+    "category": "Abbigliamento & Calzature",
+    "circuit": "UNiDAYS",
+    "isUniboOfficial": false,
+    "student_only": false,
+    "discountBadge": "-25% UNiDAYS / -15% Tutti",
+    "summary": "Codice sconto studenti su UNiDAYS fino al 25%-30% su calzature, running e linea montagna Adidas Terrex, più voucher -15% e spedizione gratuita per chiunque si iscriva gratis ad adiClub.",
+    "reliability": {
+      "score": 5,
+      "reason": "Partnership ufficiale permanente tra Adidas Italia e UNiDAYS + programma adiClub aperto a tutti."
+    },
+    "eligibility": [
+      "Account UNiDAYS verificato con @studio.unibo.it per lo sconto fino al 25%",
+      "Oppure aperto a tutti tramite iscrizione gratuita ad adiClub (-15%)"
+    ],
+    "steps": [
+      "Per studenti: accedi a myunidays.com, cerca 'Adidas' e genera il tuo codice promo personale.",
+      "Per non studenti: registrati gratis su adidas.it/adiclub per ricevere il voucher del 15% e consegna gratuita.",
+      "Salva il tuo codice personale qui sotto per copiarlo al volo dall'app."
+    ],
+    "url": "https://www.myunidays.com/IT/it-IT",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "nike-asos-zalando-fashion",
+    "title": "Nike, ASOS, Levi's & The North Face (Codici UNiDAYS & XPLR Pass)",
+    "provider": "UNiDAYS · Nike / ASOS / The North Face",
+    "category": "Abbigliamento & Calzature",
+    "circuit": "UNiDAYS",
+    "isUniboOfficial": false,
+    "student_only": false,
+    "discountBadge": "-10% / -20% Promo",
+    "summary": "Codici sconto del 10%-20% su UNiDAYS per ASOS, Levi's, Calzedonia e Nike, affiancati dal programma gratuito XPLR Pass di The North Face (-10% e spedizione gratuita aperto a tutti).",
+    "reliability": {
+      "score": 4,
+      "reason": "Codici UNiDAYS sempre attivi per la moda; XPLR Pass di The North Face è aperto anche ai non studenti."
+    },
+    "eligibility": [
+      "Profilo UNiDAYS verificato (@studio.unibo.it) per i codici studenti ASOS / Levi's / Nike",
+      "Aperto a tutti tramite XPLR Pass gratuito su thenorthface.it (-10%)"
+    ],
+    "steps": [
+      "Per ASOS, Levi's e Nike: apri UNiDAYS, copia il codice sconto istantaneo e incollalo nella Cassaforte Codice Privato di questa scheda.",
+      "Per The North Face (anche non studenti): iscriviti gratis a XPLR Pass su thenorthface.it per ottenere subito il -10% sul primo ordine."
+    ],
+    "url": "https://www.myunidays.com/IT/it-IT",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "studentbeans-gymshark-jdsports-puma",
+    "title": "Gymshark, JD Sports, Puma & Crocs (-15% / -20% Student Beans)",
+    "provider": "Student Beans Italia",
+    "category": "Abbigliamento & Calzature",
+    "circuit": "Student Beans",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "-15% / -20% Studenti",
+    "summary": "Codici sconto esclusivi erogati dal circuito Student Beans (diversi da UNiDAYS) su abbigliamento tecnico palestra Gymshark (-15%), sneaker JD Sports (-10%/-20%), Puma (-20%) e Crocs (-25%).",
+    "reliability": {
+      "score": 5,
+      "reason": "Partner ufficiali esclusivi della piattaforma Student Beans Italia verificabili con @studio.unibo.it."
+    },
+    "eligibility": [
+      "Account gratuito Student Beans verificato con email @studio.unibo.it"
+    ],
+    "steps": [
+      "Accedi a studentbeans.com/it con il tuo profilo verificato UniBo.",
+      "Cerca il brand desiderato (es. Gymshark, JD Sports, Puma) e clicca su 'Ottieni codice'.",
+      "Salva il codice generato nella Cassaforte Privata di questa scheda per applicarlo al carrello."
+    ],
+    "url": "https://www.studentbeans.com/it",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "studentbeans-lenovo-oneplus-marshall",
+    "title": "Lenovo Education, OnePlus, Nothing & Marshall (Student Beans Tech)",
+    "provider": "Student Beans · Lenovo / OnePlus / Marshall",
+    "category": "Tech & Elettronica",
+    "circuit": "Student Beans",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "Fino a -25% Tech",
+    "summary": "Sconti hardware verificati tramite Student Beans: listino Lenovo Education (-10%/-25% su ThinkPad e IdeaPad), smartphone/accessori OnePlus e Nothing (-10%/-15%) e cuffie/speaker Marshall (-15%).",
+    "reliability": {
+      "score": 5,
+      "reason": "Integrazione ufficiale SSO Student Beans sui portali italiani di Lenovo, OnePlus e Marshall."
+    },
+    "eligibility": [
+      "Account Student Beans verificato con email @studio.unibo.it"
+    ],
+    "steps": [
+      "Visita studentbeans.com/it nella sezione Tecnologia o accedi direttamente a lenovo.com/it/it/studenti.",
+      "Effettua il login rapido con le tue credenziali Student Beans per sbloccare il listino o il codice promozionale.",
+      "Custodisci il voucher nella Cassaforte Codice Privato qui sotto."
+    ],
+    "url": "https://www.studentbeans.com/it/sconti-studenti/tech-e-mobile",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "apple-samsung-unidays-store",
+    "title": "Apple Education Store & Samsung Student Portal (UNiDAYS)",
+    "provider": "UNiDAYS · Apple / Samsung / Dell",
+    "category": "Tech & Elettronica",
+    "circuit": "UNiDAYS",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "Fino a -30% Hardware",
+    "summary": "Accesso tramite verifica UNiDAYS all'Apple Education Store (MacBook, iPad con promo Back to School) e al portale chiuso Samsung Student (fino al -30% su Galaxy, tablet Serie S, monitor e SSD) + codici Dell.",
+    "reliability": {
+      "score": 5,
+      "reason": "UNiDAYS è il gateway di verifica ufficiale obbligatorio in Italia per Apple Education e Samsung Student."
+    },
+    "eligibility": [
+      "Account UNiDAYS attivo e verificato con email @studio.unibo.it"
+    ],
+    "steps": [
+      "Apri myunidays.com/IT/it-IT ed effettua l'accesso.",
+      "Seleziona Apple o Samsung per aprire la sessione autenticata sullo store Education ufficiale.",
+      "Annota eventuali codici extra cumulabili nella Cassaforte Privata di questa scheda."
+    ],
+    "url": "https://www.myunidays.com/IT/it-IT",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-microsoft-365",
+    "title": "Microsoft 365 Education + OneDrive 1TB",
+    "provider": "Università di Bologna / Microsoft",
+    "category": "Tech & Elettronica",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Incluso UniBo",
+    "summary": "Suite completa Microsoft Office 365 ProPlus (Word, Excel, PowerPoint, Teams, OneNote) installabile fino a 5 dispositivi + spazio cloud OneDrive collegato all'account d'Ateneo.",
+    "reliability": {
+      "score": 5,
+      "reason": "Licenza Campus d'Ateneo attiva di default su tutte le caselle @studio.unibo.it."
+    },
+    "eligibility": [
+      "Iscrizione regolare all'Università di Bologna",
+      "Credenziali istituzionali @studio.unibo.it"
+    ],
+    "steps": [
+      "Accedi a portal.office.com utilizzando le tue credenziali nome.cognome@studio.unibo.it.",
+      "Clicca in alto a destra su 'Installa e altro' > 'Installa le app di Microsoft 365' (su PC/Mac) oppure scarica le app su Android dal Play Store.",
+      "Effettua l'accesso nelle app con l'account @studio.unibo.it per sbloccare tutte le funzionalità premium."
+    ],
+    "url": "https://www.unibo.it/it/ateneo/organizzazione-e-sedi/servizi-di-ateneo/servizi-per-lo-studio/risorse-informatiche/agevolazioni-per-computer-tablet-e-software",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-tper-start-romagna",
+    "title": "Abbonamento Annuale TPER & Start Romagna Studenti",
+    "provider": "TPER / Start Romagna / UniBo",
+    "category": "Trasporti",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Tariffa Agevolata",
+    "summary": "Abbonamento annuale al trasporto pubblico urbano ed extraurbano (Bologna fino a Zona 3, Cesena, Forlì, Ravenna, Rimini) a tariffa convenzionata d'Ateneo, acquistabile direttamente da Studenti Online.",
+    "reliability": {
+      "score": 5,
+      "reason": "Convenzione storica principale dell'Ateneo gestita interamente dal portale Studenti Online."
+    },
+    "eligibility": [
+      "Iscrizione attiva per l'A.A. corrente a corsi di Laurea, Laurea Magistrale, Dottorato, Master o Scuole di Specializzazione UniBo",
+      "In regola con il pagamento delle tasse universitarie",
+      "Foto tessera validata (per emissione o rinnovo card MiMuovo)"
+    ],
+    "steps": [
+      "Accedi a Studenti Online (sol.unibo.it) con credenziali @studio.unibo.it o SPID/CIE.",
+      "Entra nella sezione 'Abbonamenti mobilità' (Agevolazioni trasporti).",
+      "Seleziona il bacino (TPER Bologna o Start Romagna) e la tipologia (Urbano o Extraurbano), verifica il riepilogo e procedi al pagamento tramite PagoPA.",
+      "Attiva o rinnova il titolo digitale tramite l'app Roger o carica la tessera MiMuovo."
+    ],
+    "url": "https://www.unibo.it/it/studiare/vivere-luniversita-e-la-citta/trasporti-e-mobilita/agevolazioni-ai-trasporti-e-alla-mobilita-per-studenti",
+    "expiresAt": "2027-08-31",
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-trenitalia-welfare-plus",
+    "title": "Trenitalia Frecce: Convenzione UniBo Welfare PLUS & FrecciaYOUNG",
+    "provider": "Trenitalia / Università di Bologna",
+    "category": "Trasporti",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Fino a -70% + Extra",
+    "summary": "Doppio vantaggio per studenti UniBo: sconto dedicato Welfare PLUS tramite programma Trenitalia for Business d'Ateneo e tariffe FrecciaYOUNG (Under 30 con CartaFRECCIA).",
+    "reliability": {
+      "score": 5,
+      "reason": "Convenzione ufficiale pubblicata nella sezione Trasporti e mobilità del portale UniBo."
+    },
+    "eligibility": [
+      "Iscrizione attiva UniBo e accesso con credenziali @studio.unibo.it (per pagina riservata Welfare PLUS)",
+      "Iscrizione gratuita a CartaFRECCIA ed età inferiore a 30 anni (per FrecciaYOUNG)"
+    ],
+    "steps": [
+      "Vai sulla pagina ufficiale UniBo dedicata all'agevolazione Trenitalia e accedi con le credenziali @studio.unibo.it per visualizzare il link/codice di registrazione Welfare PLUS.",
+      "Associa il profilo convenzionato al tuo account CartaFRECCIA personale.",
+      "In fase di acquisto su app o sito Trenitalia, confronta sempre la tariffa FrecciaYOUNG con lo sconto Welfare PLUS applicato sulla tariffa Base/Economy."
+    ],
+    "url": "https://www.unibo.it/it/studiare/vivere-luniversita-e-la-citta/trasporti-e-mobilita/agevolazione-per-treni-freccia-di-trenitalia",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-itabus-convenzione",
+    "title": "Itabus: Sconto Convenzione Studenti UniBo",
+    "provider": "Itabus / Università di Bologna",
+    "category": "Trasporti",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "-15% / Promo UniBo",
+    "summary": "Tariffe scontate dedicate a studentesse e studenti iscritti all'Università di Bologna sulle tratte nazionali e internazionali operate da Itabus.",
+    "reliability": {
+      "score": 5,
+      "reason": "Convenzione ufficiale d'Ateneo accessibile con login istituzionale."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Credenziali @studio.unibo.it"
+    ],
+    "steps": [
+      "Apri la pagina della convenzione Itabus sul portale UniBo ed effettua il login con le credenziali @studio.unibo.it.",
+      "Segui la procedura indicata per ottenere il voucher o accedere al portale convenzioni dedicato.",
+      "Salva il codice ottenuto nel campo 'Codice Privato' di questa scheda per riutilizzarlo rapidamente sull'app Itabus."
+    ],
+    "url": "https://www.unibo.it/it/studiare/vivere-luniversita-e-la-citta/trasporti-e-mobilita/agevolazione-per-autolinee-nazionali-e-internazionali-itabus",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "italo-giovani-cgn-unidays",
+    "title": "Italo Giovani (Under 29 per Tutti) + Sconti Carta Giovani (CGN)",
+    "provider": "Italo NTV · Carta Giovani Nazionale",
+    "category": "Trasporti",
+    "circuit": "Carta Giovani (CGN)",
+    "isUniboOfficial": false,
+    "student_only": false,
+    "discountBadge": "Fino a -70% Under 35",
+    "summary": "Tariffa speciale Italo Giovani aperta a tutti gli Under 29, più agevolazioni fino ai 35 anni compiuti tramite Carta Giovani Nazionale (su App IO) su treni Italo, Frecciarossa e voli ITA Airways.",
+    "reliability": {
+      "score": 5,
+      "reason": "Convenzione istituzionale attiva su Carta Giovani Nazionale (App IO) per tutti gli Under 35 residenti in Italia."
+    },
+    "eligibility": [
+      "Aperto a tutti (non richiede status di studente universitario)",
+      "Età 14-29 anni per Italo Giovani diretto, oppure 18-35 anni con Carta Giovani Nazionale su App IO"
+    ],
+    "steps": [
+      "Apri l'App IO sul tuo smartphone (con SPID/CIE), vai in Portafoglio > Carta Giovani Nazionale e cerca Italo, Trenitalia o ITA Airways.",
+      "Copia il codice convenzione CGN nella 'Cassaforte Codice Privato' di questa scheda.",
+      "In fase di prenotazione, confronta sempre il prezzo tra l'offerta Italo Giovani e il codice Carta Giovani Nazionale."
+    ],
+    "url": "https://giovani2030.it/iniziativa/carta-giovani-nazionale/",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "cgn-feltrinelli-musei-teatri",
+    "title": "Carta Giovani Nazionale (App IO): Feltrinelli, Musei Statali a 2€ & Corsi",
+    "provider": "Dipartimento Politiche Giovanili · App IO",
+    "category": "Cultura/Svago",
+    "circuit": "Carta Giovani (CGN)",
+    "isUniboOfficial": false,
+    "student_only": false,
+    "discountBadge": "Gratis Under 35 (App IO)",
+    "summary": "Circuito gratuito su App IO aperto a tutti i residenti 18-35 anni (anche non studenti): sconti su libri/musica LaFeltrinelli, cinema/teatri convenzionati, portale European Youth Card (EYCA) in tutta Europa e ingressi ridotti a 2€ (18-25 anni) nei musei statali.",
+    "reliability": {
+      "score": 5,
+      "reason": "Carta digitale ufficiale della Presidenza del Consiglio dei Ministri integrata nativamente nell'App IO."
+    },
+    "eligibility": [
+      "Aperto a tutti i giovani tra 18 e 35 anni compiuti residenti in Italia (non serve essere studenti)",
+      "App IO con accesso SPID o CIE"
+    ],
+    "steps": [
+      "Apri l'App IO sul tuo POCO F7, entra nella scheda 'Portafoglio' e attiva gratuitamente la Carta Giovani Nazionale.",
+      "Sfoglia gli operatori culturali, sportivi e commerciali e genera il codice o mostra la carta digitale con logo EYCA.",
+      "Salva i codici promozionali più usati nella Cassaforte Privata di questa scheda."
+    ],
+    "url": "https://giovani2030.it/iniziativa/carta-giovani-nazionale/",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "esn-ryanair-flixbus-isic",
+    "title": "Ryanair (-10% + Bagaglio 20kg Gratis), FlixBus & Ostelli (ESNcard / ISIC)",
+    "provider": "ESN Bologna / ISIC Italia",
+    "category": "Trasporti",
+    "circuit": "ISIC / ESNcard",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "Ryanair -10% + 20kg Gratis",
+    "summary": "Con ESNcard: 4 voli singoli Ryanair all'anno con 10% di sconto E bagaglio da stiva da 20kg gratuito + voucher FlixBus (-10%/-15%). Con tessera ISIC: riduzioni su FlixBus, Interrail/Eurail, ostelli Hostelling International e musei internazionali.",
+    "reliability": {
+      "score": 5,
+      "reason": "Partnership globale ufficiale tra Ryanair ed Erasmus Student Network (integrata direttamente nella dashboard MyRyanair)."
+    },
+    "eligibility": [
+      "Tessera ESNcard attiva (rilasciata anche da ESN Bologna) per il beneficio Ryanair",
+      "Oppure tessera ISIC Italia (13€/anno) o UNiDAYS/Student Beans per i codici FlixBus"
+    ],
+    "steps": [
+      "Per Ryanair: registra il numero della tua ESNcard su esncard.org, poi vai nella sezione 'Erasmus' del tuo profilo sul sito/app Ryanair e prenota con almeno 28 giorni di anticipo.",
+      "Per FlixBus: genera i codici sconto del 10%-15% dal portale ESNcard, dall'app ISIC (o gratuitamente da UNiDAYS/Student Beans).",
+      "Salva il numero della tua tessera ESNcard/ISIC nella Cassaforte Privata di questa scheda."
+    ],
+    "url": "https://esncard.org/ryanair",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "isic-cultura-viaggi-mondo",
+    "title": "Tessera ISIC: Musei Internazionali, Booking, Hard Rock & Lonely Planet",
+    "provider": "ISIC Association Italia",
+    "category": "Cultura/Svago",
+    "circuit": "ISIC / ESNcard",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "42.000+ Sconti in 130 Paesi",
+    "summary": "L'unico documento studentesco riconosciuto dall'UNESCO a livello mondiale: ingressi ridotti o gratuiti in musei esteri fuori UE, sconti su guide Lonely Planet (-25%), ostelli Generator/a&o e trasporti locali in oltre 130 Paesi.",
+    "reliability": {
+      "score": 5,
+      "reason": "Standard internazionale attivo dal 1953 per il riconoscimento dello status di studente all'estero."
+    },
+    "eligibility": [
+      "Iscrizione full-time all'Università di Bologna (certificato Studenti Online)",
+      "Emissione tessera digitale ISIC (circa 13€/anno)"
+    ],
+    "steps": [
+      "Richiedi la tessera digitale su isic.it caricando una fototessera e il certificato di iscrizione UniBo.",
+      "Attiva il profilo nell'app ufficiale ISIC e salva il tuo codice seriale ISIC (S-039...) nella Cassaforte Privata qui sotto."
+    ],
+    "url": "https://www.isic.it/vantaggi/",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-musei-sma-civici",
+    "title": "Ingresso Gratuito Musei SMA & Musei Civici di Bologna",
+    "provider": "Sistema Museale di Ateneo & Comune di Bologna",
+    "category": "Cultura/Svago",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Ingresso Gratis",
+    "summary": "Accesso 100% gratuito a tutta la rete del Sistema Museale di Ateneo (Palazzo Poggi, Orto Botanico, Specola, Cere Anatomiche) e alle collezioni permanenti dei Musei Civici di Bologna (MAMbo, Museo Morandi, Archeologico, Medievale, Musica, Ustica).",
+    "reliability": {
+      "score": 5,
+      "reason": "Convenzione permanente garantita dall'Ateneo e dall'Istituzione Bologna Musei."
+    },
+    "eligibility": [
+      "Badge universitario UniBo fisico o digitale",
+      "Certificato di iscrizione all'anno accademico corrente (scaricabile in PDF da Studenti Online, richiesto per i Musei Civici comunali)"
+    ],
+    "steps": [
+      "Per i musei universitari SMA: presentati direttamente in biglietteria esibendo il badge universitario UniBo.",
+      "Per i Musei Civici di Bologna (es. MAMbo, Archeologico): mostra in biglietteria il badge universitario insieme al certificato di iscrizione dell'A.A. corrente su smartphone.",
+      "Ritira il biglietto omaggio per le collezioni permanenti (e verifica lo sconto ridotto sulle mostre temporanee)."
+    ],
+    "url": "https://www.unibo.it/it/studiare/vivere-luniversita-e-la-citta/agevolazioni-per-il-tempo-libero",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-cineteca-cinema-bologna",
+    "title": "Cineteca di Bologna (Lumière & Modernissimo) + Cinema d'Essai",
+    "provider": "Cineteca di Bologna & Circuito Cinema Bologna",
+    "category": "Cultura/Svago",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "-3€ / Tariffa Ridotta",
+    "summary": "Biglietti ridotti dal lunedì al venerdì nei cinema Odeon, Europa, Rialto Studio, Roma d'Essai (-3€ sull'intero) e tariffe agevolate per tutte le proiezioni al Cinema Lumière e al Cinema Modernissimo.",
+    "reliability": {
+      "score": 5,
+      "reason": "Convenzione culturale ufficiale dell'Università di Bologna per il campus cittadino."
+    },
+    "eligibility": [
+      "Badge universitario UniBo o documento attestante la qualifica di studente dell'Ateneo"
+    ],
+    "steps": [
+      "Consulta la programmazione su cinetecadibologna.it o circuitocinemabologna.it.",
+      "Acquista il biglietto selezionando la tariffa ridotta Studenti UniBo (o richiedila direttamente in cassa).",
+      "Esibisci il badge universitario all'ingresso in sala."
+    ],
+    "url": "https://www.unibo.it/it/studiare/vivere-luniversita-e-la-citta/agevolazioni-per-il-tempo-libero",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-teatri-ert-virtus",
+    "title": "Teatri ERT (Arena del Sole, Moline, Bonci) & Virtus Bologna",
+    "provider": "Emilia Romagna Teatro & Virtus Pallacanestro",
+    "category": "Cultura/Svago",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Biglietti da 10€",
+    "summary": "Riduzioni dedicate agli studenti UniBo per la stagione teatrale ERT a Bologna e Cesena, più biglietti a 10€ (Gradinata PalaDozza / Distinti Laterali Unipol Hall) per i match selezionati della Virtus Bologna.",
+    "reliability": {
+      "score": 5,
+      "reason": "Promozione ufficiale d'Ateneo aggiornata stagionalmente nella pagina Tempo Libero UniBo."
+    },
+    "eligibility": [
+      "Badge universitario UniBo in corso di validità"
+    ],
+    "steps": [
+      "Verifica sul portale UniBo le date delle partite Virtus o gli spettacoli teatrali inclusi nella convenzione.",
+      "Presentati in biglietteria (Casa Virtus / Palazzetto o biglietterie ERT) mostrando il badge universitario UniBo per ottenere la tariffa convenzionata."
+    ],
+    "url": "https://www.unibo.it/it/studiare/vivere-luniversita-e-la-citta/agevolazioni-per-il-tempo-libero",
+    "expiresAt": "2027-05-31",
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "spotify-premium-student",
+    "title": "Spotify Premium Student",
+    "provider": "Spotify (Verifica SheerID)",
+    "category": "Abbonamenti",
+    "circuit": "SheerID / Diretto",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "-50% (6,49€/mese)",
+    "summary": "Piano Spotify Premium individuale a metà prezzo per studenti universitari (musica senza pubblicità, download offline, qualità audio elevata), rinnovabile annualmente fino a 4 anni.",
+    "reliability": {
+      "score": 5,
+      "reason": "Verifica standardizzata tramite portale SheerID dove Alma Mater Studiorum è censita ufficialmente."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Verifica annuale tramite SheerID (con login @studio.unibo.it o caricamento certificato di iscrizione)"
+    ],
+    "steps": [
+      "Vai su spotify.com/it/student e accedi con il tuo account Spotify personale.",
+      "Nel modulo di verifica SheerID seleziona 'Alma Mater Studiorum - Università di Bologna'.",
+      "Completa l'autenticazione tramite il portale d'Ateneo o carica il certificato di iscrizione scaricato da Studenti Online."
+    ],
+    "url": "https://www.spotify.com/it/student/",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "amazon-prime-student",
+    "title": "Amazon Prime Student (90 giorni gratis + 50% di sconto)",
+    "provider": "Amazon Italia",
+    "category": "Abbonamenti",
+    "circuit": "Prime Student",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "90gg Gratis poi -50%",
+    "summary": "3 mesi di prova gratuita e successivamente tariffa dimezzata (24,95€/anno o 2,49€/mese) con spedizioni Prime illimitate, Prime Video, Amazon Music Prime, Prime Gaming e offerte tech esclusive per studenti.",
+    "reliability": {
+      "score": 5,
+      "reason": "Attivazione immediata tramite link di conferma inviato alla casella @studio.unibo.it."
+    },
+    "eligibility": [
+      "Casella email istituzionale @studio.unibo.it attiva"
+    ],
+    "steps": [
+      "Accedi al tuo account Amazon personale e visita la pagina di iscrizione ad Amazon Prime Student.",
+      "Inserisci il tuo indirizzo email accademico nome.cognome@studio.unibo.it nel campo di verifica.",
+      "Apri la posta istituzionale UniBo e clicca sul link di conferma inviato da Amazon (se avevi già un Prime a prezzo pieno, ti verrà rimborsata in automatico la quota non goduta)."
+    ],
+    "url": "https://www.amazon.it/amazonprime?primeCampaignId=studentWlpPrimeRedir",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "prime-student-gaming-audible-deals",
+    "title": "Vantaggi Inclusi Prime Student: Prime Gaming, Deliveroo Plus & Promo Tech",
+    "provider": "Amazon Prime Student Hub",
+    "category": "Abbonamenti",
+    "circuit": "Prime Student",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "Giochi Gratis + Coupon",
+    "summary": "Vantaggi secondari già inclusi nel tuo abbonamento Amazon Prime Student: giochi PC completi riscattabili ogni mese su Prime Gaming + 1 abbonamento canale Twitch gratuito al mese, 1 anno di Deliveroo Plus Silver gratis e coupon esclusivi su notebook/tablet.",
+    "reliability": {
+      "score": 5,
+      "reason": "Servizi ufficiali inclusi senza costi aggiuntivi nell'iscrizione Amazon Prime Student."
+    },
+    "eligibility": [
+      "Iscrizione attiva ad Amazon Prime Student (o Amazon Prime)"
+    ],
+    "steps": [
+      "Per i giochi gratis mensili (GOG, Epic, Amazon Games) e la sub Twitch: accedi a gaming.amazon.com con il tuo account Amazon Prime Student.",
+      "Per Deliveroo Plus: collega il tuo profilo Amazon Prime all'interno dell'app Deliveroo per azzerare le spese di consegna sugli ordini idonei.",
+      "Controlla periodicamente la pagina 'Offerte esclusive Student' su Amazon per codici sconto del 10%-15% su libri, monitor e periferiche."
+    ],
+    "url": "https://gaming.amazon.com/",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "youtube-premium-student",
+    "title": "YouTube Premium & YouTube Music Student",
+    "provider": "Google / YouTube (Verifica SheerID)",
+    "category": "Abbonamenti",
+    "circuit": "SheerID / Diretto",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "-40% (8,99€/mese)",
+    "summary": "YouTube e YouTube Music senza pubblicità, riproduzione in background a schermo spento sul POCO F7 e download offline a tariffa ridotta per studenti universitari.",
+    "reliability": {
+      "score": 5,
+      "reason": "Verifica immediata tramite SheerID per studenti dell'Università di Bologna."
+    },
+    "eligibility": [
+      "Iscrizione attiva UniBo verificata annualmente tramite SheerID"
+    ],
+    "steps": [
+      "Apri youtube.com/premium/student dal browser e clicca su 'Prova gratis' o 'Abbonati'.",
+      "Completa il modulo SheerID selezionando l'Università di Bologna e verificando con l'email @studio.unibo.it.",
+      "Una volta approvato da SheerID, completa l'attivazione sul tuo account Google personale."
+    ],
+    "url": "https://www.youtube.com/premium/student",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "apple-music-student",
+    "title": "Apple Music Student (+ Apple TV+ incluso gratis)",
+    "provider": "Apple · UNiDAYS",
+    "category": "Abbonamenti",
+    "circuit": "UNiDAYS",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "5,99€/mese + TV+",
+    "summary": "Abbonamento mensile ridotto ad Apple Music (disponibile anche con app nativa Android ad alto bitrate Lossless) che include gratuitamente l'accesso completo al catalogo streaming di Apple TV+.",
+    "reliability": {
+      "score": 5,
+      "reason": "Verifica tramite UNiDAYS con rinnovo annuale automatico tramite email @studio.unibo.it."
+    },
+    "eligibility": [
+      "Account UNiDAYS attivo e verificato con email @studio.unibo.it"
+    ],
+    "steps": [
+      "Scarica l'app Apple Music dal Google Play Store o accedi via web e scegli il piano 'Studenti'.",
+      "Clicca su 'Verifica idoneità' per essere reindirizzato a UNiDAYS.",
+      "Effettua l'accesso con il tuo profilo UNiDAYS collegato alla mail @studio.unibo.it; una volta attivo, accedi a tv.apple.com con lo stesso Apple ID per guardare Apple TV+ gratis."
+    ],
+    "url": "https://music.apple.com/it/subscribe/student",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "studentbeans-nordvpn-flixbus-hotels",
+    "title": "FlixBus (-15%), NordVPN (-68%) & Hotels.com (Student Beans Viaggi & Cloud)",
+    "provider": "Student Beans · FlixBus / NordVPN / Hotels.com",
+    "category": "Trasporti",
+    "circuit": "Student Beans",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "-15% FlixBus / -10% Hotel",
+    "summary": "Voucher sconto immediati sul portale Student Beans per viaggi e mobilità digitale: -10%/-15% su tratte nazionali ed europee FlixBus, -10% sulle prenotazioni Hotels.com e piano Student NordVPN + NordPass scontato.",
+    "reliability": {
+      "score": 5,
+      "reason": "Codici univoci generabili gratuitamente con profilo Student Beans verificato @studio.unibo.it."
+    },
+    "eligibility": [
+      "Account Student Beans verificato con email @studio.unibo.it"
+    ],
+    "steps": [
+      "Accedi a studentbeans.com/it e cerca 'FlixBus', 'Hotels.com' o 'NordVPN'.",
+      "Genera il codice voucher usa-e-getta e salvalo nella Cassaforte Privata di questa scheda prima di aprire l'app FlixBus."
+    ],
+    "url": "https://www.studentbeans.com/it",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "cgn-ita-airways-flixbus-booking",
+    "title": "Voli ITA Airways, Autonoleggi & Ostelli Europei EYCA (Carta Giovani App IO)",
+    "provider": "Carta Giovani Nazionale · Circuito EYCA",
+    "category": "Trasporti",
+    "circuit": "Carta Giovani (CGN)",
+    "isUniboOfficial": false,
+    "student_only": false,
+    "discountBadge": "Under 35 · Italia & UE",
+    "summary": "Agevolazioni mobilità aperte a tutti i residenti 18-35 anni (anche non studenti) tramite App IO: tariffe dedicate Giovani e codici promo su voli ITA Airways, FlixBus e oltre 60.000 sconti trasporti/alloggi in Europa tramite il circuito EYCA.",
+    "reliability": {
+      "score": 5,
+      "reason": "Servizio pubblico gratuito su App IO valido in tutta l'Unione Europea grazie all'adesione a EYCA."
+    },
+    "eligibility": [
+      "Residenti in Italia tra 18 e 35 anni compiuti (non richiede iscrizione universitaria)",
+      "Attivazione gratuita su App IO con SPID o CIE"
+    ],
+    "steps": [
+      "Apri l'App IO > Portafoglio > Carta Giovani Nazionale e seleziona la scheda 'Estero (EYCA)' o 'Trasporti'.",
+      "Copia il codice convenzione o mostra la schermata della carta digitale con il logo EYCA quando viaggi in Europa."
+    ],
+    "url": "https://eyca.org/discounts",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "esncard-samsung-logitech-perlego",
+    "title": "Portale ESNcard & UniversityBox: Logitech (-25%), Perlego & Librerie",
+    "provider": "ESNcard / UniversityBox Italia",
+    "category": "Tech & Elettronica",
+    "circuit": "ISIC / ESNcard",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "-25% Logitech / Promo",
+    "summary": "Vantaggi tech e studio riscattabili con ESNcard, ISIC o UniversityBox: -25% su mouse MX Master, tastiere meccaniche e webcam Logitech, abbonamento scontato alla biblioteca accademica digitale Perlego e promo The Space Cinema.",
+    "reliability": {
+      "score": 4,
+      "reason": "Voucher ufficiali disponibili sui portali esncard.org e universitybox.com per studenti universitari."
+    },
+    "eligibility": [
+      "Tessera ESNcard / ISIC attiva oppure registrazione gratuita su UniversityBox con @studio.unibo.it"
+    ],
+    "steps": [
+      "Accedi a esncard.org o a universitybox.com con il tuo profilo studente verificato.",
+      "Richiedi il codice promozionale Logitech o Perlego e salvalo nella Cassaforte Privata di questa scheda."
+    ],
+    "url": "https://esncard.org/",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "prime-student-audible-kindle-unlimited",
+    "title": "Audible & Kindle Unlimited: Prove Estese + Sconti Libri Universitari",
+    "provider": "Amazon Italia (Prime Student)",
+    "category": "Cultura/Svago",
+    "circuit": "Prime Student",
+    "isUniboOfficial": false,
+    "student_only": true,
+    "discountBadge": "60-90gg Gratis + Promo",
+    "summary": "Promozioni periodiche riservate agli account Amazon Prime Student: fino a 60-90 giorni di prova gratuita o canone scontato su Audible (audiolibri e podcast) e Kindle Unlimited, più buoni sconto dedicati sui testi universitari e dispositivi Echo/Kindle.",
+    "reliability": {
+      "score": 5,
+      "reason": "Promozioni ricorrenti ufficiali collegate agli account Amazon verificati con @studio.unibo.it."
+    },
+    "eligibility": [
+      "Account Amazon Prime Student attivo (@studio.unibo.it)"
+    ],
+    "steps": [
+      "Accedi ad amazon.it con il tuo profilo Prime Student e visita la pagina Audible o Kindle Unlimited per verificare la promo attiva sul tuo account.",
+      "Annota nella Cassaforte Privata la data di scadenza del periodo gratuito per gestire il rinnovo in tempo."
+    ],
+    "url": "https://www.amazon.it/amazonprime?primeCampaignId=studentWlpPrimeRedir",
+    "expiresAt": null,
+    "source": "curated",
+    "updatedAt": "2026-11-03"
+  }
+]

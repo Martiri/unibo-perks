@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="it" data-theme="dark">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta
+    http-equiv="Content-Security-Policy"
+    content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self' data:; font-src 'self'; connect-src 'self'; manifest-src 'self'; worker-src 'self'; object-src 'none'; frame-src 'none'; base-uri 'self'; form-action 'none';"
+  />
+  <meta name="referrer" content="no-referrer" />
+  <meta name="theme-color" content="#07080c" />
+  <meta
+    name="description"
+    content="Catalogo offline-ready e cassaforte locale per convenzioni UniBo, AI & Dev Tools, Outdoor & Trekking, trasporti, cultura e sconti per studenti e per tutti."
+  />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+  <title>UniBo &amp; Student Perks Vault</title>
+
+  <link rel="manifest" href="./manifest.webmanifest" />
+  <link rel="icon" type="image/png" sizes="192x192" href="./assets/icons/icon-192.png" />
+  <link rel="apple-touch-icon" href="./assets/icons/apple-touch-icon.png" />
+  <link rel="stylesheet" href="./css/app.css" />
+</head>
+<body>
+  <!-- Sticky Top App Bar -->
+  <header class="app-header">
+    <div class="header-inner">
+      <div class="brand">
+        <div class="brand-mark" aria-hidden="true">
+          <svg class="icon">
+            <use href="./assets/icons/sprite.svg#icon-unibo"></use>
+          </svg>
+        </div>
+        <div>
+          <h1 class="brand-title">UniBo &amp; Perks Vault</h1>
+          <p class="brand-subtitle">
+            <svg class="icon icon-xs">
+              <use href="./assets/icons/sprite.svg#icon-shield"></use>
+            </svg>
+            <span id="storage-engine-status">Vault 100% On-Device</span>
+          </p>
+        </div>
+      </div>
+
+      <div class="header-actions">
+        <button
+          type="button"
+          id="btn-open-platforms"
+          class="btn btn-sm"
+          title="Guida e directory di tutti i circuiti sconti (UNiDAYS, Student Beans, CGN, ISIC, GitHub Pack...)"
+          aria-haspopup="dialog"
+          aria-controls="platforms-modal"
+        >
+          <svg class="icon icon-sm">
+            <use href="./assets/icons/sprite.svg#icon-spark"></use>
+          </svg>
+          <span>Circuiti</span>
+        </button>
+
+        <button
+          type="button"
+          id="btn-open-help"
+          class="btn btn-sm"
+          title="Apri la guida rapida all'uso dell'app"
+          aria-haspopup="dialog"
+          aria-controls="help-modal"
+        >
+          <svg class="icon icon-sm">
+            <use href="./assets/icons/sprite.svg#icon-help"></use>
+          </svg>
+          <span>Guida</span>
+        </button>
+
+        <button
+          type="button"
+          id="btn-open-backup"
+          class="btn btn-sm"
+          title="Esporta o importa backup locale dei tuoi codici"
+          aria-haspopup="dialog"
+          aria-controls="backup-modal"
+        >
+          <svg class="icon icon-sm">
+            <use href="./assets/icons/sprite.svg#icon-key"></use>
+          </svg>
+          <span>Backup</span>
+        </button>
+
+        <button
+          type="button"
+          id="btn-theme-toggle"
+          class="btn-icon"
+          aria-label="Cambia tema chiaro/scuro"
+        >
+          <svg class="icon">
+            <use href="./assets/icons/sprite.svg#icon-sun"></use>
+          </svg>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="main-container">
+    <!-- Summary Stats Strip -->
+    <section class="stats-strip" aria-label="Riepilogo personale">
+      <div class="stat-card">
+        <span class="stat-value" id="stat-total">0</span>
+        <span class="stat-label">Offerte a catalogo</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-unlocked">0</span>
+        <span class="stat-label">Sbloccate / Usate</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value" id="stat-codes">0</span>
+        <span class="stat-label">Codici in cassaforte</span>
+      </div>
+    </section>
+
+    <!-- Search, Audience Mode, Sort & Filter Controls -->
+    <section class="controls-panel" aria-label="Filtri e ricerca">
+      <!-- Prominent Audience Switcher: Tutti gli sconti vs Solo Studenti vs Per Tutti -->
+      <div class="audience-bar" role="group" aria-label="Filtra per destinatari dello sconto">
+        <button
+          type="button"
+          class="audience-btn active"
+          data-audience="all"
+          aria-pressed="true"
+        >
+          <span>Tutti gli sconti</span>
+        </button>
+        <button
+          type="button"
+          class="audience-btn"
+          data-audience="student_only"
+          aria-pressed="false"
+        >
+          <svg class="icon icon-xs">
+            <use href="./assets/icons/sprite.svg#icon-unibo"></use>
+          </svg>
+          <span>Solo Studenti</span>
+        </button>
+        <button
+          type="button"
+          class="audience-btn"
+          data-audience="general_only"
+          aria-pressed="false"
+        >
+          <svg class="icon icon-xs">
+            <use href="./assets/icons/sprite.svg#icon-users"></use>
+          </svg>
+          <span>Aperti a Tutti</span>
+        </button>
+      </div>
+
+      <div class="search-sort-row">
+        <div class="search-box">
+          <svg class="icon icon-sm" aria-hidden="true">
+            <use href="./assets/icons/sprite.svg#icon-search"></use>
+          </svg>
+          <input
+            type="search"
+            id="search-input"
+            class="search-input"
+            placeholder="Cerca Salomon, Decathlon, Ryanair, Student Beans, CGN..."
+            autocomplete="off"
+            aria-label="Cerca convenzioni e sconti"
+          />
+        </div>
+
+        <select id="sort-select" class="sort-select" aria-label="Ordina risultati">
+          <option value="recommended">Ordina: Consigliati &amp; UniBo</option>
+          <option value="expiry">Ordina: Scadenza più vicina</option>
+          <option value="alpha">Ordina: Nome (A-Z)</option>
+        </select>
+      </div>
+
+      <!-- Category & UniBo Filter Pills -->
+      <div class="filter-scroll-row" role="toolbar" aria-label="Filtra per categoria">
+        <button type="button" class="chip active" data-category="all" aria-pressed="true">
+          Tutte le categorie
+        </button>
+        <button type="button" class="chip chip-unibo" id="filter-unibo-only" aria-pressed="false">
+          <svg class="icon icon-xs">
+            <use href="./assets/icons/sprite.svg#icon-unibo"></use>
+          </svg>
+          <span>Solo Convenzioni UniBo</span>
+        </button>
+        <button type="button" class="chip" data-category="AI & Dev Tools" aria-pressed="false">
+          <svg class="icon icon-xs">
+            <use href="./assets/icons/sprite.svg#icon-cpu"></use>
+          </svg>
+          <span>AI &amp; Dev Tools</span>
+        </button>
+        <button type="button" class="chip" data-category="Outdoor & Trekking" aria-pressed="false">
+          <svg class="icon icon-xs">
+            <use href="./assets/icons/sprite.svg#icon-mountain"></use>
+          </svg>
+          <span>Outdoor &amp; Trekking</span>
+        </button>
+        <button type="button" class="chip" data-category="Abbigliamento & Calzature" aria-pressed="false">
+          <span>Abbigliamento &amp; Calzature</span>
+        </button>
+        <button type="button" class="chip" data-category="Tech & Elettronica" aria-pressed="false">
+          <span>Tech &amp; Elettronica</span>
+        </button>
+        <button type="button" class="chip" data-category="Trasporti" aria-pressed="false">
+          <span>Trasporti</span>
+        </button>
+        <button type="button" class="chip" data-category="Cultura/Svago" aria-pressed="false">
+          <span>Cultura &amp; Tempo Libero</span>
+        </button>
+        <button type="button" class="chip" data-category="Abbonamenti" aria-pressed="false">
+          <span>Abbonamenti</span>
+        </button>
+      </div>
+
+      <!-- Platform / Circuit Filter Pills -->
+      <div class="filter-scroll-row" role="toolbar" aria-label="Filtra per circuito o piattaforma">
+        <button type="button" class="chip active" data-circuit="all" aria-pressed="true">
+          Tutti i circuiti
+        </button>
+        <button type="button" class="chip" data-circuit="UniBo" aria-pressed="false">
+          <span>Circuito UniBo</span>
+        </button>
+        <button type="button" class="chip" data-circuit="UNiDAYS" aria-pressed="false">
+          <span>UNiDAYS</span>
+        </button>
+        <button type="button" class="chip" data-circuit="Student Beans" aria-pressed="false">
+          <span>Student Beans</span>
+        </button>
+        <button type="button" class="chip" data-circuit="Carta Giovani (CGN)" aria-pressed="false">
+          <span>Carta Giovani (App IO)</span>
+        </button>
+        <button type="button" class="chip" data-circuit="ISIC / ESNcard" aria-pressed="false">
+          <span>ISIC / ESNcard</span>
+        </button>
+        <button type="button" class="chip" data-circuit="GitHub Pack" aria-pressed="false">
+          <span>GitHub Pack</span>
+        </button>
+        <button type="button" class="chip" data-circuit="SheerID / Diretto" aria-pressed="false">
+          <span>SheerID / Diretto</span>
+        </button>
+        <button type="button" class="chip" data-circuit="Prime Student" aria-pressed="false">
+          <span>Prime Student</span>
+        </button>
+        <button type="button" class="chip" data-circuit="Brand Club (Tutti)" aria-pressed="false">
+          <span>Brand Club (Tutti)</span>
+        </button>
+      </div>
+
+      <!-- Personal Status Filter Pills -->
+      <div class="filter-scroll-row" role="toolbar" aria-label="Filtra per stato personale">
+        <button type="button" class="chip active" data-status-filter="active" aria-pressed="true">
+          Tutti (Visibili)
+        </button>
+        <button type="button" class="chip" data-status-filter="new" aria-pressed="false">
+          Nuovo
+        </button>
+        <button type="button" class="chip" data-status-filter="unlocked" aria-pressed="false">
+          Sbloccato
+        </button>
+        <button type="button" class="chip" data-status-filter="used" aria-pressed="false">
+          Usato
+        </button>
+        <button type="button" class="chip" data-status-filter="hidden" aria-pressed="false">
+          Nascosto
+        </button>
+      </div>
+    </section>
+
+    <!-- Directory Callout Banner: Dove trovare altri sconti -->
+    <div class="platforms-banner">
+      <div class="platforms-banner-text">
+        <svg class="icon icon-sm">
+          <use href="./assets/icons/sprite.svg#icon-spark"></use>
+        </svg>
+        <span>
+          <strong>Dove trovare altri sconti:</strong> scopri i 10 portali ufficiali (UNiDAYS, Student Beans, Carta Giovani App IO, ESNcard, ISIC, SheerID) e come registrarti.
+        </span>
+      </div>
+      <button
+        type="button"
+        id="btn-open-platforms-banner"
+        class="btn btn-secondary btn-sm"
+        aria-haspopup="dialog"
+        aria-controls="platforms-modal"
+      >
+        <span>Esplora Piattaforme (10)</span>
+        <svg class="icon icon-xs">
+          <use href="./assets/icons/sprite.svg#icon-external"></use>
+        </svg>
+      </button>
+    </div>
+
+    <!-- Results Counter -->
+    <div class="results-toolbar">
+      <span id="results-count" aria-live="polite">Caricamento catalogo...</span>
+      <span>Esclusi bandi ER.GO / borse</span>
+    </div>
+
+    <!-- Cards Grid -->
+    <section id="discounts-grid" class="discounts-grid" aria-label="Elenco convenzioni"></section>
+  </main>
+
+  <!-- Detail Bottom-Sheet / Modal -->
+  <div
+    id="detail-modal"
+    class="modal-backdrop hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-label="Dettaglio agevolazione"
+  >
+    <div id="detail-modal-body" class="modal-sheet"></div>
+  </div>
+
+  <!-- Platforms & Verification Circuits Directory Modal ("Dove trovare altri sconti") -->
+  <div
+    id="platforms-modal"
+    class="modal-backdrop hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="platforms-modal-title"
+  >
+    <div class="modal-sheet modal-sheet-help">
+      <div class="modal-header">
+        <div class="modal-badges">
+          <span class="badge badge-student">
+            <svg class="icon icon-xs">
+              <use href="./assets/icons/sprite.svg#icon-spark"></use>
+            </svg>
+            <span>Directory Ufficiale Circuiti &amp; Aggregatori</span>
+          </span>
+        </div>
+        <button
+          type="button"
+          id="btn-close-platforms"
+          class="btn-icon"
+          aria-label="Chiudi directory piattaforme"
+        >
+          <svg class="icon">
+            <use href="./assets/icons/sprite.svg#icon-close"></use>
+          </svg>
+        </button>
+      </div>
+
+      <h2 id="platforms-modal-title" class="modal-title">Dove Trovare Altri Sconti (Guida ai Circuiti)</h2>
+      <p class="modal-summary">
+        Oltre alle offerte puntuali nel catalogo, registrandoti gratuitamente a questi portali di verifica con la tua mail <code>@studio.unibo.it</code> o con <code>SPID/CIE</code> sblocchi centinaia di codici dinamici aggiuntivi.
+      </p>
+
+      <div id="platforms-directory-list" class="platforms-list"></div>
+
+      <div class="modal-footer-actions">
+        <button type="button" id="btn-close-platforms-bottom" class="btn btn-primary btn-block">
+          Chiudi Directory Circuiti
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- In-App Help / User Guide Modal (Accordion Layout) -->
+  <div
+    id="help-modal"
+    class="modal-backdrop hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="help-modal-title"
+  >
+    <div class="modal-sheet modal-sheet-help">
+      <div class="modal-header">
+        <div class="modal-badges">
+          <span class="badge badge-public">
+            <svg class="icon icon-xs">
+              <use href="./assets/icons/sprite.svg#icon-help"></use>
+            </svg>
+            <span>Manuale Rapido Offline</span>
+          </span>
+        </div>
+        <button
+          type="button"
+          id="btn-close-help"
+          class="btn-icon"
+          aria-label="Chiudi guida all'uso"
+        >
+          <svg class="icon">
+            <use href="./assets/icons/sprite.svg#icon-close"></use>
+          </svg>
+        </button>
+      </div>
+
+      <h2 id="help-modal-title" class="modal-title">Guida all'Uso dell'App</h2>
+      <p class="modal-summary">
+        Tocca una sezione qui sotto per espandere le istruzioni rapide. Tutti i contenuti sono disponibili anche senza connessione Internet.
+      </p>
+
+      <div class="help-accordion" id="help-accordion">
+        <!-- Item 1: Come installare l'app -->
+        <div class="accordion-item is-open">
+          <button
+            type="button"
+            class="accordion-trigger"
+            aria-expanded="true"
+            aria-controls="help-panel-install"
+            id="help-trigger-install"
+          >
+            <span>1. Come installare l'app (Android &amp; PC)</span>
+            <svg class="icon icon-sm accordion-icon">
+              <use href="./assets/icons/sprite.svg#icon-chevron-down"></use>
+            </svg>
+          </button>
+          <div
+            id="help-panel-install"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="help-trigger-install"
+          >
+            <ol class="detail-steps">
+              <li>
+                <strong>Su Android (POCO F7 / Chrome):</strong> apri il menu in alto a destra (<strong>⋮</strong>) e tocca <strong>"Installa app"</strong> o <strong>"Aggiungi a schermata Home"</strong> per usarla a schermo intero (120Hz AMOLED) anche offline.
+              </li>
+              <li>
+                <strong>Su PC Desktop:</strong> clicca sull'icona <strong>Installa</strong> sul lato destro della barra degli indirizzi di Chrome/Brave per creare l'app desktop dedicata.
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Item 2: Filtri e Modalità -->
+        <div class="accordion-item">
+          <button
+            type="button"
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="help-panel-filters"
+            id="help-trigger-filters"
+          >
+            <span>2. Filtri e Modalità (Studenti vs Per Tutti)</span>
+            <svg class="icon icon-sm accordion-icon">
+              <use href="./assets/icons/sprite.svg#icon-chevron-down"></use>
+            </svg>
+          </button>
+          <div
+            id="help-panel-filters"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="help-trigger-filters"
+          >
+            <ul class="detail-list">
+              <li>
+                <strong>Selettore in alto:</strong> alterna con un tocco tra <strong>"Tutti gli sconti"</strong>, <strong>"Solo Studenti"</strong> (badge viola, per offerte che richiedono verifica universitaria) e <strong>"Aperti a Tutti"</strong> (badge ciano, per coupon outdoor, AI e lifestyle accessibili a chiunque).
+              </li>
+              <li>
+                <strong>Categorie e Ricerca:</strong> combina la barra di ricerca istantanea con i filtri rapidi (<em>AI &amp; Dev Tools</em>, <em>Outdoor &amp; Trekking</em>, <em>Abbigliamento</em>, <em>Trasporti</em>, <em>Solo Convenzioni UniBo</em>).
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Item 3: Privacy e Gestione Codici -->
+        <div class="accordion-item">
+          <button
+            type="button"
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="help-panel-privacy"
+            id="help-trigger-privacy"
+          >
+            <span>3. Privacy e Gestione Codici (100% On-Device)</span>
+            <svg class="icon icon-sm accordion-icon">
+              <use href="./assets/icons/sprite.svg#icon-chevron-down"></use>
+            </svg>
+          </button>
+          <div
+            id="help-panel-privacy"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="help-trigger-privacy"
+          >
+            <ul class="detail-list">
+              <li>
+                <strong>Zero Server / Zero Tracciamento:</strong> nessun dato personale lascia mai il tuo telefono. La Content Security Policy (<code>connect-src 'self'</code>) impedisce qualsiasi connessione verso l'esterno.
+              </li>
+              <li>
+                <strong>Cassaforte Locale:</strong> i codici inseriti, le note e lo stato (<em>Nuovo</em>, <em>Sbloccato</em>, <em>Usato</em>, <em>Nascosto</em>) sono custoditi nel database locale <code>IndexedDB</code> del tuo browser e copiabili in 1 tap direttamente dalla card.
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Item 4: Backup e Trasferimento -->
+        <div class="accordion-item">
+          <button
+            type="button"
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="help-panel-backup"
+            id="help-trigger-backup"
+          >
+            <span>4. Backup e Trasferimento Dispositivo</span>
+            <svg class="icon icon-sm accordion-icon">
+              <use href="./assets/icons/sprite.svg#icon-chevron-down"></use>
+            </svg>
+          </button>
+          <div
+            id="help-panel-backup"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="help-trigger-backup"
+          >
+            <ol class="detail-steps">
+              <li>
+                Tocca il pulsante <strong>"Backup"</strong> nell'header in alto a destra.
+              </li>
+              <li>
+                Inserisci una passphrase opzionale (per cifrare il file con <strong>AES-256-GCM</strong>) e tocca <strong>"Esporta File di Backup (.json)"</strong>.
+              </li>
+              <li>
+                In caso di cambio telefono, browser o pulizia dati, apri <strong>"Backup"</strong> e seleziona <strong>"Importa da File di Backup (.json)"</strong> per ripristinare tutti i tuoi codici.
+              </li>
+            </ol>
+          </div>
+        </div>
+
+        <!-- Item 5: Come sbloccare un'offerta -->
+        <div class="accordion-item">
+          <button
+            type="button"
+            class="accordion-trigger"
+            aria-expanded="false"
+            aria-controls="help-panel-unlock"
+            id="help-trigger-unlock"
+          >
+            <span>5. Come sbloccare un'offerta (Requisiti)</span>
+            <svg class="icon icon-sm accordion-icon">
+              <use href="./assets/icons/sprite.svg#icon-chevron-down"></use>
+            </svg>
+          </button>
+          <div
+            id="help-panel-unlock"
+            class="accordion-panel"
+            role="region"
+            aria-labelledby="help-trigger-unlock"
+          >
+            <ul class="detail-list">
+              <li>
+                <strong>Convenzioni UniBo:</strong> tieni a portata di mano le credenziali istituzionali <code>@studio.unibo.it</code>, l'accesso a <em>Studenti Online</em> (SPID/CIE), il badge universitario e il certificato di iscrizione in PDF.
+              </li>
+              <li>
+                <strong>Sconti Brand &amp; Tech (UNiDAYS / SheerID / GitHub):</strong> verifica l'account con l'email <code>@studio.unibo.it</code>.
+              </li>
+              <li>
+                <strong>Offerte "Per Tutti":</strong> basta registrarsi gratuitamente al programma fedeltà del brand (es. <em>Salomon S/PLUS</em>, <em>Decathlon</em>, <em>adiClub</em>) con una normale email personale.
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <div class="modal-footer-actions">
+        <button type="button" id="btn-close-help-bottom" class="btn btn-primary btn-block">
+          Chiudi Guida
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Backup / Restore Modal -->
+  <div
+    id="backup-modal"
+    class="modal-backdrop hidden"
+    role="dialog"
+    aria-modal="true"
+    aria-hidden="true"
+    aria-labelledby="backup-modal-title"
+  >
+    <div class="modal-sheet">
+      <div class="modal-header">
+        <div class="modal-badges">
+          <span class="badge badge-unibo">
+            <svg class="icon icon-xs">
+              <use href="./assets/icons/sprite.svg#icon-shield"></use>
+            </svg>
+            <span>Zero-Knowledge Local Backup</span>
+          </span>
+        </div>
+        <button
+          type="button"
+          id="btn-close-backup"
+          class="btn-icon"
+          aria-label="Chiudi finestra backup"
+        >
+          <svg class="icon">
+            <use href="./assets/icons/sprite.svg#icon-close"></use>
+          </svg>
+        </button>
+      </div>
+
+      <h2 id="backup-modal-title" class="modal-title">Backup &amp; Ripristino Cassaforte</h2>
+      <p class="modal-summary">
+        I tuoi codici privati, lo stato degli sconti e le note non lasciano mai il tuo POCO F7.
+        Puoi esportarli in un file JSON (opzionalmente cifrato con <strong>AES-256-GCM</strong>) per conservarli o trasferirli su un altro browser.
+      </p>
+
+      <div class="vault-box">
+        <label for="backup-passphrase" class="section-label">
+          Passphrase di Cifratura / Decifratura (Consigliata)
+        </label>
+        <input
+          type="password"
+          id="backup-passphrase"
+          class="vault-input"
+          placeholder="Lascia vuoto per JSON in chiaro, oppure inserisci password..."
+          autocomplete="off"
+        />
+        <span class="vault-hint">
+          Se inserisci una passphrase, la chiave viene derivata localmente con PBKDF2 (210.000 iterazioni SHA-256) e cifrata con AES-GCM.
+        </span>
+      </div>
+
+      <div class="modal-section">
+        <button type="button" id="btn-export-backup" class="btn btn-primary btn-block">
+          <svg class="icon icon-sm">
+            <use href="./assets/icons/sprite.svg#icon-download"></use>
+          </svg>
+          <span>Esporta File di Backup (.json)</span>
+        </button>
+
+        <label for="input-import-file" class="btn btn-secondary btn-block file-upload-label">
+          <svg class="icon icon-sm">
+            <use href="./assets/icons/sprite.svg#icon-upload"></use>
+          </svg>
+          <span>Importa da File di Backup (.json)</span>
+          <input
+            type="file"
+            id="input-import-file"
+            class="sr-only-input"
+            accept="application/json,.json"
+          />
+        </label>
+      </div>
+    </div>
+  </div>
+
+  <!-- Toast Container -->
+  <div id="toast-container" class="toast-container" aria-live="polite"></div>
+
+  <footer class="app-footer">
+    <span>Zero Tracking · Zero CDN · CSP Locked (`connect-src 'self'`)</span>
+    <span>Ottimizzato per Android / POCO F7 AMOLED</span>
+  </footer>
+
+  <script type="module" src="./js/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,422 @@
+[
+  {
+    "id": "unibo-live-agevolazioni-per-autobus-tper-e-start-romagna",
+    "title": "Agevolazioni per autobus TPER e Start Romagna",
+    "provider": "Università di Bologna",
+    "category": "Trasporti",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Convenzione UniBo",
+    "summary": "Studentesse e studenti dell’Alma Mater possono acquistare abbonamenti al trasporto pubblico di Bologna, Cesena, Forlì, Ravenna e Rimini ad un prezzo agevolato.",
+    "reliability": {
+      "score": 5,
+      "reason": "Sincronizzato automaticamente dal portale istituzionale pubblico unibo.it."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario o credenziali @studio.unibo.it"
+    ],
+    "steps": [
+      "Consulta la scheda ufficiale sul portale dell'Università di Bologna tramite il pulsante qui sotto.",
+      "Accedi con le tue credenziali @studio.unibo.it o presenta il badge universitario secondo le modalità indicate.",
+      "Eventuali codici o numeri di tessera ottenuti possono essere salvati nel tuo spazio privato locale."
+    ],
+    "url": "https://www.unibo.it/it/studiare/vivere-luniversita-e-la-citta/trasporti-e-mobilita/agevolazioni-ai-trasporti-e-alla-mobilita-per-studenti",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-live-agevolazione-per-treni-freccia-di-trenitalia",
+    "title": "Agevolazione per treni \"Freccia\" di Trenitalia",
+    "provider": "Università di Bologna",
+    "category": "Trasporti",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Convenzione UniBo",
+    "summary": "Nell’ambito del programma Trenitalia for Business, Trenitalia riserva a studentesse e studenti iscritti all’Università di Bologna l'offerta Welfare PLUS.",
+    "reliability": {
+      "score": 5,
+      "reason": "Sincronizzato automaticamente dal portale istituzionale pubblico unibo.it."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario o credenziali @studio.unibo.it"
+    ],
+    "steps": [
+      "Consulta la scheda ufficiale sul portale dell'Università di Bologna tramite il pulsante qui sotto.",
+      "Accedi con le tue credenziali @studio.unibo.it o presenta il badge universitario secondo le modalità indicate.",
+      "Eventuali codici o numeri di tessera ottenuti possono essere salvati nel tuo spazio privato locale."
+    ],
+    "url": "https://www.unibo.it/it/studiare/vivere-luniversita-e-la-citta/trasporti-e-mobilita/agevolazione-per-treni-freccia-di-trenitalia",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-live-agevolazione-per-autolinee-nazionali-e-internazi",
+    "title": "Agevolazione per autolinee nazionali e internazionali Itabus",
+    "provider": "Università di Bologna",
+    "category": "Trasporti",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Convenzione UniBo",
+    "summary": "Studentesse e studenti iscritti all’Università di Bologna possono usufruire di tariffe scontate.",
+    "reliability": {
+      "score": 5,
+      "reason": "Sincronizzato automaticamente dal portale istituzionale pubblico unibo.it."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario o credenziali @studio.unibo.it"
+    ],
+    "steps": [
+      "Consulta la scheda ufficiale sul portale dell'Università di Bologna tramite il pulsante qui sotto.",
+      "Accedi con le tue credenziali @studio.unibo.it o presenta il badge universitario secondo le modalità indicate.",
+      "Eventuali codici o numeri di tessera ottenuti possono essere salvati nel tuo spazio privato locale."
+    ],
+    "url": "https://www.unibo.it/it/studiare/vivere-luniversita-e-la-citta/trasporti-e-mobilita/agevolazione-per-autolinee-nazionali-e-internazionali-itabus",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-live-parcheggio-di-via-belmeloro-a-bologna",
+    "title": "Parcheggio di via Belmeloro a Bologna",
+    "provider": "Università di Bologna",
+    "category": "Trasporti",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Convenzione UniBo",
+    "summary": "Informazioni sulle modalità di accesso in abbonamento al parcheggio di via Belmeloro a Bologna (piano interrato -2).",
+    "reliability": {
+      "score": 5,
+      "reason": "Sincronizzato automaticamente dal portale istituzionale pubblico unibo.it."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario o credenziali @studio.unibo.it"
+    ],
+    "steps": [
+      "Consulta la scheda ufficiale sul portale dell'Università di Bologna tramite il pulsante qui sotto.",
+      "Accedi con le tue credenziali @studio.unibo.it o presenta il badge universitario secondo le modalità indicate.",
+      "Eventuali codici o numeri di tessera ottenuti possono essere salvati nel tuo spazio privato locale."
+    ],
+    "url": "https://www.unibo.it/it/studiare/vivere-luniversita-e-la-citta/trasporti-e-mobilita/parcheggio-di-via-belmeloro-a-bologna",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-live-cinema-d-essai-multisala-odeon-cinema-europa-cin",
+    "title": "Cinema d'Essai: Multisala Odeon, Cinema Europa, Cinema Rialto Studio, Cinema Roma d’essai",
+    "provider": "Convenzione UniBo · Cinema",
+    "category": "Cultura/Svago",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Promo 3 euro",
+    "summary": "Seac Film S.r.l e Circuito Cinema Bologna S.r.l., società che gestiscono i cinema d'essai della zona universitaria bolognese, riconoscono a studenti e studentesse dell'Ateneo una riduzione di 3 euro sulla tariffa intera del singolo ingresso valida per tutti gli spettacoli in programmazione dal lunedì al venerdì nel Multisala Odeon, Cinema Europa, Cinema Rialto Studio e Cinema Roma d’Essai. È poss…",
+    "reliability": {
+      "score": 5,
+      "reason": "Estratto dalla pagina ufficiale 'Agevolazioni per il tempo libero' dell'Università di Bologna."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario UniBo e/o certificato di iscrizione o mail @studio.unibo.it"
+    ],
+    "steps": [
+      "Verifica i dettagli aggiornati nella sezione 'Cinema' sul portale UniBo o sul sito dell'ente convenzionato.",
+      "Presenta il badge universitario UniBo in biglietteria (o invia richiesta con account @studio.unibo.it se previsto).",
+      "Salva eventuali codici accredito o annotazioni personali nel box privato qui sotto."
+    ],
+    "url": "https://www.circuitocinemabologna.it/",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-live-cineclub-magnifica-ilusione",
+    "title": "Cineclub Magnifica Ilusione",
+    "provider": "Convenzione UniBo · Cinema",
+    "category": "Cultura/Svago",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Promo 5 euro",
+    "summary": "Nelle serate di programmazione agli studenti e alle studentesse verrà riservato uno sconto sul costo del biglietto : 5 euro invece di 6 euro. Programmazione e informazioni",
+    "reliability": {
+      "score": 5,
+      "reason": "Estratto dalla pagina ufficiale 'Agevolazioni per il tempo libero' dell'Università di Bologna."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario UniBo e/o certificato di iscrizione o mail @studio.unibo.it"
+    ],
+    "steps": [
+      "Verifica i dettagli aggiornati nella sezione 'Cinema' sul portale UniBo o sul sito dell'ente convenzionato.",
+      "Presenta il badge universitario UniBo in biglietteria (o invia richiesta con account @studio.unibo.it se previsto).",
+      "Salva eventuali codici accredito o annotazioni personali nel box privato qui sotto."
+    ],
+    "url": "https://www.cineclubmagnificaillusione.com/programmazione/",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-live-cineteca-di-bologna",
+    "title": "Cineteca di Bologna",
+    "provider": "Convenzione UniBo · Cinema",
+    "category": "Cultura/Svago",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "UniBo · Cinema",
+    "summary": "La Fondazione Cineteca di Bologna riconosce a studenti e studentesse dell'Ateneo prezzi agevolati sulle tariffe di ingresso dei film di prima visione e di Cineclub per tutti gli spettacoli in programmazione dal lunedì al venerdì nella sala Scorsese e nella sala Mastroianni del Cinema Lumière, nella sala Cervi e nella sala del DamsLab. E per tutti gli spettacoli programmati al Cinema Modernissimo.",
+    "reliability": {
+      "score": 5,
+      "reason": "Estratto dalla pagina ufficiale 'Agevolazioni per il tempo libero' dell'Università di Bologna."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario UniBo e/o certificato di iscrizione o mail @studio.unibo.it"
+    ],
+    "steps": [
+      "Verifica i dettagli aggiornati nella sezione 'Cinema' sul portale UniBo o sul sito dell'ente convenzionato.",
+      "Presenta il badge universitario UniBo in biglietteria (o invia richiesta con account @studio.unibo.it se previsto).",
+      "Salva eventuali codici accredito o annotazioni personali nel box privato qui sotto."
+    ],
+    "url": "https://cinetecadibologna.it/programmazione/",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-live-visioni-italiane-2026",
+    "title": "Visioni Italiane 2026",
+    "provider": "Convenzione UniBo · Cinema",
+    "category": "Cultura/Svago",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Ingresso Gratis",
+    "summary": "Le studentesse e gli studenti dell’Università di Bologna hanno la possibilità di richiedere l’accredito gratuito al festival Visioni Italiane 2026 (Cinema Modernissimo, Bologna, 16-22 novembre 2026) scrivendo all’indirizzo accreditovisioni@cineteca.bologna.it . Sono a disposizione 150 accrediti omaggio; è possibile farne richiesta entro venerdì 6 novembre indicando il proprio nome, cognome e mail…",
+    "reliability": {
+      "score": 5,
+      "reason": "Estratto dalla pagina ufficiale 'Agevolazioni per il tempo libero' dell'Università di Bologna."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario UniBo e/o certificato di iscrizione o mail @studio.unibo.it"
+    ],
+    "steps": [
+      "Verifica i dettagli aggiornati nella sezione 'Cinema' sul portale UniBo o sul sito dell'ente convenzionato.",
+      "Presenta il badge universitario UniBo in biglietteria (o invia richiesta con account @studio.unibo.it se previsto).",
+      "Salva eventuali codici accredito o annotazioni personali nel box privato qui sotto."
+    ],
+    "url": "https://www.visionitaliane.it/",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-live-mostra-viva-varda-il-cinema-donna",
+    "title": "Mostra VIVA VARDA! Il cinema è donna",
+    "provider": "Convenzione UniBo · Cinema",
+    "category": "Cultura/Svago",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Promo 5 euro",
+    "summary": "La mostra resterà aperta al pubblico presso la Galleria Modernissimo fino al 10 gennaio 2027. Agli studenti e alle studentesse verrà riservato uno sconto sul costo del biglietto: 5 euro invece di 11 euro.",
+    "reliability": {
+      "score": 5,
+      "reason": "Estratto dalla pagina ufficiale 'Agevolazioni per il tempo libero' dell'Università di Bologna."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario UniBo e/o certificato di iscrizione o mail @studio.unibo.it"
+    ],
+    "steps": [
+      "Verifica i dettagli aggiornati nella sezione 'Cinema' sul portale UniBo o sul sito dell'ente convenzionato.",
+      "Presenta il badge universitario UniBo in biglietteria (o invia richiesta con account @studio.unibo.it se previsto).",
+      "Salva eventuali codici accredito o annotazioni personali nel box privato qui sotto."
+    ],
+    "url": "https://cinetecadibologna.it/programmazione/mostra/viva-varda-il-cinema-e-donna/",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-live-il-sistema-museale-di-ateneo-sma",
+    "title": "Il Sistema Museale di Ateneo - SMA",
+    "provider": "Convenzione UniBo · Musei",
+    "category": "Cultura/Svago",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Ingresso Gratis",
+    "summary": "Il Sistema Museale di Ateneo - SMA consente agli studenti, alle studentesse e al personale dell’Ateneo l’ accesso gratuito ai musei e alle collezioni . Per poter fruire di questa opportunità occorre presentarsi agli ingressi esibendo il badge universitario.",
+    "reliability": {
+      "score": 5,
+      "reason": "Estratto dalla pagina ufficiale 'Agevolazioni per il tempo libero' dell'Università di Bologna."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario UniBo e/o certificato di iscrizione o mail @studio.unibo.it"
+    ],
+    "steps": [
+      "Verifica i dettagli aggiornati nella sezione 'Musei' sul portale UniBo o sul sito dell'ente convenzionato.",
+      "Presenta il badge universitario UniBo in biglietteria (o invia richiesta con account @studio.unibo.it se previsto).",
+      "Salva eventuali codici accredito o annotazioni personali nel box privato qui sotto."
+    ],
+    "url": "https://sma.unibo.it/it/visita",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-live-istituzione-bologna-musei",
+    "title": "Istituzione Bologna Musei",
+    "provider": "Convenzione UniBo · Musei",
+    "category": "Cultura/Svago",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Ingresso Gratis",
+    "summary": "L’Istituzione Bologna Musei consente agli studenti dell’Ateneo l’ accesso gratuito ai musei : MAMbo - Museo d'Arte Moderna di Bologna, Museo Morandi, Casa Morandi, Villa delle Rose, Museo per la Memoria di Ustica, Museo Civico Archeologico, Museo Civico Medievale, Collezioni Comunali d'Arte, Museo Civico d'Arte Industriale e Galleria Davia Bargellini, Museo del Patrimonio Industriale, Museo e Bib…",
+    "reliability": {
+      "score": 5,
+      "reason": "Estratto dalla pagina ufficiale 'Agevolazioni per il tempo libero' dell'Università di Bologna."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario UniBo e/o certificato di iscrizione o mail @studio.unibo.it"
+    ],
+    "steps": [
+      "Verifica i dettagli aggiornati nella sezione 'Musei' sul portale UniBo o sul sito dell'ente convenzionato.",
+      "Presenta il badge universitario UniBo in biglietteria (o invia richiesta con account @studio.unibo.it se previsto).",
+      "Salva eventuali codici accredito o annotazioni personali nel box privato qui sotto."
+    ],
+    "url": "https://www.magazine.unibo.it/archivio/2015/02/11/ingresso-gratis-ai-musei-per-tutti-gli-studenti-universitari",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-live-teatri-arena-del-sole-e-delle-moline-di-bologna-",
+    "title": "Teatri Arena del Sole e delle Moline di Bologna e Teatro Bonci di Cesena",
+    "provider": "Convenzione UniBo · Teatri",
+    "category": "Cultura/Svago",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "UniBo · Teatri",
+    "summary": "Emilia Romagna Teatro Fondazione prevede delle riduzioni sui prezzi dei biglietti degli spettacoli della Stagione teatrale 2025/26 dei Teatri Arena del Sole e delle Moline di Bologna e Bonci di Cesena, riservate alle studentesse e agli studenti iscritti all’Università di Bologna (valide per le recite per cui sono previste riduzioni). Le studentesse e gli studenti potranno usufruire della riduzion…",
+    "reliability": {
+      "score": 5,
+      "reason": "Estratto dalla pagina ufficiale 'Agevolazioni per il tempo libero' dell'Università di Bologna."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario UniBo e/o certificato di iscrizione o mail @studio.unibo.it"
+    ],
+    "steps": [
+      "Verifica i dettagli aggiornati nella sezione 'Teatri' sul portale UniBo o sul sito dell'ente convenzionato.",
+      "Presenta il badge universitario UniBo in biglietteria (o invia richiesta con account @studio.unibo.it se previsto).",
+      "Salva eventuali codici accredito o annotazioni personali nel box privato qui sotto."
+    ],
+    "url": "https://bit.ly/stagione25-26-bologna",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-live-virtus-pallacanestro-bologna",
+    "title": "Virtus Pallacanestro Bologna",
+    "provider": "Convenzione UniBo · Partite e campionati sportivi",
+    "category": "Cultura/Svago",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Promo 10 euro",
+    "summary": "Studenti e studentesse dell’Università di Bologna potranno usufruire di una promozione speciale che prevede il costo del biglietto a 10 euro, in Gradinata al Paladozza e nei Distinti Laterali alla nuova Unipol Hall. Per accedere alla promozione, sarà necessario presentare il badge universitario. La promozione è valida per le seguenti partite: Virtus vs Trieste, lunedì 2/11 ore 20 @Paladozza Virtus vs Verona, lunedì 9/11 ore 20 @Paladozza Virtus…",
+    "reliability": {
+      "score": 5,
+      "reason": "Estratto dalla pagina ufficiale 'Agevolazioni per il tempo libero' dell'Università di Bologna."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario UniBo e/o certificato di iscrizione o mail @studio.unibo.it"
+    ],
+    "steps": [
+      "Verifica i dettagli aggiornati nella sezione 'Partite e campionati sportivi' sul portale UniBo o sul sito dell'ente convenzionato.",
+      "Presenta il badge universitario UniBo in biglietteria (o invia richiesta con account @studio.unibo.it se previsto).",
+      "Salva eventuali codici accredito o annotazioni personali nel box privato qui sotto."
+    ],
+    "url": "https://www.unibo.it/it/studiare/vivere-luniversita-e-la-citta/agevolazioni-per-il-tempo-libero",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-live-wi-fi",
+    "title": "Wi-Fi",
+    "provider": "Università di Bologna",
+    "category": "Tech & Elettronica",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Servizio Ateneo",
+    "summary": "Collegarsi e navigare su Internet senza cavo è possibile grazie ai servizi ALMAWIFI, Iperbole Wireless ed Eduroam.",
+    "reliability": {
+      "score": 5,
+      "reason": "Sincronizzato automaticamente dal portale istituzionale pubblico unibo.it."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario o credenziali @studio.unibo.it"
+    ],
+    "steps": [
+      "Consulta la scheda ufficiale sul portale dell'Università di Bologna tramite il pulsante qui sotto.",
+      "Accedi con le tue credenziali @studio.unibo.it o presenta il badge universitario secondo le modalità indicate.",
+      "Eventuali codici o numeri di tessera ottenuti possono essere salvati nel tuo spazio privato locale."
+    ],
+    "url": "https://www.unibo.it/it/ateneo/organizzazione-e-sedi/servizi-di-ateneo/servizi-per-lo-studio/risorse-informatiche/wi-fi",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  },
+  {
+    "id": "unibo-live-agevolazioni-per-software",
+    "title": "Agevolazioni per software",
+    "provider": "Università di Bologna",
+    "category": "Tech & Elettronica",
+    "circuit": "UniBo",
+    "isUniboOfficial": true,
+    "student_only": true,
+    "discountBadge": "Servizio Ateneo",
+    "summary": "Software utili per lo studio e la ricerca gratuiti o a tariffe agevolate.",
+    "reliability": {
+      "score": 5,
+      "reason": "Sincronizzato automaticamente dal portale istituzionale pubblico unibo.it."
+    },
+    "eligibility": [
+      "Iscrizione attiva all'Università di Bologna",
+      "Badge universitario o credenziali @studio.unibo.it"
+    ],
+    "steps": [
+      "Consulta la scheda ufficiale sul portale dell'Università di Bologna tramite il pulsante qui sotto.",
+      "Accedi con le tue credenziali @studio.unibo.it o presenta il badge universitario secondo le modalità indicate.",
+      "Eventuali codici o numeri di tessera ottenuti possono essere salvati nel tuo spazio privato locale."
+    ],
+    "url": "https://www.unibo.it/it/ateneo/organizzazione-e-sedi/servizi-di-ateneo/servizi-per-lo-studio/risorse-informatiche/agevolazioni-per-computer-tablet-e-software",
+    "expiresAt": null,
+    "source": "unibo_scraper",
+    "updatedAt": "2026-11-03"
+  }
+]
