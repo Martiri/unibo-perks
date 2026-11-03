@@ -1123,9 +1123,7 @@ async function initApp() {
   // Register Service Worker for offline PWA support
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('https://martiri.github.io/unibo-perks/sw.js', { scope: 'https://martiri.github.io/unibo-perks/' }).catch(() => {});
-        // Ignore SW error on file:// protocol
-      });
+      navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {});
     });
   }
 }
