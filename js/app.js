@@ -1086,10 +1086,44 @@ async function initApp() {
     }
   });
 
+  // PWA Install Prompt Handler
+  let deferredInstallPrompt = null;
+  const installBtn = document.getElementById('btn-install-pwa');
+
+  window.addEventListener('beforeinstallprompt', (e) => {
+    e.preventDefault();
+    deferredInstallPrompt = e;
+    if (installBtn) {
+      installBtn.classList.remove('hidden');
+    }
+  });
+
+  if (installBtn) {
+    installBtn.addEventListener('click', async () => {
+      if (!deferredInstallPrompt) {
+        showToast('Installazione guidata: apri il menu ⋮ di Chrome e tocca "Installa app"');
+        return;
+      }
+      deferredInstallPrompt.prompt();
+      const choice = await deferredInstallPrompt.userChoice;
+      if (choice.outcome === 'accepted') {
+        showToast('Installazione avviata con successo!', 'success');
+        installBtn.classList.add('hidden');
+      }
+      deferredInstallPrompt = null;
+    });
+  }
+
+  window.addEventListener('appinstalled', () => {
+    deferredInstallPrompt = null;
+    if (installBtn) installBtn.classList.add('hidden');
+    showToast('UniBo Perks installata correttamente!', 'success');
+  });
+
   // Register Service Worker for offline PWA support
   if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
-      navigator.serviceWorker.register('./sw.js').catch(() => {
+      navigator.serviceWorker.register('./sw.js', { scope: './' }).catch(() => {
         // Ignore SW error on file:// protocol
       });
     });

@@ -1,15 +1,18 @@
 {
-  "id": "/unibo-perks/",
+  "id": "https://martiri.github.io/unibo-perks/",
   "name": "UniBo & Student Perks Vault",
   "short_name": "UniBo Perks",
   "description": "Catalogo offline-ready e cassaforte locale per convenzioni UniBo, trasporti, cultura e sconti studenti in Italia.",
   "lang": "it-IT",
-  "start_url": "/unibo-perks/index.html",
-  "scope": "/unibo-perks/",
+  "dir": "ltr",
+  "start_url": "https://martiri.github.io/unibo-perks/index.html",
+  "scope": "https://martiri.github.io/unibo-perks/",
   "display": "standalone",
+  "display_override": ["standalone", "minimal-ui"],
   "orientation": "portrait-primary",
   "background_color": "#07080c",
   "theme_color": "#07080c",
+  "prefer_related_applications": false,
   "categories": ["education", "finance", "lifestyle", "utilities"],
   "icons": [
     {
@@ -35,6 +38,15 @@
       "sizes": "512x512",
       "type": "image/png",
       "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Catalogo Sconti",
+      "short_name": "Sconti",
+      "description": "Apri il catalogo convenzioni UniBo",
+      "url": "https://martiri.github.io/unibo-perks/index.html",
+      "icons": [{ "src": "./assets/icons/icon-192.png", "sizes": "192x192" }]
     }
   ]
 }
