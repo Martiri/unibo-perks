@@ -1,10 +1,11 @@
 {
+  "id": "/unibo-perks/",
   "name": "UniBo & Student Perks Vault",
   "short_name": "UniBo Perks",
   "description": "Catalogo offline-ready e cassaforte locale per convenzioni UniBo, trasporti, cultura e sconti studenti in Italia.",
   "lang": "it-IT",
-  "start_url": "./index.html",
-  "scope": "./",
+  "start_url": "/unibo-perks/index.html",
+  "scope": "/unibo-perks/",
   "display": "standalone",
   "orientation": "portrait-primary",
   "background_color": "#07080c",

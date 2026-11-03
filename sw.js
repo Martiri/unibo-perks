@@ -8,7 +8,7 @@
  * - Cache-First with network fallback for the static App Shell.
  */
 
-const CACHE_VERSION = 'unibo-perks-v1.3.0';
+const CACHE_VERSION = 'unibo-perks-v1.4.0';
 const APP_SHELL_ASSETS = [
   './',
   './index.html',
