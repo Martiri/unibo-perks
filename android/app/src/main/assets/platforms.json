@@ -1,0 +1,122 @@
+[
+  {
+    "id": "unibo-official",
+    "name": "Portale Convenzioni Ufficiali UniBo & Studenti Online",
+    "circuitTag": "UniBo",
+    "student_only": true,
+    "cost": "Gratuito (incluso con iscrizione UniBo)",
+    "verificationMethod": "Credenziali @studio.unibo.it, SPID/CIE su Studenti Online o Badge Universitario fisico/digitale",
+    "categories": ["Trasporti", "Cultura/Svago", "Tech & Elettronica", "AI & Dev Tools"],
+    "pros": "Sconti strutturali impattanti sul territorio (TPER annuale, Musei gratis, Cinema -3€, licenze MATLAB e Office 365 complete).",
+    "cons": "Limitato agli iscritti attivi dell'Alma Mater Studiorum.",
+    "url": "https://www.unibo.it/it/studiare/vivere-luniversita-e-la-citta"
+  },
+  {
+    "id": "unidays-italy",
+    "name": "UNiDAYS Italia",
+    "circuitTag": "UNiDAYS",
+    "student_only": true,
+    "cost": "100% Gratuito",
+    "verificationMethod": "Verifica annuale istantanea tramite email istituzionale @studio.unibo.it",
+    "categories": ["Tech & Elettronica", "Abbigliamento & Calzature", "Outdoor & Trekking", "Abbonamenti"],
+    "pros": "Il più grande aggregatore commerciale in Italia: codici esclusivi per Apple, Samsung, Adidas, Salomon, Nike, ASOS, FlixBus e Apple Music.",
+    "cons": "Richiede rinnovo della verifica ogni 12 mesi; alcuni codici escludono articoli già in saldo.",
+    "url": "https://www.myunidays.com/IT/it-IT"
+  },
+  {
+    "id": "student-beans-italy",
+    "name": "Student Beans Italia",
+    "circuitTag": "Student Beans",
+    "student_only": true,
+    "cost": "100% Gratuito",
+    "verificationMethod": "Email @studio.unibo.it oppure caricamento certificato di iscrizione da Studenti Online",
+    "categories": ["Tech & Elettronica", "Abbigliamento & Calzature", "Trasporti", "Outdoor & Trekking"],
+    "pros": "Complementare a UNiDAYS: copre brand esclusivi come Lenovo, OnePlus, Gymshark, JD Sports, H&M, Marshall e compagnie di viaggio.",
+    "cons": "Alcuni brand richiedono la generazione di un nuovo codice monouso ad ogni carrello.",
+    "url": "https://www.studentbeans.com/it"
+  },
+  {
+    "id": "carta-giovani-nazionale",
+    "name": "Carta Giovani Nazionale (CGN su App IO + Circuito EYCA)",
+    "circuitTag": "Carta Giovani (CGN)",
+    "student_only": false,
+    "cost": "100% Gratuita (Stato Italiano / Presidenza del Consiglio)",
+    "verificationMethod": "Accesso con SPID o CIE dentro l'App IO (per tutti i residenti tra 18 e 35 anni, anche NON studenti)",
+    "categories": ["Trasporti", "Cultura/Svago", "Outdoor & Trekking", "Abbonamenti"],
+    "pros": "Non serve essere studenti universitari (valida fino a 35 anni compiuti); include automaticamente il circuito europeo EYCA per trasporti (ITA Airways, FlixBus, Italo), cultura, teatri e sport.",
+    "cons": "I codici vanno generati aprendo il Portafoglio dell'App IO sullo smartphone.",
+    "url": "https://io.italia.it/carta-giovani-nazionale/"
+  },
+  {
+    "id": "github-student-developer-pack",
+    "name": "GitHub Student Developer Pack (GitHub Education)",
+    "circuitTag": "GitHub Pack",
+    "student_only": true,
+    "cost": "100% Gratuito",
+    "verificationMethod": "Email @studio.unibo.it + Certificato di iscrizione PDF + Geolocalizzazione nel campus",
+    "categories": ["AI & Dev Tools", "Tech & Elettronica"],
+    "pros": "Valore commerciale oltre 2.000$/anno: include GitHub Copilot Pro gratis, JetBrains, DigitalOcean ($200), Azure ($100), Namecheap, DataCamp e FrontendMasters.",
+    "cons": "Verifica iniziale rigorosa (consigliato caricare il certificato ufficiale scaricato da Studenti Online mentre sei connesso da Bologna).",
+    "url": "https://education.github.com/pack"
+  },
+  {
+    "id": "sheerid-proxiid-direct",
+    "name": "SheerID & Proxi.id (Verifica Diretta sui Siti Brand)",
+    "circuitTag": "SheerID / Diretto",
+    "student_only": true,
+    "cost": "100% Gratuito",
+    "verificationMethod": "Selezione 'Alma Mater Studiorum - Università di Bologna' nel form del brand + login @studio.unibo.it o upload certificato",
+    "categories": ["Abbonamenti", "AI & Dev Tools", "Abbigliamento & Calzature", "Tech & Elettronica"],
+    "pros": "Non richiede un account intermedio: sblocca direttamente i piani scontati al 50% su Spotify, YouTube Premium, Adobe Creative Cloud, Autodesk e sconti diretti Nike/Lenovo.",
+    "cons": "Ogni servizio verifica la propria scadenza annuale separatamente.",
+    "url": "https://www.sheerid.com/shoppers/student-deals/"
+  },
+  {
+    "id": "isic-esn-cards",
+    "name": "ISIC Italia & ESNcard (Erasmus Student Network Bologna)",
+    "circuitTag": "ISIC / ESNcard",
+    "student_only": true,
+    "cost": "ISIC: ~13€/anno digitale · ESNcard: ~10-15€/anno presso ESN Bologna",
+    "verificationMethod": "Certificato di iscrizione universitaria + fototessera e documento d'identità",
+    "categories": ["Trasporti", "Cultura/Svago", "Tech & Elettronica", "Abbigliamento & Calzature"],
+    "pros": "ISIC è l'unico documento studentesco riconosciuto dall'UNESCO in 130 paesi (musei esteri, ostelli, interrail); ESNcard offre il celebre -10% Ryanair + 4 bagagli da stiva da 20kg gratuiti.",
+    "cons": "Prevede un piccolo costo di emissione annuale (ma si ripaga con un solo volo Ryanair o ingresso museale internazionale).",
+    "url": "https://www.isic.it/"
+  },
+  {
+    "id": "amazon-prime-student-hub",
+    "name": "Amazon Prime Student Italia",
+    "circuitTag": "Prime Student",
+    "student_only": true,
+    "cost": "90 giorni Gratis, poi 24,95€/anno (-50% rispetto a Prime standard)",
+    "verificationMethod": "Click su link di verifica inviato all'indirizzo @studio.unibo.it (fino a 4 anni)",
+    "categories": ["Abbonamenti", "Tech & Elettronica", "Abbigliamento & Calzature"],
+    "pros": "Oltre a consegne rapide, Prime Video e Prime Gaming (giochi gratis mensili e abbonamento Twitch), sblocca coupon esclusivi su notebook, SSD, cuffie e libri universitari.",
+    "cons": "Durata massima dell'agevolazione fissata a 4 anni complessivi per singolo account Amazon.",
+    "url": "https://www.amazon.it/amazonprime?primeCampaignId=studentWlpPrimeRedir"
+  },
+  {
+    "id": "universitybox-italy",
+    "name": "UniversityBox Italia",
+    "circuitTag": "Student Beans",
+    "student_only": true,
+    "cost": "100% Gratuito",
+    "verificationMethod": "Registrazione con email universitaria @studio.unibo.it",
+    "categories": ["Tech & Elettronica", "Cultura/Svago", "Abbigliamento & Calzature"],
+    "pros": "Piattaforma italiana focalizzata sugli atenei nazionali con convenzioni mirate (Samsung Partner Store, Acer, Nespresso, La Feltrinelli, McFit).",
+    "cons": "Catalogo più compatto rispetto a UNiDAYS ma con ottime promo locali.",
+    "url": "https://www.universitybox.com/"
+  },
+  {
+    "id": "brand-loyalty-open-all",
+    "name": "Programmi Member Ufficiali Brand (Aperti a Tutti - No Studenti)",
+    "circuitTag": "Brand Club (Tutti)",
+    "student_only": false,
+    "cost": "100% Gratuito",
+    "verificationMethod": "Semplicemente un indirizzo email personale (nessun requisito universitario o di età)",
+    "categories": ["Outdoor & Trekking", "Abbigliamento & Calzature", "AI & Dev Tools"],
+    "pros": "Accessibili a chiunque: Salomon S/PLUS (-10% e spedizione gratis), Decathlon Membership (punti e buoni 5-10€), Adidas adiClub (-15%), The North Face XPLR Pass (-10%) e Google AI Studio Free Tier.",
+    "cons": "Sconto percentuale leggermente inferiore rispetto a eventuali promo studentesche speciali, ma validi tutto l'anno per chiunque.",
+    "url": "https://www.salomon.com/it-it/s-plus"
+  }
+]

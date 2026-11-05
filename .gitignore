@@ -17,3 +17,10 @@ Thumbs.db
 .idea/
 *.swp
 *.swo
+
+# Android build outputs
+android/.gradle/
+android/build/
+android/app/build/
+*.apk
+

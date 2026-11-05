@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="unibo_red">#990000</color>
+    <color name="unibo_red_light">#BA0020</color>
+    <color name="gold_accent">#D4AF37</color>
+    <color name="bg_dark">#0B0F17</color>
+    <color name="surface_dark">#161D2B</color>
+</resources>
