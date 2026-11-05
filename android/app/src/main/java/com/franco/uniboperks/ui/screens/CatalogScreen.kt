@@ -230,7 +230,7 @@ fun CatalogScreen(
                             .fillMaxWidth()
                             .padding(vertical = 48.dp)
                     ) {
-                        Column(horizontalAlignment = Alignment.CenterVertically) {
+                        Column(horizontalAlignment = Alignment.CenterHorizontally) {
                             Icon(
                                 imageVector = Icons.Default.SearchOff,
                                 contentDescription = null,

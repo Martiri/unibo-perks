@@ -64,7 +64,7 @@ fun FavoritesScreen(
                     .fillMaxSize()
                     .padding(innerPadding)
             ) {
-                Column(horizontalAlignment = Alignment.CenterVertically) {
+                Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Icon(
                         imageVector = Icons.Default.BookmarkBorder,
                         contentDescription = null,
