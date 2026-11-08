@@ -93,3 +93,10 @@ dependencies {
     // Coroutines
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-android:1.8.1")
 }
+
+tasks.register("printVersion") {
+    doLast {
+        println(android.defaultConfig.versionName)
+    }
+}
+

@@ -67,3 +67,9 @@ Poi apri `http://127.0.0.1:8080` nel browser.
 1. Esegui il push del repository su GitHub.
 2. Vai in **Settings > Pages** e imposta **Source: Deploy from a branch** (`main` / `/ (root)`).
 3. Su **POCO F7 (Chrome per Android)** apri l'URL di GitHub Pages e seleziona **Aggiungi a schermata Home / Installa app**.
+
+### 4. App Nativa Android (APK) e Rilascio Diretto via CI/CD
+Il progetto include l'applicazione nativa **Jetpack Compose** (`android/`) ottimizzata per **Xiaomi POCO F7** (120Hz AMOLED lock, Edge-to-Edge, 100% Play Protect Clean, firma RSA-2048 permanente).
+- Ad ogni push su `main` che modifica `android/**` (o tramite avvio manuale `workflow_dispatch`), la pipeline [`.github/workflows/build-apk.yml`](.github/workflows/build-apk.yml) estrae la versione con `./print_version.sh`, compila e firma l'APK Release ed esegue il **rilascio diretto su GitHub Releases** allegando `UniBo_Perks_vX.Y.Z.apk`.
+- L'app installata sul telefono verifica automaticamente la presenza di nuove versioni tramite `AppUpdateManager` interrogando l'API di GitHub Releases.
+
