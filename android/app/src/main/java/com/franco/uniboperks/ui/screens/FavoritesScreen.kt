@@ -1,16 +1,20 @@
 package com.franco.uniboperks.ui.screens
 
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.BookmarkBorder
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.franco.uniboperks.data.model.Discount
@@ -38,23 +42,35 @@ fun FavoritesScreen(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(DarkBackground)
-                    .padding(horizontal = 16.dp, vertical = 12.dp)
+                    .background(BgBase)
+                    .statusBarsPadding()
             ) {
-                Text(
-                    text = "I Tuoi Sconti Salvati",
-                    color = TextPrimary,
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "${savedDiscounts.size} convenzioni conservate nei preferiti",
-                    color = TextSecondary,
-                    fontSize = 12.sp
-                )
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 12.dp)
+                ) {
+                    Text(
+                        text = "Preferiti",
+                        color = TextPrimary,
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        letterSpacing = (-0.3).sp
+                    )
+                    Text(
+                        text = "${savedDiscounts.size} convenzioni salvate",
+                        color = TextMuted,
+                        style = TextStyle(
+                            fontSize = 12.sp,
+                            fontFeatureSettings = "tnum"
+                        ),
+                        modifier = Modifier.padding(top = 2.dp)
+                    )
+                }
+                HorizontalDivider(thickness = 1.dp, color = BorderSubtle)
             }
         },
-        containerColor = DarkBackground,
+        containerColor = BgBase,
         modifier = modifier
     ) { innerPadding ->
         if (savedDiscounts.isEmpty()) {
@@ -63,27 +79,38 @@ fun FavoritesScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(innerPadding)
+                    .padding(horizontal = 24.dp)
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
-                    Icon(
-                        imageVector = Icons.Default.BookmarkBorder,
-                        contentDescription = null,
-                        tint = TextMuted,
-                        modifier = Modifier.size(56.dp)
-                    )
-                    Spacer(modifier = Modifier.height(14.dp))
+                    Surface(
+                        shape = CircleShape,
+                        color = BgSurface,
+                        border = BorderStroke(1.dp, BorderSubtle),
+                        modifier = Modifier.size(64.dp)
+                    ) {
+                        Box(contentAlignment = Alignment.Center) {
+                            Icon(
+                                imageVector = Icons.Default.BookmarkBorder,
+                                contentDescription = null,
+                                tint = TextSubtle,
+                                modifier = Modifier.size(28.dp)
+                            )
+                        }
+                    }
+                    Spacer(modifier = Modifier.height(16.dp))
                     Text(
                         text = "Nessun preferito salvato",
                         color = TextPrimary,
                         fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.SemiBold
                     )
                     Spacer(modifier = Modifier.height(6.dp))
                     Text(
-                        text = "Tocca l'icona segnalibro su qualsiasi sconto\nper salvarlo in questa schermata.",
-                        color = TextSecondary,
+                        text = "Tocca il segnalibro su qualsiasi sconto per tenerlo a portata di mano.",
+                        color = TextMuted,
                         fontSize = 13.sp,
-                        textAlign = androidx.compose.ui.text.style.TextAlign.Center
+                        lineHeight = 19.sp,
+                        textAlign = TextAlign.Center
                     )
                 }
             }
@@ -92,7 +119,7 @@ fun FavoritesScreen(
                 contentPadding = PaddingValues(
                     start = 16.dp,
                     end = 16.dp,
-                    top = innerPadding.calculateTopPadding() + 8.dp,
+                    top = innerPadding.calculateTopPadding() + 12.dp,
                     bottom = innerPadding.calculateBottomPadding() + 16.dp
                 ),
                 verticalArrangement = Arrangement.spacedBy(12.dp),

@@ -34,11 +34,14 @@ class DiscountsRepository private constructor(private val context: Context) {
     private val _isSyncing = MutableStateFlow(false)
     val isSyncing: StateFlow<Boolean> = _isSyncing.asStateFlow()
 
+    private val _isLoading = MutableStateFlow(true)
+    val isLoading: StateFlow<Boolean> = _isLoading.asStateFlow()
+
     init {
         loadSavedFavorites()
-        loadLocalData()
-        // Aggiornamento silenzioso in background all'avvio
+        // Caricamento locale + aggiornamento silenzioso su Dispatchers.IO
         CoroutineScope(Dispatchers.IO).launch {
+            loadLocalData()
             syncDiscountsFromGitHub()
         }
     }
@@ -84,6 +87,8 @@ class DiscountsRepository private constructor(private val context: Context) {
             _platforms.value = parsedPlatforms
         } catch (e: Exception) {
             e.printStackTrace()
+        } finally {
+            _isLoading.value = false
         }
     }
 

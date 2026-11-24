@@ -9,12 +9,18 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Code
+import androidx.compose.material.icons.filled.Security
+import androidx.compose.material.icons.filled.Speed
+import androidx.compose.material.icons.filled.SystemUpdate
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -29,6 +35,7 @@ fun SettingsScreen(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val haptic = LocalHapticFeedback.current
     val scope = rememberCoroutineScope()
     val scrollState = rememberScrollState()
 
@@ -41,23 +48,32 @@ fun SettingsScreen(
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(DarkBackground)
-                    .padding(horizontal = 16.dp, vertical = 12.dp)
+                    .background(BgBase)
+                    .statusBarsPadding()
             ) {
-                Text(
-                    text = "Info & Aggiornamenti",
-                    color = TextPrimary,
-                    fontSize = 22.sp,
-                    fontWeight = FontWeight.Bold
-                )
-                Text(
-                    text = "Dettagli applicazione, tuning POCO F7 e verifica versione",
-                    color = TextSecondary,
-                    fontSize = 12.sp
-                )
+                Column(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .padding(horizontal = 16.dp, vertical = 12.dp)
+                ) {
+                    Text(
+                        text = "Info & Aggiornamenti",
+                        color = TextPrimary,
+                        fontSize = 22.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        letterSpacing = (-0.3).sp
+                    )
+                    Text(
+                        text = "Versione applicazione, tuning POCO F7 e sicurezza",
+                        color = TextMuted,
+                        fontSize = 12.sp,
+                        modifier = Modifier.padding(top = 2.dp)
+                    )
+                }
+                HorizontalDivider(thickness = 1.dp, color = BorderSubtle)
             }
         },
-        containerColor = DarkBackground,
+        containerColor = BgBase,
         modifier = modifier
     ) { innerPadding ->
         Column(
@@ -66,17 +82,17 @@ fun SettingsScreen(
                 .padding(
                     start = 16.dp,
                     end = 16.dp,
-                    top = innerPadding.calculateTopPadding() + 8.dp,
+                    top = innerPadding.calculateTopPadding() + 12.dp,
                     bottom = innerPadding.calculateBottomPadding() + 16.dp
                 )
                 .verticalScroll(scrollState),
-            verticalArrangement = Arrangement.spacedBy(16.dp)
+            verticalArrangement = Arrangement.spacedBy(12.dp)
         ) {
-            // App Identity Card
+            // Card Identità & Aggiornamenti
             Surface(
-                shape = RoundedCornerShape(16.dp),
-                color = DarkCard,
-                border = BorderStroke(1.dp, DarkBorder),
+                shape = RoundedCornerShape(12.dp),
+                color = BgSurface,
+                border = BorderStroke(1.dp, BorderSubtle),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
@@ -86,38 +102,33 @@ fun SettingsScreen(
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Column {
-                            Row(verticalAlignment = Alignment.CenterVertically) {
-                                Text(
-                                    text = "UniBo",
-                                    color = UniBoRedLight,
-                                    fontSize = 18.sp,
-                                    fontWeight = FontWeight.Bold
-                                )
-                                Spacer(modifier = Modifier.width(4.dp))
-                                Text(
-                                    text = "Perks Native",
-                                    color = UniBoGold,
-                                    fontSize = 18.sp,
-                                    fontWeight = FontWeight.Bold
-                                )
-                            }
                             Text(
-                                text = "Versione installata: v${BuildConfig.VERSION_NAME} (Build ${BuildConfig.VERSION_CODE})",
-                                color = TextSecondary,
-                                fontSize = 12.sp
+                                text = "UniBo Perks",
+                                color = TextPrimary,
+                                fontSize = 17.sp,
+                                fontWeight = FontWeight.SemiBold
+                            )
+                            Text(
+                                text = "v${BuildConfig.VERSION_NAME} (Build ${BuildConfig.VERSION_CODE})",
+                                color = TextMuted,
+                                style = TextStyle(
+                                    fontSize = 12.sp,
+                                    fontFeatureSettings = "tnum"
+                                ),
+                                modifier = Modifier.padding(top = 2.dp)
                             )
                         }
 
                         Surface(
-                            shape = RoundedCornerShape(8.dp),
-                            color = VerifiedGreen.copy(alpha = 0.15f),
-                            border = BorderStroke(0.5.dp, VerifiedGreen)
+                            shape = RoundedCornerShape(6.dp),
+                            color = SuccessSubtle,
+                            border = BorderStroke(1.dp, Success.copy(alpha = 0.35f))
                         ) {
                             Text(
                                 text = "Release",
-                                color = VerifiedGreen,
+                                color = Success,
                                 fontSize = 11.sp,
-                                fontWeight = FontWeight.Bold,
+                                fontWeight = FontWeight.SemiBold,
                                 modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
                             )
                         }
@@ -125,10 +136,10 @@ fun SettingsScreen(
 
                     Spacer(modifier = Modifier.height(14.dp))
 
-                    // Pulsante Verifica Aggiornamenti
                     Button(
                         onClick = {
                             if (isCheckingUpdates) return@Button
+                            haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                             isCheckingUpdates = true
                             statusMessage = null
                             scope.launch {
@@ -136,17 +147,19 @@ fun SettingsScreen(
                                 updateResult = info
                                 isCheckingUpdates = false
                                 if (!info.hasUpdate && info.errorMessage == null) {
-                                    statusMessage = "Sei già all'ultima versione disponibile!"
+                                    statusMessage = "Sei già all'ultima versione disponibile."
                                 }
                             }
                         },
                         enabled = !isCheckingUpdates,
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = UniBoRedLight,
+                            containerColor = Accent,
                             contentColor = TextPrimary
                         ),
                         shape = RoundedCornerShape(10.dp),
-                        modifier = Modifier.fillMaxWidth()
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .height(48.dp)
                     ) {
                         if (isCheckingUpdates) {
                             CircularProgressIndicator(
@@ -163,58 +176,65 @@ fun SettingsScreen(
                                 modifier = Modifier.size(16.dp)
                             )
                             Spacer(modifier = Modifier.width(8.dp))
-                            Text(text = "Controlla Aggiornamenti GitHub", fontSize = 13.sp, fontWeight = FontWeight.Bold)
+                            Text(
+                                text = "Controlla aggiornamenti",
+                                fontSize = 13.sp,
+                                fontWeight = FontWeight.SemiBold
+                            )
                         }
                     }
 
                     statusMessage?.let { msg ->
-                        Spacer(modifier = Modifier.height(8.dp))
+                        Spacer(modifier = Modifier.height(10.dp))
                         Text(
                             text = msg,
-                            color = VerifiedGreen,
+                            color = Success,
                             fontSize = 12.sp,
                             fontWeight = FontWeight.Medium
                         )
                     }
 
-                    // Se è disponibile un aggiornamento
                     updateResult?.let { update ->
                         if (update.hasUpdate) {
                             Spacer(modifier = Modifier.height(12.dp))
                             Surface(
                                 shape = RoundedCornerShape(10.dp),
-                                color = UniBoGold.copy(alpha = 0.15f),
-                                border = BorderStroke(1.dp, UniBoGold),
+                                color = BgElevated,
+                                border = BorderStroke(1.dp, AccentBorder),
                                 modifier = Modifier.fillMaxWidth()
                             ) {
                                 Column(modifier = Modifier.padding(12.dp)) {
                                     Text(
                                         text = "Nuova versione disponibile: ${update.latestVersion}",
-                                        color = UniBoGold,
+                                        color = TextPrimary,
                                         fontSize = 14.sp,
-                                        fontWeight = FontWeight.Bold
+                                        fontWeight = FontWeight.SemiBold
                                     )
                                     Spacer(modifier = Modifier.height(4.dp))
                                     Text(
                                         text = update.releaseNotes,
-                                        color = TextSecondary,
-                                        fontSize = 12.sp
+                                        color = TextMuted,
+                                        fontSize = 12.sp,
+                                        lineHeight = 17.sp
                                     )
                                     Spacer(modifier = Modifier.height(10.dp))
-                                    Button(
+                                    OutlinedButton(
                                         onClick = {
                                             AppUpdateManager.openBrowserReleasePage(context, update.htmlUrl)
                                         },
-                                        colors = ButtonDefaults.buttonColors(
-                                            containerColor = UniBoGold,
-                                            contentColor = DarkBackground
+                                        border = BorderStroke(1.dp, AccentBorder),
+                                        colors = ButtonDefaults.outlinedButtonColors(
+                                            containerColor = AccentSubtle,
+                                            contentColor = TextPrimary
                                         ),
                                         shape = RoundedCornerShape(8.dp),
-                                        modifier = Modifier.fillMaxWidth()
+                                        modifier = Modifier
+                                            .fillMaxWidth()
+                                            .height(42.dp)
                                     ) {
                                         Text(
-                                            text = "Scarica Aggiornamento su Chrome",
-                                            fontWeight = FontWeight.Bold,
+                                            text = "Scarica aggiornamento su Chrome",
+                                            fontWeight = FontWeight.SemiBold,
                                             fontSize = 12.sp
                                         )
                                     }
@@ -224,7 +244,7 @@ fun SettingsScreen(
                             Spacer(modifier = Modifier.height(8.dp))
                             Text(
                                 text = update.errorMessage,
-                                color = TextMuted,
+                                color = TextSubtle,
                                 fontSize = 11.sp
                             )
                         }
@@ -232,11 +252,11 @@ fun SettingsScreen(
                 }
             }
 
-            // POCO F7 Hardware Tuning Card
+            // Card Tuning POCO F7
             Surface(
-                shape = RoundedCornerShape(16.dp),
-                color = DarkCard,
-                border = BorderStroke(1.dp, DarkBorder),
+                shape = RoundedCornerShape(12.dp),
+                color = BgSurface,
+                border = BorderStroke(1.dp, BorderSubtle),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
@@ -244,37 +264,37 @@ fun SettingsScreen(
                         Icon(
                             imageVector = Icons.Default.Speed,
                             contentDescription = null,
-                            tint = UniBoGold,
-                            modifier = Modifier.size(20.dp)
+                            tint = TextMuted,
+                            modifier = Modifier.size(18.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = "Tuning Xiaomi POCO F7",
                             color = TextPrimary,
                             fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.SemiBold
                         )
                     }
 
                     Spacer(modifier = Modifier.height(10.dp))
 
                     Text(
-                        text = "• Display AMOLED 120Hz forzato in Kotlin per scroll ultra-fluido\n" +
-                                "• Supporto Aspect Ratio 19.5:9 con layout Edge-to-Edge per il punch-hole\n" +
-                                "• Snapdragon 8s Gen 4: filtraggio reattivo dei 78+ sconti su coroutine multi-core\n" +
-                                "• Catalogo offline pre-caricato a zero consumo dati",
-                        color = TextSecondary,
+                        text = "• Display AMOLED 120Hz forzato in Kotlin per scroll fluido\n" +
+                                "• Layout Edge-to-Edge 19.5:9 con gestione punch-hole\n" +
+                                "• Filtraggio reattivo su coroutine multi-core\n" +
+                                "• Catalogo offline pre-caricato in background",
+                        color = TextMuted,
                         fontSize = 12.sp,
-                        lineHeight = 18.sp
+                        lineHeight = 19.sp
                     )
                 }
             }
 
-            // Google Play Protect Safety Card
+            // Card Sicurezza Play Protect
             Surface(
-                shape = RoundedCornerShape(16.dp),
-                color = DarkCard,
-                border = BorderStroke(1.dp, DarkBorder),
+                shape = RoundedCornerShape(12.dp),
+                color = BgSurface,
+                border = BorderStroke(1.dp, BorderSubtle),
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Column(modifier = Modifier.padding(16.dp)) {
@@ -282,35 +302,36 @@ fun SettingsScreen(
                         Icon(
                             imageVector = Icons.Default.Security,
                             contentDescription = null,
-                            tint = VerifiedGreen,
-                            modifier = Modifier.size(20.dp)
+                            tint = Success,
+                            modifier = Modifier.size(18.dp)
                         )
                         Spacer(modifier = Modifier.width(8.dp))
                         Text(
                             text = "Sicurezza Google Play Protect",
                             color = TextPrimary,
                             fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold
+                            fontWeight = FontWeight.SemiBold
                         )
                     }
 
                     Spacer(modifier = Modifier.height(10.dp))
 
                     Text(
-                        text = "• Zero permessi pericolosi: escluso REQUEST_INSTALL_PACKAGES\n" +
-                                "• Solo connessione HTTPS per verificare nuove convenzioni\n" +
-                                "• Firma permanente RSA-2048 con schema V1+V2 per aggiornamenti in-place senza perdita di dati\n" +
-                                "• Scansione Play Protect: 100% pulita senza avvisi malware",
-                        color = TextSecondary,
+                        text = "• Zero permessi invasivi (escluso REQUEST_INSTALL_PACKAGES)\n" +
+                                "• Solo connessione HTTPS per sincronizzare nuove convenzioni\n" +
+                                "• Firma permanente RSA-2048 V1+V2 per aggiornamenti in-place\n" +
+                                "• Scansione Play Protect pulita",
+                        color = TextMuted,
                         fontSize = 12.sp,
-                        lineHeight = 18.sp
+                        lineHeight = 19.sp
                     )
                 }
             }
 
-            // Open Source GitHub Card
+            // Link Sorgente GitHub
             OutlinedButton(
                 onClick = {
+                    haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                     try {
                         val intent = Intent(Intent.ACTION_VIEW, Uri.parse("https://github.com/Martiri/unibo-perks")).apply {
                             flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -318,10 +339,11 @@ fun SettingsScreen(
                         context.startActivity(intent)
                     } catch (_: Exception) {}
                 },
-                shape = RoundedCornerShape(12.dp),
-                border = BorderStroke(1.dp, DarkBorder),
+                shape = RoundedCornerShape(10.dp),
+                border = BorderStroke(1.dp, BorderSubtle),
                 colors = ButtonDefaults.outlinedButtonColors(
-                    contentColor = TextSecondary
+                    containerColor = BgSurface,
+                    contentColor = TextMuted
                 ),
                 modifier = Modifier
                     .fillMaxWidth()
@@ -334,8 +356,9 @@ fun SettingsScreen(
                 )
                 Spacer(modifier = Modifier.width(8.dp))
                 Text(
-                    text = "Vedi Codice Sorgente su GitHub",
-                    fontSize = 13.sp
+                    text = "Codice sorgente su GitHub",
+                    fontSize = 13.sp,
+                    fontWeight = FontWeight.Medium
                 )
             }
         }

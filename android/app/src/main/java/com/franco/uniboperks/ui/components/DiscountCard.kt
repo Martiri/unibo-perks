@@ -2,17 +2,26 @@ package com.franco.uniboperks.ui.components
 
 import android.content.Intent
 import android.net.Uri
+import androidx.compose.animation.core.Spring
+import androidx.compose.animation.core.animateFloatAsState
+import androidx.compose.animation.core.spring
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.filled.OpenInNew
 import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
@@ -29,18 +38,28 @@ fun DiscountCard(
     modifier: Modifier = Modifier
 ) {
     val context = LocalContext.current
+    val haptic = LocalHapticFeedback.current
+
+    val bookmarkScale by animateFloatAsState(
+        targetValue = if (isFavorite) 1.12f else 1.0f,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioMediumBouncy,
+            stiffness = Spring.StiffnessMedium
+        ),
+        label = "bookmark_scale"
+    )
 
     Surface(
         onClick = onCardClick,
-        shape = RoundedCornerShape(16.dp),
-        color = DarkCard,
-        border = BorderStroke(1.dp, if (discount.isUniboOfficial) UniBoRed.copy(alpha = 0.6f) else DarkBorder),
+        shape = RoundedCornerShape(12.dp),
+        color = BgSurface,
+        border = BorderStroke(1.dp, BorderSubtle),
         modifier = modifier.fillMaxWidth()
     ) {
         Column(
             modifier = Modifier.padding(16.dp)
         ) {
-            // Header: Category, Badges and Favorite Icon
+            // Riga superiore: Provider · Categoria + badge UniBo + Preferito (48dp)
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
@@ -51,121 +70,127 @@ fun DiscountCard(
                     horizontalArrangement = Arrangement.spacedBy(6.dp),
                     modifier = Modifier.weight(1f)
                 ) {
-                    // Category chip
-                    Surface(
-                        shape = RoundedCornerShape(6.dp),
-                        color = DarkSurface,
-                        border = BorderStroke(0.5.dp, DarkBorder)
-                    ) {
-                        Text(
-                            text = discount.category,
-                            color = TextSecondary,
-                            fontSize = 11.sp,
-                            fontWeight = FontWeight.Medium,
-                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp)
-                        )
-                    }
+                    Text(
+                        text = discount.provider.uppercase(),
+                        color = TextMuted,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        letterSpacing = 0.6.sp,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.weight(1f, fill = false)
+                    )
+                    Text(
+                        text = "·",
+                        color = TextSubtle,
+                        fontSize = 12.sp
+                    )
+                    Text(
+                        text = discount.category,
+                        color = TextSubtle,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.Medium,
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis
+                    )
 
                     if (discount.isUniboOfficial) {
                         Surface(
-                            shape = RoundedCornerShape(6.dp),
-                            color = UniBoRed.copy(alpha = 0.2f),
-                            border = BorderStroke(0.5.dp, UniBoRed)
+                            shape = RoundedCornerShape(4.dp),
+                            color = AccentSubtle,
+                            border = BorderStroke(1.dp, AccentBorder)
                         ) {
                             Text(
-                                text = "UniBo Ufficiale",
-                                color = UniBoRedLight,
-                                fontSize = 11.sp,
-                                fontWeight = FontWeight.Bold,
-                                modifier = Modifier.padding(horizontal = 6.dp, vertical = 3.dp)
+                                text = "UniBo",
+                                color = Accent,
+                                fontSize = 10.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
                             )
                         }
                     }
                 }
 
                 IconButton(
-                    onClick = onToggleFavorite,
-                    modifier = Modifier.size(32.dp)
+                    onClick = {
+                        haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                        onToggleFavorite()
+                    },
+                    modifier = Modifier.minimumInteractiveComponentSize()
                 ) {
                     Icon(
                         imageVector = if (isFavorite) Icons.Filled.Bookmark else Icons.Outlined.BookmarkBorder,
-                        contentDescription = "Salva",
-                        tint = if (isFavorite) UniBoGold else TextMuted
+                        contentDescription = if (isFavorite) "Rimuovi dai preferiti" else "Salva nei preferiti",
+                        tint = if (isFavorite) Accent else TextSubtle,
+                        modifier = Modifier
+                            .size(20.dp)
+                            .graphicsLayer {
+                                scaleX = bookmarkScale
+                                scaleY = bookmarkScale
+                            }
                     )
                 }
             }
 
-            Spacer(modifier = Modifier.height(10.dp))
+            Spacer(modifier = Modifier.height(4.dp))
 
-            // Provider
-            Text(
-                text = discount.provider,
-                color = UniBoGoldBright,
-                fontSize = 12.sp,
-                fontWeight = FontWeight.SemiBold
-            )
-
-            // Title
+            // Titolo
             Text(
                 text = discount.title,
                 color = TextPrimary,
                 fontSize = 16.sp,
-                fontWeight = FontWeight.Bold,
+                fontWeight = FontWeight.SemiBold,
                 maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
-                lineHeight = 20.sp,
-                modifier = Modifier.padding(top = 2.dp)
+                lineHeight = 22.sp
             )
 
-            Spacer(modifier = Modifier.height(8.dp))
+            Spacer(modifier = Modifier.height(6.dp))
 
-            // Summary
+            // Sommario
             Text(
                 text = discount.summary,
-                color = TextSecondary,
+                color = TextMuted,
                 fontSize = 13.sp,
-                maxLines = 3,
+                maxLines = 2,
                 overflow = TextOverflow.Ellipsis,
-                lineHeight = 17.sp
+                lineHeight = 19.sp
             )
 
             Spacer(modifier = Modifier.height(14.dp))
+            HorizontalDivider(thickness = 1.dp, color = BorderSubtle)
+            Spacer(modifier = Modifier.height(12.dp))
 
-            // Bottom bar: Discount Badge & Action button
+            // Footer: Badge Sconto & Azione Riscatta
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
-                // Discount Badge (Golden pill)
                 Surface(
-                    shape = RoundedCornerShape(8.dp),
-                    color = UniBoGold.copy(alpha = 0.15f),
-                    border = BorderStroke(1.dp, UniBoGold.copy(alpha = 0.4f))
+                    shape = RoundedCornerShape(6.dp),
+                    color = BgElevated,
+                    border = BorderStroke(1.dp, BorderSubtle)
                 ) {
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(4.dp),
-                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp)
-                    ) {
-                        Icon(
-                            imageVector = Icons.Default.LocalOffer,
-                            contentDescription = null,
-                            tint = UniBoGold,
-                            modifier = Modifier.size(13.dp)
-                        )
-                        Text(
-                            text = discount.discountBadge,
-                            color = UniBoGold,
+                    Text(
+                        text = discount.discountBadge,
+                        color = TextPrimary,
+                        style = TextStyle(
                             fontSize = 12.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                    }
+                            fontWeight = FontWeight.SemiBold,
+                            fontFeatureSettings = "tnum"
+                        ),
+                        maxLines = 1,
+                        overflow = TextOverflow.Ellipsis,
+                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
+                    )
                 }
 
-                // Riscatta button
-                Button(
+                Spacer(modifier = Modifier.width(12.dp))
+
+                OutlinedButton(
                     onClick = {
+                        haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
                         try {
                             val intent = Intent(Intent.ACTION_VIEW, Uri.parse(discount.url)).apply {
                                 flags = Intent.FLAG_ACTIVITY_NEW_TASK
@@ -173,24 +198,26 @@ fun DiscountCard(
                             context.startActivity(intent)
                         } catch (_: Exception) {}
                     },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = UniBoRedLight,
+                    colors = ButtonDefaults.outlinedButtonColors(
+                        containerColor = BgElevated,
                         contentColor = TextPrimary
                     ),
-                    shape = RoundedCornerShape(10.dp),
-                    contentPadding = PaddingValues(horizontal = 14.dp, vertical = 6.dp),
-                    modifier = Modifier.height(34.dp)
+                    border = BorderStroke(1.dp, BorderStrong),
+                    shape = RoundedCornerShape(8.dp),
+                    contentPadding = PaddingValues(horizontal = 14.dp, vertical = 8.dp),
+                    modifier = Modifier.heightIn(min = 40.dp)
                 ) {
                     Text(
                         text = "Riscatta",
                         fontSize = 12.sp,
-                        fontWeight = FontWeight.Bold
+                        fontWeight = FontWeight.SemiBold
                     )
-                    Spacer(modifier = Modifier.width(4.dp))
+                    Spacer(modifier = Modifier.width(6.dp))
                     Icon(
                         imageVector = Icons.Default.OpenInNew,
                         contentDescription = null,
-                        modifier = Modifier.size(12.dp)
+                        tint = TextMuted,
+                        modifier = Modifier.size(13.dp)
                     )
                 }
             }

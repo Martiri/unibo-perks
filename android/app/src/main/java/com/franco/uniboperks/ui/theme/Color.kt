@@ -2,20 +2,24 @@ package com.franco.uniboperks.ui.theme
 
 import androidx.compose.ui.graphics.Color
 
-val UniBoRed = Color(0xFF990000)
-val UniBoRedLight = Color(0xFFBA0020)
-val UniBoGold = Color(0xFFD4AF37)
-val UniBoGoldBright = Color(0xFFF59E0B)
+val BgBase = Color(0xFF09090B)
+val BgSurface = Color(0xFF121215)
+val BgElevated = Color(0xFF18181B)
+val BgHover = Color(0xFF27272A)
 
-val DarkBackground = Color(0xFF0B0F17)
-val DarkSurface = Color(0xFF141A26)
-val DarkCard = Color(0xFF1B2333)
-val DarkBorder = Color(0xFF28354D)
+val BorderSubtle = Color(0xFF27272A)
+val BorderStrong = Color(0xFF3F3F46)
 
-val TextPrimary = Color(0xFFF8FAFC)
-val TextSecondary = Color(0xFF94A3B8)
-val TextMuted = Color(0xFF64748B)
+val TextPrimary = Color(0xFFFAFAFA)
+val TextMuted = Color(0xFFA1A1AA)
+val TextSubtle = Color(0xFF71717A)
 
-val VerifiedGreen = Color(0xFF10B981)
-val BadgeBlue = Color(0xFF38BDF8)
-val AccentPurple = Color(0xFFA855F7)
+val Accent = Color(0xFFDC2626)
+val AccentPressed = Color(0xFFB91C1C)
+val AccentSubtle = Color(0x1FDC2626)
+val AccentBorder = Color(0x59DC2626)
+
+val Success = Color(0xFF10B981)
+val SuccessSubtle = Color(0x1A10B981)
+val Warning = Color(0xFFF59E0B)
+val Danger = Color(0xFFEF4444)

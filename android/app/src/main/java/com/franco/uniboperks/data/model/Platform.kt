@@ -1,7 +1,9 @@
 package com.franco.uniboperks.data.model
 
+import androidx.compose.runtime.Immutable
 import com.google.gson.annotations.SerializedName
 
+@Immutable
 data class Platform(
     val id: String = "",
     val name: String = "",

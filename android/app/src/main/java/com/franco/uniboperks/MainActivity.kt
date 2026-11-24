@@ -5,9 +5,14 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
+import androidx.compose.animation.Crossfade
+import androidx.compose.animation.core.tween
+import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Bookmark
 import androidx.compose.material.icons.filled.Info
@@ -18,6 +23,9 @@ import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
@@ -70,13 +78,13 @@ private data class NavItem(
     val icon: ImageVector
 )
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 private fun MainAppScreen(
     repo: DiscountsRepository,
     activity: ComponentActivity
 ) {
     val scope = rememberCoroutineScope()
+    val haptic = LocalHapticFeedback.current
     var selectedTab by rememberSaveable { mutableIntStateOf(0) }
     var startupUpdateInfo by remember { mutableStateOf<UpdateInfo?>(null) }
     val favoriteIds by repo.favoriteIds.collectAsState()
@@ -100,73 +108,90 @@ private fun MainAppScreen(
 
     Scaffold(
         bottomBar = {
-            NavigationBar(
-                containerColor = DarkSurface,
-                tonalElevation = 4.dp
-            ) {
-                navItems.forEachIndexed { index, item ->
-                    val isSelected = selectedTab == index
-                    NavigationBarItem(
-                        selected = isSelected,
-                        onClick = { selectedTab = index },
-                        icon = {
-                            if (index == 1 && favoriteIds.isNotEmpty()) {
-                                BadgedBox(
-                                    badge = {
-                                        Badge(
-                                            containerColor = UniBoGold,
-                                            contentColor = DarkBackground
-                                        ) {
-                                            Text(
-                                                text = "${favoriteIds.size}",
-                                                fontSize = 10.sp,
-                                                fontWeight = FontWeight.Bold
-                                            )
+            Column {
+                HorizontalDivider(thickness = 1.dp, color = BorderSubtle)
+                NavigationBar(
+                    containerColor = BgSurface,
+                    tonalElevation = 0.dp
+                ) {
+                    navItems.forEachIndexed { index, item ->
+                        val isSelected = selectedTab == index
+                        NavigationBarItem(
+                            selected = isSelected,
+                            onClick = {
+                                if (selectedTab != index) {
+                                    haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                                    selectedTab = index
+                                }
+                            },
+                            icon = {
+                                if (index == 1 && favoriteIds.isNotEmpty()) {
+                                    BadgedBox(
+                                        badge = {
+                                            Badge(
+                                                containerColor = Accent,
+                                                contentColor = TextPrimary
+                                            ) {
+                                                Text(
+                                                    text = "${favoriteIds.size}",
+                                                    style = TextStyle(
+                                                        fontSize = 10.sp,
+                                                        fontWeight = FontWeight.Bold,
+                                                        fontFeatureSettings = "tnum"
+                                                    )
+                                                )
+                                            }
                                         }
+                                    ) {
+                                        Icon(
+                                            imageVector = item.icon,
+                                            contentDescription = item.title
+                                        )
                                     }
-                                ) {
+                                } else {
                                     Icon(
                                         imageVector = item.icon,
                                         contentDescription = item.title
                                     )
                                 }
-                            } else {
-                                Icon(
-                                    imageVector = item.icon,
-                                    contentDescription = item.title
+                            },
+                            label = {
+                                Text(
+                                    text = item.title,
+                                    fontSize = 11.sp,
+                                    fontWeight = if (isSelected) FontWeight.SemiBold else FontWeight.Normal
                                 )
-                            }
-                        },
-                        label = {
-                            Text(
-                                text = item.title,
-                                fontSize = 11.sp,
-                                fontWeight = if (isSelected) FontWeight.Bold else FontWeight.Normal
+                            },
+                            colors = NavigationBarItemDefaults.colors(
+                                selectedIconColor = TextPrimary,
+                                selectedTextColor = TextPrimary,
+                                unselectedIconColor = TextSubtle,
+                                unselectedTextColor = TextSubtle,
+                                indicatorColor = BgHover
                             )
-                        },
-                        colors = NavigationBarItemDefaults.colors(
-                            selectedIconColor = UniBoRedLight,
-                            selectedTextColor = UniBoRedLight,
-                            unselectedIconColor = TextMuted,
-                            unselectedTextColor = TextMuted,
-                            indicatorColor = DarkCard
                         )
-                    )
+                    }
                 }
             }
         },
-        containerColor = DarkBackground
+        containerColor = BgBase
     ) { innerPadding ->
         Box(
             modifier = Modifier
                 .fillMaxSize()
                 .padding(bottom = innerPadding.calculateBottomPadding())
         ) {
-            when (selectedTab) {
-                0 -> CatalogScreen(repo = repo)
-                1 -> FavoritesScreen(repo = repo)
-                2 -> PlatformsScreen(repo = repo)
-                3 -> SettingsScreen()
+            Crossfade(
+                targetState = selectedTab,
+                animationSpec = tween(durationMillis = 160),
+                label = "tab_crossfade"
+            ) { tab ->
+                when (tab) {
+                    0 -> CatalogScreen(repo = repo)
+                    1 -> FavoritesScreen(repo = repo)
+                    2 -> PlatformsScreen(repo = repo)
+                    3 -> SettingsScreen()
+                }
             }
         }
 
@@ -174,21 +199,22 @@ private fun MainAppScreen(
         startupUpdateInfo?.let { update ->
             AlertDialog(
                 onDismissRequest = { startupUpdateInfo = null },
-                containerColor = DarkCard,
+                containerColor = BgSurface,
+                shape = RoundedCornerShape(16.dp),
                 title = {
                     Text(
                         text = "Aggiornamento Disponibile (${update.latestVersion})",
-                        color = UniBoGold,
-                        fontSize = 16.sp,
-                        fontWeight = FontWeight.Bold
+                        color = TextPrimary,
+                        fontSize = 17.sp,
+                        fontWeight = FontWeight.SemiBold
                     )
                 },
                 text = {
                     Text(
                         text = "${update.releaseNotes}\n\nPuoi scaricare l'APK aggiornato dal browser Chrome. L'installazione manterrà intatti tutti i tuoi preferiti.",
-                        color = TextSecondary,
+                        color = TextMuted,
                         fontSize = 13.sp,
-                        lineHeight = 18.sp
+                        lineHeight = 19.sp
                     )
                 },
                 confirmButton = {
@@ -198,15 +224,20 @@ private fun MainAppScreen(
                             startupUpdateInfo = null
                         },
                         colors = ButtonDefaults.buttonColors(
-                            containerColor = UniBoRedLight,
+                            containerColor = Accent,
                             contentColor = TextPrimary
-                        )
+                        ),
+                        shape = RoundedCornerShape(8.dp)
                     ) {
-                        Text(text = "Scarica da Chrome", fontWeight = FontWeight.Bold)
+                        Text(text = "Scarica da Chrome", fontWeight = FontWeight.SemiBold)
                     }
                 },
                 dismissButton = {
-                    OutlinedButton(onClick = { startupUpdateInfo = null }) {
+                    OutlinedButton(
+                        onClick = { startupUpdateInfo = null },
+                        border = BorderStroke(1.dp, BorderSubtle),
+                        shape = RoundedCornerShape(8.dp)
+                    ) {
                         Text(text = "Più Tardi", color = TextMuted)
                     }
                 }

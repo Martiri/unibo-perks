@@ -1,7 +1,9 @@
 package com.franco.uniboperks.data.model
 
+import androidx.compose.runtime.Immutable
 import com.google.gson.annotations.SerializedName
 
+@Immutable
 data class Discount(
     val id: String = "",
     val title: String = "",
@@ -22,6 +24,7 @@ data class Discount(
     val updatedAt: String? = null
 )
 
+@Immutable
 data class Reliability(
     val score: Int = 5,
     val reason: String = ""

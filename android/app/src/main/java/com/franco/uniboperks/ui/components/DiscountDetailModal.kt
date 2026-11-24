@@ -3,28 +3,33 @@ package com.franco.uniboperks.ui.components
 import android.content.Intent
 import android.net.Uri
 import androidx.compose.foundation.BorderStroke
-import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
-import androidx.compose.material.icons.filled.*
+import androidx.compose.material.icons.filled.Bookmark
+import androidx.compose.material.icons.filled.BookmarkBorder
+import androidx.compose.material.icons.filled.CheckCircle
+import androidx.compose.material.icons.filled.OpenInNew
+import androidx.compose.material.icons.filled.VerifiedUser
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.draw.clip
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.hapticfeedback.HapticFeedbackType
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.platform.LocalHapticFeedback
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
-import androidx.compose.ui.window.Dialog
-import androidx.compose.ui.window.DialogProperties
 import com.franco.uniboperks.data.model.Discount
 import com.franco.uniboperks.ui.theme.*
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DiscountDetailModal(
     discount: Discount,
@@ -33,288 +38,282 @@ fun DiscountDetailModal(
     onDismiss: () -> Unit
 ) {
     val context = LocalContext.current
+    val haptic = LocalHapticFeedback.current
     val scrollState = rememberScrollState()
+    val sheetState = rememberModalBottomSheetState(skipPartiallyExpanded = true)
 
-    Dialog(
+    ModalBottomSheet(
         onDismissRequest = onDismiss,
-        properties = DialogProperties(usePlatformDefaultWidth = false)
+        sheetState = sheetState,
+        containerColor = BgSurface,
+        contentColor = TextPrimary,
+        scrimColor = Color.Black.copy(alpha = 0.65f),
+        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
+        dragHandle = {
+            BottomSheetDefaults.DragHandle(color = BorderStrong)
+        }
     ) {
-        Surface(
-            shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
-            color = DarkCard,
-            border = BorderStroke(1.dp, DarkBorder),
+        Column(
             modifier = Modifier
                 .fillMaxWidth()
-                .fillMaxHeight(0.9f)
-                .padding(horizontal = 8.dp)
+                .fillMaxHeight(0.88f)
+                .padding(horizontal = 20.dp)
+                .navigationBarsPadding()
+                .padding(bottom = 16.dp)
         ) {
-            Column(
-                modifier = Modifier
-                    .fillMaxSize()
-                    .padding(20.dp)
+            // Header: Tag + Bookmark (48dp)
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
             ) {
-                // Header Bar with Close and Favorite
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
-                    horizontalArrangement = Arrangement.SpaceBetween,
-                    modifier = Modifier.fillMaxWidth()
+                    horizontalArrangement = Arrangement.spacedBy(8.dp),
+                    modifier = Modifier.weight(1f)
                 ) {
-                    IconButton(
-                        onClick = onDismiss,
-                        modifier = Modifier
-                            .size(36.dp)
-                            .clip(CircleShape)
-                            .background(DarkSurface)
+                    Surface(
+                        shape = RoundedCornerShape(6.dp),
+                        color = BgElevated,
+                        border = BorderStroke(1.dp, BorderSubtle)
                     ) {
-                        Icon(
-                            imageVector = Icons.Default.Close,
-                            contentDescription = "Chiudi",
-                            tint = TextSecondary,
-                            modifier = Modifier.size(20.dp)
+                        Text(
+                            text = discount.category,
+                            color = TextMuted,
+                            fontSize = 11.sp,
+                            fontWeight = FontWeight.Medium,
+                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
                         )
                     }
 
-                    Row(horizontalArrangement = Arrangement.spacedBy(8.dp)) {
-                        IconButton(
-                            onClick = onToggleFavorite,
-                            modifier = Modifier
-                                .size(36.dp)
-                                .clip(CircleShape)
-                                .background(DarkSurface)
-                        ) {
-                            Icon(
-                                imageVector = if (isFavorite) Icons.Default.Bookmark else Icons.Default.BookmarkBorder,
-                                contentDescription = "Salva",
-                                tint = if (isFavorite) UniBoGold else TextMuted,
-                                modifier = Modifier.size(20.dp)
-                            )
-                        }
+                    Surface(
+                        shape = RoundedCornerShape(6.dp),
+                        color = AccentSubtle,
+                        border = BorderStroke(1.dp, AccentBorder)
+                    ) {
+                        Text(
+                            text = discount.discountBadge,
+                            color = Accent,
+                            style = TextStyle(
+                                fontSize = 11.sp,
+                                fontWeight = FontWeight.SemiBold,
+                                fontFeatureSettings = "tnum"
+                            ),
+                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                        )
                     }
                 }
+
+                IconButton(
+                    onClick = {
+                        haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                        onToggleFavorite()
+                    },
+                    modifier = Modifier.minimumInteractiveComponentSize()
+                ) {
+                    Icon(
+                        imageVector = if (isFavorite) Icons.Default.Bookmark else Icons.Default.BookmarkBorder,
+                        contentDescription = if (isFavorite) "Rimuovi dai preferiti" else "Salva nei preferiti",
+                        tint = if (isFavorite) Accent else TextMuted,
+                        modifier = Modifier.size(22.dp)
+                    )
+                }
+            }
+
+            Spacer(modifier = Modifier.height(8.dp))
+
+            // Contenuto scrollabile
+            Column(
+                modifier = Modifier
+                    .weight(1f)
+                    .verticalScroll(scrollState)
+            ) {
+                Text(
+                    text = discount.provider.uppercase(),
+                    color = TextMuted,
+                    fontSize = 12.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    letterSpacing = 0.6.sp
+                )
+
+                Text(
+                    text = discount.title,
+                    color = TextPrimary,
+                    fontSize = 20.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    lineHeight = 26.sp,
+                    modifier = Modifier.padding(top = 4.dp)
+                )
 
                 Spacer(modifier = Modifier.height(14.dp))
 
-                // Scrollable Content
-                Column(
-                    modifier = Modifier
-                        .weight(1f)
-                        .verticalScroll(scrollState)
+                Surface(
+                    shape = RoundedCornerShape(10.dp),
+                    color = BgElevated,
+                    border = BorderStroke(1.dp, BorderSubtle),
+                    modifier = Modifier.fillMaxWidth()
                 ) {
-                    // Category & Verified Badge
-                    Row(
-                        verticalAlignment = Alignment.CenterVertically,
-                        horizontalArrangement = Arrangement.spacedBy(8.dp)
-                    ) {
-                        Surface(
-                            shape = RoundedCornerShape(6.dp),
-                            color = DarkSurface,
-                            border = BorderStroke(0.5.dp, DarkBorder)
-                        ) {
-                            Text(
-                                text = discount.category,
-                                color = TextSecondary,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Medium,
-                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                            )
-                        }
-
-                        Surface(
-                            shape = RoundedCornerShape(6.dp),
-                            color = UniBoGold.copy(alpha = 0.15f),
-                            border = BorderStroke(1.dp, UniBoGold.copy(alpha = 0.4f))
-                        ) {
-                            Text(
-                                text = discount.discountBadge,
-                                color = UniBoGold,
-                                fontSize = 12.sp,
-                                fontWeight = FontWeight.Bold,
-                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
-                            )
-                        }
-                    }
-
-                    Spacer(modifier = Modifier.height(8.dp))
-
                     Text(
-                        text = discount.provider,
-                        color = UniBoGoldBright,
+                        text = discount.summary,
+                        color = TextMuted,
                         fontSize = 14.sp,
+                        lineHeight = 20.sp,
+                        modifier = Modifier.padding(14.dp)
+                    )
+                }
+
+                if (discount.eligibility.isNotEmpty()) {
+                    Spacer(modifier = Modifier.height(20.dp))
+                    Text(
+                        text = "Requisiti di Idoneità",
+                        color = TextPrimary,
+                        fontSize = 15.sp,
                         fontWeight = FontWeight.SemiBold
                     )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    discount.eligibility.forEach { req ->
+                        Row(
+                            verticalAlignment = Alignment.Top,
+                            modifier = Modifier.padding(vertical = 4.dp)
+                        ) {
+                            Icon(
+                                imageVector = Icons.Default.CheckCircle,
+                                contentDescription = null,
+                                tint = Success,
+                                modifier = Modifier
+                                    .size(16.dp)
+                                    .padding(top = 2.dp)
+                            )
+                            Spacer(modifier = Modifier.width(8.dp))
+                            Text(
+                                text = req,
+                                color = TextMuted,
+                                fontSize = 13.sp,
+                                lineHeight = 19.sp
+                            )
+                        }
+                    }
+                }
 
+                if (discount.steps.isNotEmpty()) {
+                    Spacer(modifier = Modifier.height(20.dp))
                     Text(
-                        text = discount.title,
+                        text = "Come Riscattare lo Sconto",
                         color = TextPrimary,
-                        fontSize = 20.sp,
-                        fontWeight = FontWeight.Bold,
-                        lineHeight = 26.sp,
-                        modifier = Modifier.padding(top = 4.dp)
+                        fontSize = 15.sp,
+                        fontWeight = FontWeight.SemiBold
                     )
+                    Spacer(modifier = Modifier.height(8.dp))
+                    discount.steps.forEachIndexed { idx, step ->
+                        Row(
+                            verticalAlignment = Alignment.Top,
+                            modifier = Modifier.padding(vertical = 5.dp)
+                        ) {
+                            Surface(
+                                shape = CircleShape,
+                                color = BgElevated,
+                                border = BorderStroke(1.dp, BorderStrong),
+                                modifier = Modifier.size(22.dp)
+                            ) {
+                                Box(contentAlignment = Alignment.Center) {
+                                    Text(
+                                        text = "${idx + 1}",
+                                        color = TextPrimary,
+                                        style = TextStyle(
+                                            fontSize = 11.sp,
+                                            fontWeight = FontWeight.SemiBold,
+                                            fontFeatureSettings = "tnum"
+                                        )
+                                    )
+                                }
+                            }
+                            Spacer(modifier = Modifier.width(10.dp))
+                            Text(
+                                text = step,
+                                color = TextMuted,
+                                fontSize = 13.sp,
+                                lineHeight = 19.sp
+                            )
+                        }
+                    }
+                }
 
-                    Spacer(modifier = Modifier.height(12.dp))
-
-                    // Summary Box
+                discount.reliability?.let { rel ->
+                    Spacer(modifier = Modifier.height(20.dp))
                     Surface(
-                        shape = RoundedCornerShape(12.dp),
-                        color = DarkSurface,
-                        border = BorderStroke(0.5.dp, DarkBorder),
+                        shape = RoundedCornerShape(10.dp),
+                        color = BgElevated,
+                        border = BorderStroke(1.dp, BorderSubtle),
                         modifier = Modifier.fillMaxWidth()
                     ) {
-                        Text(
-                            text = discount.summary,
-                            color = TextSecondary,
-                            fontSize = 14.sp,
-                            lineHeight = 20.sp,
-                            modifier = Modifier.padding(14.dp)
-                        )
-                    }
-
-                    // Requisiti di Idoneità
-                    if (discount.eligibility.isNotEmpty()) {
-                        Spacer(modifier = Modifier.height(18.dp))
-                        Text(
-                            text = "Requisiti di Idoneità",
-                            color = TextPrimary,
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        discount.eligibility.forEach { req ->
-                            Row(
-                                verticalAlignment = Alignment.Top,
-                                modifier = Modifier.padding(vertical = 4.dp)
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.CheckCircle,
-                                    contentDescription = null,
-                                    tint = VerifiedGreen,
-                                    modifier = Modifier
-                                        .size(16.dp)
-                                        .padding(top = 2.dp)
-                                )
-                                Spacer(modifier = Modifier.width(8.dp))
-                                Text(
-                                    text = req,
-                                    color = TextSecondary,
-                                    fontSize = 13.sp,
-                                    lineHeight = 18.sp
-                                )
-                            }
-                        }
-                    }
-
-                    // Istruzioni Passo-Passo
-                    if (discount.steps.isNotEmpty()) {
-                        Spacer(modifier = Modifier.height(18.dp))
-                        Text(
-                            text = "Come Riscattare lo Sconto",
-                            color = TextPrimary,
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.Bold
-                        )
-                        Spacer(modifier = Modifier.height(8.dp))
-                        discount.steps.forEachIndexed { idx, step ->
-                            Row(
-                                verticalAlignment = Alignment.Top,
-                                modifier = Modifier.padding(vertical = 4.dp)
-                            ) {
-                                Surface(
-                                    shape = CircleShape,
-                                    color = UniBoRedLight,
-                                    modifier = Modifier.size(20.dp)
-                                ) {
-                                    Box(contentAlignment = Alignment.Center) {
-                                        Text(
-                                            text = "${idx + 1}",
-                                            color = TextPrimary,
-                                            fontSize = 11.sp,
-                                            fontWeight = FontWeight.Bold
-                                        )
-                                    }
-                                }
-                                Spacer(modifier = Modifier.width(10.dp))
-                                Text(
-                                    text = step,
-                                    color = TextSecondary,
-                                    fontSize = 13.sp,
-                                    lineHeight = 18.sp
-                                )
-                            }
-                        }
-                    }
-
-                    // Reliability Info
-                    discount.reliability?.let { rel ->
-                        Spacer(modifier = Modifier.height(18.dp))
-                        Surface(
-                            shape = RoundedCornerShape(10.dp),
-                            color = VerifiedGreen.copy(alpha = 0.1f),
-                            border = BorderStroke(0.5.dp, VerifiedGreen.copy(alpha = 0.3f)),
-                            modifier = Modifier.fillMaxWidth()
+                        Row(
+                            verticalAlignment = Alignment.CenterVertically,
+                            modifier = Modifier.padding(12.dp)
                         ) {
-                            Row(
-                                verticalAlignment = Alignment.CenterVertically,
-                                modifier = Modifier.padding(12.dp)
-                            ) {
-                                Icon(
-                                    imageVector = Icons.Default.VerifiedUser,
-                                    contentDescription = null,
-                                    tint = VerifiedGreen,
-                                    modifier = Modifier.size(20.dp)
-                                )
-                                Spacer(modifier = Modifier.width(10.dp))
-                                Column {
-                                    Text(
-                                        text = "Verificato (${rel.score}/5)",
-                                        color = VerifiedGreen,
+                            Icon(
+                                imageVector = Icons.Default.VerifiedUser,
+                                contentDescription = null,
+                                tint = Success,
+                                modifier = Modifier.size(18.dp)
+                            )
+                            Spacer(modifier = Modifier.width(10.dp))
+                            Column {
+                                Text(
+                                    text = "Verificato (${rel.score}/5)",
+                                    color = Success,
+                                    style = TextStyle(
                                         fontSize = 12.sp,
-                                        fontWeight = FontWeight.Bold
+                                        fontWeight = FontWeight.SemiBold,
+                                        fontFeatureSettings = "tnum"
                                     )
-                                    Text(
-                                        text = rel.reason,
-                                        color = TextSecondary,
-                                        fontSize = 11.sp
-                                    )
-                                }
+                                )
+                                Text(
+                                    text = rel.reason,
+                                    color = TextMuted,
+                                    fontSize = 12.sp,
+                                    lineHeight = 16.sp
+                                )
                             }
                         }
                     }
-
-                    Spacer(modifier = Modifier.height(20.dp))
                 }
 
-                // Bottom Action: Direct Web Link
-                Button(
-                    onClick = {
-                        try {
-                            val intent = Intent(Intent.ACTION_VIEW, Uri.parse(discount.url)).apply {
-                                flags = Intent.FLAG_ACTIVITY_NEW_TASK
-                            }
-                            context.startActivity(intent)
-                        } catch (_: Exception) {}
-                    },
-                    colors = ButtonDefaults.buttonColors(
-                        containerColor = UniBoRedLight,
-                        contentColor = TextPrimary
-                    ),
-                    shape = RoundedCornerShape(12.dp),
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .height(48.dp)
-                ) {
-                    Icon(
-                        imageVector = Icons.Default.OpenInNew,
-                        contentDescription = null,
-                        modifier = Modifier.size(16.dp)
-                    )
-                    Spacer(modifier = Modifier.width(8.dp))
-                    Text(
-                        text = "Apri Pagina Offerta Ufficiale",
-                        fontSize = 14.sp,
-                        fontWeight = FontWeight.Bold
-                    )
-                }
+                Spacer(modifier = Modifier.height(20.dp))
+            }
+
+            HorizontalDivider(thickness = 1.dp, color = BorderSubtle)
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Button(
+                onClick = {
+                    haptic.performHapticFeedback(HapticFeedbackType.TextHandleMove)
+                    try {
+                        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(discount.url)).apply {
+                            flags = Intent.FLAG_ACTIVITY_NEW_TASK
+                        }
+                        context.startActivity(intent)
+                    } catch (_: Exception) {}
+                },
+                colors = ButtonDefaults.buttonColors(
+                    containerColor = Accent,
+                    contentColor = TextPrimary
+                ),
+                shape = RoundedCornerShape(10.dp),
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .height(48.dp)
+            ) {
+                Icon(
+                    imageVector = Icons.Default.OpenInNew,
+                    contentDescription = null,
+                    modifier = Modifier.size(16.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = "Apri Pagina Offerta Ufficiale",
+                    fontSize = 14.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
             }
         }
     }
