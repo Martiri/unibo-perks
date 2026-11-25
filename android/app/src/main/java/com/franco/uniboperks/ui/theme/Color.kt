@@ -4,11 +4,13 @@ import androidx.compose.ui.graphics.Color
 
 val BgBase = Color(0xFF09090B)
 val BgSurface = Color(0xFF121215)
+val BgGlass = Color(0xEB121215)
 val BgElevated = Color(0xFF18181B)
 val BgHover = Color(0xFF27272A)
 
 val BorderSubtle = Color(0xFF27272A)
 val BorderStrong = Color(0xFF3F3F46)
+val BorderGlass = Color(0x14FFFFFF) // rgba(255, 255, 255, 0.08)
 
 val TextPrimary = Color(0xFFFAFAFA)
 val TextMuted = Color(0xFFA1A1AA)

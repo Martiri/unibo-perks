@@ -37,61 +37,63 @@ fun PlatformsScreen(
     val haptic = LocalHapticFeedback.current
     val platforms by repo.platforms.collectAsState()
 
-    Scaffold(
-        topBar = {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(BgBase)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(BgGlass)
+                .statusBarsPadding()
+        ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(BgBase)
-                    .statusBarsPadding()
+                    .padding(horizontal = 16.dp, vertical = 14.dp)
             ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 12.dp)
-                ) {
-                    Text(
-                        text = "Circuiti & Portali",
-                        color = TextPrimary,
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        letterSpacing = (-0.3).sp
-                    )
-                    Text(
-                        text = "Le piattaforme ufficiali per verificare lo status studente",
-                        color = TextMuted,
-                        fontSize = 12.sp,
-                        modifier = Modifier.padding(top = 2.dp)
-                    )
-                }
-                HorizontalDivider(thickness = 1.dp, color = BorderSubtle)
+                Text(
+                    text = "Circuiti & Portali",
+                    color = TextPrimary,
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    letterSpacing = (-0.3).sp
+                )
+                Text(
+                    text = "Le piattaforme ufficiali per verificare lo status studente",
+                    color = TextMuted,
+                    fontSize = 12.sp,
+                    modifier = Modifier.padding(top = 2.dp)
+                )
             }
-        },
-        containerColor = BgBase,
-        modifier = modifier
-    ) { innerPadding ->
+            HorizontalDivider(thickness = 1.dp, color = BorderGlass)
+        }
+
         LazyColumn(
             contentPadding = PaddingValues(
                 start = 16.dp,
                 end = 16.dp,
-                top = innerPadding.calculateTopPadding() + 12.dp,
-                bottom = innerPadding.calculateBottomPadding() + 16.dp
+                top = 14.dp,
+                bottom = 20.dp
             ),
             verticalArrangement = Arrangement.spacedBy(12.dp),
-            modifier = Modifier.fillMaxSize()
+            modifier = Modifier
+                .weight(1f)
+                .fillMaxWidth()
         ) {
             items(
                 items = platforms,
                 key = { it.id }
             ) { platform ->
                 Surface(
-                    shape = RoundedCornerShape(12.dp),
+                    shape = RoundedCornerShape(20.dp),
                     color = BgSurface,
-                    border = BorderStroke(1.dp, BorderSubtle),
+                    border = BorderStroke(1.dp, BorderGlass),
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Column(
-                        modifier = Modifier.padding(16.dp)
+                        modifier = Modifier.padding(18.dp)
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
@@ -99,16 +101,16 @@ fun PlatformsScreen(
                             modifier = Modifier.fillMaxWidth()
                         ) {
                             Surface(
-                                shape = RoundedCornerShape(6.dp),
+                                shape = RoundedCornerShape(999.dp),
                                 color = BgElevated,
-                                border = BorderStroke(1.dp, BorderSubtle)
+                                border = BorderStroke(1.dp, BorderGlass)
                             ) {
                                 Text(
                                     text = platform.circuitTag,
                                     color = TextMuted,
                                     fontSize = 11.sp,
                                     fontWeight = FontWeight.SemiBold,
-                                    modifier = Modifier.padding(horizontal = 8.dp, vertical = 3.dp)
+                                    modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
                                 )
                             }
 
@@ -135,12 +137,12 @@ fun PlatformsScreen(
                         Spacer(modifier = Modifier.height(10.dp))
 
                         Surface(
-                            shape = RoundedCornerShape(8.dp),
+                            shape = RoundedCornerShape(14.dp),
                             color = BgElevated,
-                            border = BorderStroke(1.dp, BorderSubtle),
+                            border = BorderStroke(1.dp, BorderGlass),
                             modifier = Modifier.fillMaxWidth()
                         ) {
-                            Column(modifier = Modifier.padding(10.dp)) {
+                            Column(modifier = Modifier.padding(12.dp)) {
                                 Text(
                                     text = "VERIFICA IDONEITÀ",
                                     color = TextSubtle,
@@ -148,7 +150,7 @@ fun PlatformsScreen(
                                     fontWeight = FontWeight.SemiBold,
                                     letterSpacing = 0.6.sp
                                 )
-                                Spacer(modifier = Modifier.height(3.dp))
+                                Spacer(modifier = Modifier.height(4.dp))
                                 Text(
                                     text = platform.verificationMethod,
                                     color = TextMuted,
@@ -212,7 +214,7 @@ fun PlatformsScreen(
                                     context.startActivity(intent)
                                 } catch (_: Exception) {}
                             },
-                            shape = RoundedCornerShape(8.dp),
+                            shape = RoundedCornerShape(999.dp),
                             border = BorderStroke(1.dp, BorderStrong),
                             colors = ButtonDefaults.outlinedButtonColors(
                                 containerColor = BgElevated,

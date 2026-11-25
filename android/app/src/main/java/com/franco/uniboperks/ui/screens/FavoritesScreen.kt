@@ -37,55 +37,55 @@ fun FavoritesScreen(
         discounts.filter { favoriteIds.contains(it.id) }
     }
 
-    Scaffold(
-        topBar = {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(BgBase)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(BgGlass)
+                .statusBarsPadding()
+        ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(BgBase)
-                    .statusBarsPadding()
+                    .padding(horizontal = 16.dp, vertical = 14.dp)
             ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 12.dp)
-                ) {
-                    Text(
-                        text = "Preferiti",
-                        color = TextPrimary,
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        letterSpacing = (-0.3).sp
-                    )
-                    Text(
-                        text = "${savedDiscounts.size} convenzioni salvate",
-                        color = TextMuted,
-                        style = TextStyle(
-                            fontSize = 12.sp,
-                            fontFeatureSettings = "tnum"
-                        ),
-                        modifier = Modifier.padding(top = 2.dp)
-                    )
-                }
-                HorizontalDivider(thickness = 1.dp, color = BorderSubtle)
+                Text(
+                    text = "Preferiti",
+                    color = TextPrimary,
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    letterSpacing = (-0.3).sp
+                )
+                Text(
+                    text = "${savedDiscounts.size} convenzioni salvate",
+                    color = TextMuted,
+                    style = TextStyle(
+                        fontSize = 12.sp,
+                        fontFeatureSettings = "tnum"
+                    ),
+                    modifier = Modifier.padding(top = 2.dp)
+                )
             }
-        },
-        containerColor = BgBase,
-        modifier = modifier
-    ) { innerPadding ->
+            HorizontalDivider(thickness = 1.dp, color = BorderGlass)
+        }
+
         if (savedDiscounts.isEmpty()) {
             Box(
                 contentAlignment = Alignment.Center,
                 modifier = Modifier
-                    .fillMaxSize()
-                    .padding(innerPadding)
+                    .weight(1f)
+                    .fillMaxWidth()
                     .padding(horizontal = 24.dp)
             ) {
                 Column(horizontalAlignment = Alignment.CenterHorizontally) {
                     Surface(
                         shape = CircleShape,
                         color = BgSurface,
-                        border = BorderStroke(1.dp, BorderSubtle),
+                        border = BorderStroke(1.dp, BorderGlass),
                         modifier = Modifier.size(64.dp)
                     ) {
                         Box(contentAlignment = Alignment.Center) {
@@ -119,11 +119,13 @@ fun FavoritesScreen(
                 contentPadding = PaddingValues(
                     start = 16.dp,
                     end = 16.dp,
-                    top = innerPadding.calculateTopPadding() + 12.dp,
-                    bottom = innerPadding.calculateBottomPadding() + 16.dp
+                    top = 14.dp,
+                    bottom = 20.dp
                 ),
                 verticalArrangement = Arrangement.spacedBy(12.dp),
-                modifier = Modifier.fillMaxSize()
+                modifier = Modifier
+                    .weight(1f)
+                    .fillMaxWidth()
             ) {
                 items(
                     items = savedDiscounts,
@@ -139,14 +141,14 @@ fun FavoritesScreen(
                 }
             }
         }
+    }
 
-        activeModalDiscount?.let { discount ->
-            DiscountDetailModal(
-                discount = discount,
-                isFavorite = true,
-                onToggleFavorite = { repo.toggleFavorite(discount.id) },
-                onDismiss = { activeModalDiscount = null }
-            )
-        }
+    activeModalDiscount?.let { discount ->
+        DiscountDetailModal(
+            discount = discount,
+            isFavorite = true,
+            onToggleFavorite = { repo.toggleFavorite(discount.id) },
+            onDismiss = { activeModalDiscount = null }
+        )
     }
 }

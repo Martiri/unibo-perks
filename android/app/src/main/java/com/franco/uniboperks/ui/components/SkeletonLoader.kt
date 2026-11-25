@@ -20,6 +20,7 @@ import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.unit.dp
 import com.franco.uniboperks.ui.theme.BgElevated
 import com.franco.uniboperks.ui.theme.BgSurface
+import com.franco.uniboperks.ui.theme.BorderGlass
 import com.franco.uniboperks.ui.theme.BorderSubtle
 
 @Composable
@@ -38,29 +39,29 @@ fun DiscountCardSkeleton(
     )
 
     Surface(
-        shape = RoundedCornerShape(12.dp),
+        shape = RoundedCornerShape(20.dp),
         color = BgSurface,
-        border = BorderStroke(1.dp, BorderSubtle),
+        border = BorderStroke(1.dp, BorderGlass),
         modifier = modifier.fillMaxWidth()
     ) {
-        Column(modifier = Modifier.padding(16.dp)) {
+        Column(modifier = Modifier.padding(18.dp)) {
             Box(
                 modifier = Modifier
                     .width(140.dp)
                     .height(12.dp)
                     .graphicsLayer { alpha = pulseAlpha }
-                    .clip(RoundedCornerShape(4.dp))
+                    .clip(RoundedCornerShape(6.dp))
                     .background(BgElevated)
             )
 
-            Spacer(modifier = Modifier.height(12.dp))
+            Spacer(modifier = Modifier.height(14.dp))
 
             Box(
                 modifier = Modifier
                     .fillMaxWidth(0.78f)
                     .height(18.dp)
                     .graphicsLayer { alpha = pulseAlpha }
-                    .clip(RoundedCornerShape(4.dp))
+                    .clip(RoundedCornerShape(6.dp))
                     .background(BgElevated)
             )
 
@@ -71,7 +72,7 @@ fun DiscountCardSkeleton(
                     .fillMaxWidth()
                     .height(13.dp)
                     .graphicsLayer { alpha = pulseAlpha }
-                    .clip(RoundedCornerShape(4.dp))
+                    .clip(RoundedCornerShape(6.dp))
                     .background(BgElevated)
             )
             Spacer(modifier = Modifier.height(6.dp))
@@ -80,7 +81,7 @@ fun DiscountCardSkeleton(
                     .fillMaxWidth(0.65f)
                     .height(13.dp)
                     .graphicsLayer { alpha = pulseAlpha }
-                    .clip(RoundedCornerShape(4.dp))
+                    .clip(RoundedCornerShape(6.dp))
                     .background(BgElevated)
             )
 
@@ -94,18 +95,18 @@ fun DiscountCardSkeleton(
             ) {
                 Box(
                     modifier = Modifier
-                        .width(92.dp)
-                        .height(30.dp)
+                        .width(96.dp)
+                        .height(32.dp)
                         .graphicsLayer { alpha = pulseAlpha }
-                        .clip(RoundedCornerShape(6.dp))
+                        .clip(RoundedCornerShape(999.dp))
                         .background(BgElevated)
                 )
                 Box(
                     modifier = Modifier
-                        .width(88.dp)
-                        .height(36.dp)
+                        .width(92.dp)
+                        .height(38.dp)
                         .graphicsLayer { alpha = pulseAlpha }
-                        .clip(RoundedCornerShape(8.dp))
+                        .clip(RoundedCornerShape(999.dp))
                         .background(BgElevated)
                 )
             }

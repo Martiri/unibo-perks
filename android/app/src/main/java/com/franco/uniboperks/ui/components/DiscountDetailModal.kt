@@ -47,8 +47,8 @@ fun DiscountDetailModal(
         sheetState = sheetState,
         containerColor = BgSurface,
         contentColor = TextPrimary,
-        scrimColor = Color.Black.copy(alpha = 0.65f),
-        shape = RoundedCornerShape(topStart = 20.dp, topEnd = 20.dp),
+        scrimColor = Color.Black.copy(alpha = 0.7f),
+        shape = RoundedCornerShape(topStart = 24.dp, topEnd = 24.dp),
         dragHandle = {
             BottomSheetDefaults.DragHandle(color = BorderStrong)
         }
@@ -73,21 +73,21 @@ fun DiscountDetailModal(
                     modifier = Modifier.weight(1f)
                 ) {
                     Surface(
-                        shape = RoundedCornerShape(6.dp),
+                        shape = RoundedCornerShape(999.dp),
                         color = BgElevated,
-                        border = BorderStroke(1.dp, BorderSubtle)
+                        border = BorderStroke(1.dp, BorderGlass)
                     ) {
                         Text(
                             text = discount.category,
                             color = TextMuted,
                             fontSize = 11.sp,
                             fontWeight = FontWeight.Medium,
-                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp)
                         )
                     }
 
                     Surface(
-                        shape = RoundedCornerShape(6.dp),
+                        shape = RoundedCornerShape(999.dp),
                         color = AccentSubtle,
                         border = BorderStroke(1.dp, AccentBorder)
                     ) {
@@ -99,7 +99,7 @@ fun DiscountDetailModal(
                                 fontWeight = FontWeight.SemiBold,
                                 fontFeatureSettings = "tnum"
                             ),
-                            modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                            modifier = Modifier.padding(horizontal = 10.dp, vertical = 5.dp)
                         )
                     }
                 }
@@ -148,9 +148,9 @@ fun DiscountDetailModal(
                 Spacer(modifier = Modifier.height(14.dp))
 
                 Surface(
-                    shape = RoundedCornerShape(10.dp),
+                    shape = RoundedCornerShape(16.dp),
                     color = BgElevated,
-                    border = BorderStroke(1.dp, BorderSubtle),
+                    border = BorderStroke(1.dp, BorderGlass),
                     modifier = Modifier.fillMaxWidth()
                 ) {
                     Text(
@@ -158,82 +158,120 @@ fun DiscountDetailModal(
                         color = TextMuted,
                         fontSize = 14.sp,
                         lineHeight = 20.sp,
-                        modifier = Modifier.padding(14.dp)
+                        modifier = Modifier.padding(16.dp)
                     )
                 }
 
+                // Inset grouped list: Requisiti di Idoneità
                 if (discount.eligibility.isNotEmpty()) {
                     Spacer(modifier = Modifier.height(20.dp))
                     Text(
-                        text = "Requisiti di Idoneità",
-                        color = TextPrimary,
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.SemiBold
+                        text = "REQUISITI DI IDONEITÀ",
+                        color = TextSubtle,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        letterSpacing = 0.6.sp,
+                        modifier = Modifier.padding(start = 4.dp)
                     )
                     Spacer(modifier = Modifier.height(8.dp))
-                    discount.eligibility.forEach { req ->
-                        Row(
-                            verticalAlignment = Alignment.Top,
-                            modifier = Modifier.padding(vertical = 4.dp)
-                        ) {
-                            Icon(
-                                imageVector = Icons.Default.CheckCircle,
-                                contentDescription = null,
-                                tint = Success,
-                                modifier = Modifier
-                                    .size(16.dp)
-                                    .padding(top = 2.dp)
-                            )
-                            Spacer(modifier = Modifier.width(8.dp))
-                            Text(
-                                text = req,
-                                color = TextMuted,
-                                fontSize = 13.sp,
-                                lineHeight = 19.sp
-                            )
+                    Surface(
+                        shape = RoundedCornerShape(16.dp),
+                        color = BgElevated,
+                        border = BorderStroke(1.dp, BorderGlass),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Column {
+                            discount.eligibility.forEachIndexed { idx, req ->
+                                Row(
+                                    verticalAlignment = Alignment.Top,
+                                    modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp)
+                                ) {
+                                    Icon(
+                                        imageVector = Icons.Default.CheckCircle,
+                                        contentDescription = null,
+                                        tint = Success,
+                                        modifier = Modifier
+                                            .size(16.dp)
+                                            .padding(top = 2.dp)
+                                    )
+                                    Spacer(modifier = Modifier.width(10.dp))
+                                    Text(
+                                        text = req,
+                                        color = TextMuted,
+                                        fontSize = 13.sp,
+                                        lineHeight = 19.sp
+                                    )
+                                }
+                                if (idx < discount.eligibility.lastIndex) {
+                                    HorizontalDivider(
+                                        thickness = 1.dp,
+                                        color = BorderSubtle,
+                                        modifier = Modifier.padding(horizontal = 14.dp)
+                                    )
+                                }
+                            }
                         }
                     }
                 }
 
+                // Inset grouped list: Passaggi
                 if (discount.steps.isNotEmpty()) {
                     Spacer(modifier = Modifier.height(20.dp))
                     Text(
-                        text = "Come Riscattare lo Sconto",
-                        color = TextPrimary,
-                        fontSize = 15.sp,
-                        fontWeight = FontWeight.SemiBold
+                        text = "COME RISCATTARE LO SCONTO",
+                        color = TextSubtle,
+                        fontSize = 11.sp,
+                        fontWeight = FontWeight.SemiBold,
+                        letterSpacing = 0.6.sp,
+                        modifier = Modifier.padding(start = 4.dp)
                     )
                     Spacer(modifier = Modifier.height(8.dp))
-                    discount.steps.forEachIndexed { idx, step ->
-                        Row(
-                            verticalAlignment = Alignment.Top,
-                            modifier = Modifier.padding(vertical = 5.dp)
-                        ) {
-                            Surface(
-                                shape = CircleShape,
-                                color = BgElevated,
-                                border = BorderStroke(1.dp, BorderStrong),
-                                modifier = Modifier.size(22.dp)
-                            ) {
-                                Box(contentAlignment = Alignment.Center) {
+                    Surface(
+                        shape = RoundedCornerShape(16.dp),
+                        color = BgElevated,
+                        border = BorderStroke(1.dp, BorderGlass),
+                        modifier = Modifier.fillMaxWidth()
+                    ) {
+                        Column {
+                            discount.steps.forEachIndexed { idx, step ->
+                                Row(
+                                    verticalAlignment = Alignment.Top,
+                                    modifier = Modifier.padding(horizontal = 14.dp, vertical = 12.dp)
+                                ) {
+                                    Surface(
+                                        shape = CircleShape,
+                                        color = BgSurface,
+                                        border = BorderStroke(1.dp, BorderStrong),
+                                        modifier = Modifier.size(22.dp)
+                                    ) {
+                                        Box(contentAlignment = Alignment.Center) {
+                                            Text(
+                                                text = "${idx + 1}",
+                                                color = TextPrimary,
+                                                style = TextStyle(
+                                                    fontSize = 11.sp,
+                                                    fontWeight = FontWeight.SemiBold,
+                                                    fontFeatureSettings = "tnum"
+                                                )
+                                            )
+                                        }
+                                    }
+                                    Spacer(modifier = Modifier.width(10.dp))
                                     Text(
-                                        text = "${idx + 1}",
-                                        color = TextPrimary,
-                                        style = TextStyle(
-                                            fontSize = 11.sp,
-                                            fontWeight = FontWeight.SemiBold,
-                                            fontFeatureSettings = "tnum"
-                                        )
+                                        text = step,
+                                        color = TextMuted,
+                                        fontSize = 13.sp,
+                                        lineHeight = 19.sp
+                                    )
+                                }
+                                if (idx < discount.steps.lastIndex) {
+                                    HorizontalDivider(
+                                        thickness = 1.dp,
+                                        color = BorderSubtle,
+                                        modifier = Modifier.padding(horizontal = 14.dp)
                                     )
                                 }
                             }
-                            Spacer(modifier = Modifier.width(10.dp))
-                            Text(
-                                text = step,
-                                color = TextMuted,
-                                fontSize = 13.sp,
-                                lineHeight = 19.sp
-                            )
                         }
                     }
                 }
@@ -241,14 +279,14 @@ fun DiscountDetailModal(
                 discount.reliability?.let { rel ->
                     Spacer(modifier = Modifier.height(20.dp))
                     Surface(
-                        shape = RoundedCornerShape(10.dp),
+                        shape = RoundedCornerShape(16.dp),
                         color = BgElevated,
-                        border = BorderStroke(1.dp, BorderSubtle),
+                        border = BorderStroke(1.dp, BorderGlass),
                         modifier = Modifier.fillMaxWidth()
                     ) {
                         Row(
                             verticalAlignment = Alignment.CenterVertically,
-                            modifier = Modifier.padding(12.dp)
+                            modifier = Modifier.padding(14.dp)
                         ) {
                             Icon(
                                 imageVector = Icons.Default.VerifiedUser,
@@ -298,10 +336,10 @@ fun DiscountDetailModal(
                     containerColor = Accent,
                     contentColor = TextPrimary
                 ),
-                shape = RoundedCornerShape(10.dp),
+                shape = RoundedCornerShape(999.dp),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(48.dp)
+                    .height(50.dp)
             ) {
                 Icon(
                     imageVector = Icons.Default.OpenInNew,

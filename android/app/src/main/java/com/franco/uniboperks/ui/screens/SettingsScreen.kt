@@ -43,59 +43,55 @@ fun SettingsScreen(
     var updateResult by remember { mutableStateOf<UpdateInfo?>(null) }
     var statusMessage by remember { mutableStateOf<String?>(null) }
 
-    Scaffold(
-        topBar = {
+    Column(
+        modifier = modifier
+            .fillMaxSize()
+            .background(BgBase)
+    ) {
+        Column(
+            modifier = Modifier
+                .fillMaxWidth()
+                .background(BgGlass)
+                .statusBarsPadding()
+        ) {
             Column(
                 modifier = Modifier
                     .fillMaxWidth()
-                    .background(BgBase)
-                    .statusBarsPadding()
+                    .padding(horizontal = 16.dp, vertical = 14.dp)
             ) {
-                Column(
-                    modifier = Modifier
-                        .fillMaxWidth()
-                        .padding(horizontal = 16.dp, vertical = 12.dp)
-                ) {
-                    Text(
-                        text = "Info & Aggiornamenti",
-                        color = TextPrimary,
-                        fontSize = 22.sp,
-                        fontWeight = FontWeight.SemiBold,
-                        letterSpacing = (-0.3).sp
-                    )
-                    Text(
-                        text = "Versione applicazione, tuning POCO F7 e sicurezza",
-                        color = TextMuted,
-                        fontSize = 12.sp,
-                        modifier = Modifier.padding(top = 2.dp)
-                    )
-                }
-                HorizontalDivider(thickness = 1.dp, color = BorderSubtle)
+                Text(
+                    text = "Info & Aggiornamenti",
+                    color = TextPrimary,
+                    fontSize = 22.sp,
+                    fontWeight = FontWeight.SemiBold,
+                    letterSpacing = (-0.3).sp
+                )
+                Text(
+                    text = "Versione applicazione, tuning POCO F7 e sicurezza",
+                    color = TextMuted,
+                    fontSize = 12.sp,
+                    modifier = Modifier.padding(top = 2.dp)
+                )
             }
-        },
-        containerColor = BgBase,
-        modifier = modifier
-    ) { innerPadding ->
+            HorizontalDivider(thickness = 1.dp, color = BorderGlass)
+        }
+
         Column(
             modifier = Modifier
-                .fillMaxSize()
-                .padding(
-                    start = 16.dp,
-                    end = 16.dp,
-                    top = innerPadding.calculateTopPadding() + 12.dp,
-                    bottom = innerPadding.calculateBottomPadding() + 16.dp
-                )
-                .verticalScroll(scrollState),
-            verticalArrangement = Arrangement.spacedBy(12.dp)
+                .weight(1f)
+                .fillMaxWidth()
+                .verticalScroll(scrollState)
+                .padding(horizontal = 16.dp, vertical = 14.dp),
+            verticalArrangement = Arrangement.spacedBy(14.dp)
         ) {
             // Card Identità & Aggiornamenti
             Surface(
-                shape = RoundedCornerShape(12.dp),
+                shape = RoundedCornerShape(20.dp),
                 color = BgSurface,
-                border = BorderStroke(1.dp, BorderSubtle),
+                border = BorderStroke(1.dp, BorderGlass),
                 modifier = Modifier.fillMaxWidth()
             ) {
-                Column(modifier = Modifier.padding(16.dp)) {
+                Column(modifier = Modifier.padding(18.dp)) {
                     Row(
                         verticalAlignment = Alignment.CenterVertically,
                         horizontalArrangement = Arrangement.SpaceBetween,
@@ -120,7 +116,7 @@ fun SettingsScreen(
                         }
 
                         Surface(
-                            shape = RoundedCornerShape(6.dp),
+                            shape = RoundedCornerShape(999.dp),
                             color = SuccessSubtle,
                             border = BorderStroke(1.dp, Success.copy(alpha = 0.35f))
                         ) {
@@ -129,12 +125,12 @@ fun SettingsScreen(
                                 color = Success,
                                 fontSize = 11.sp,
                                 fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 4.dp)
+                                modifier = Modifier.padding(horizontal = 10.dp, vertical = 4.dp)
                             )
                         }
                     }
 
-                    Spacer(modifier = Modifier.height(14.dp))
+                    Spacer(modifier = Modifier.height(16.dp))
 
                     Button(
                         onClick = {
@@ -156,7 +152,7 @@ fun SettingsScreen(
                             containerColor = Accent,
                             contentColor = TextPrimary
                         ),
-                        shape = RoundedCornerShape(10.dp),
+                        shape = RoundedCornerShape(999.dp),
                         modifier = Modifier
                             .fillMaxWidth()
                             .height(48.dp)
@@ -196,14 +192,14 @@ fun SettingsScreen(
 
                     updateResult?.let { update ->
                         if (update.hasUpdate) {
-                            Spacer(modifier = Modifier.height(12.dp))
+                            Spacer(modifier = Modifier.height(14.dp))
                             Surface(
-                                shape = RoundedCornerShape(10.dp),
+                                shape = RoundedCornerShape(16.dp),
                                 color = BgElevated,
                                 border = BorderStroke(1.dp, AccentBorder),
                                 modifier = Modifier.fillMaxWidth()
                             ) {
-                                Column(modifier = Modifier.padding(12.dp)) {
+                                Column(modifier = Modifier.padding(14.dp)) {
                                     Text(
                                         text = "Nuova versione disponibile: ${update.latestVersion}",
                                         color = TextPrimary,
@@ -217,7 +213,7 @@ fun SettingsScreen(
                                         fontSize = 12.sp,
                                         lineHeight = 17.sp
                                     )
-                                    Spacer(modifier = Modifier.height(10.dp))
+                                    Spacer(modifier = Modifier.height(12.dp))
                                     OutlinedButton(
                                         onClick = {
                                             AppUpdateManager.openBrowserReleasePage(context, update.htmlUrl)
@@ -227,10 +223,10 @@ fun SettingsScreen(
                                             containerColor = AccentSubtle,
                                             contentColor = TextPrimary
                                         ),
-                                        shape = RoundedCornerShape(8.dp),
+                                        shape = RoundedCornerShape(999.dp),
                                         modifier = Modifier
                                             .fillMaxWidth()
-                                            .height(42.dp)
+                                            .height(44.dp)
                                     ) {
                                         Text(
                                             text = "Scarica aggiornamento su Chrome",
@@ -252,81 +248,31 @@ fun SettingsScreen(
                 }
             }
 
-            // Card Tuning POCO F7
-            Surface(
-                shape = RoundedCornerShape(12.dp),
-                color = BgSurface,
-                border = BorderStroke(1.dp, BorderSubtle),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(
-                            imageVector = Icons.Default.Speed,
-                            contentDescription = null,
-                            tint = TextMuted,
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = "Tuning Xiaomi POCO F7",
-                            color = TextPrimary,
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.SemiBold
-                        )
-                    }
+            // Inset Grouped Card: Tuning POCO F7
+            InsetInfoCard(
+                icon = Icons.Default.Speed,
+                iconTint = TextMuted,
+                title = "Tuning Xiaomi POCO F7",
+                items = listOf(
+                    "Display AMOLED 120Hz forzato in Kotlin per scroll fluido",
+                    "Layout Edge-to-Edge 19.5:9 con gestione punch-hole",
+                    "Filtraggio reattivo su coroutine multi-core",
+                    "Catalogo offline pre-caricato in background"
+                )
+            )
 
-                    Spacer(modifier = Modifier.height(10.dp))
-
-                    Text(
-                        text = "• Display AMOLED 120Hz forzato in Kotlin per scroll fluido\n" +
-                                "• Layout Edge-to-Edge 19.5:9 con gestione punch-hole\n" +
-                                "• Filtraggio reattivo su coroutine multi-core\n" +
-                                "• Catalogo offline pre-caricato in background",
-                        color = TextMuted,
-                        fontSize = 12.sp,
-                        lineHeight = 19.sp
-                    )
-                }
-            }
-
-            // Card Sicurezza Play Protect
-            Surface(
-                shape = RoundedCornerShape(12.dp),
-                color = BgSurface,
-                border = BorderStroke(1.dp, BorderSubtle),
-                modifier = Modifier.fillMaxWidth()
-            ) {
-                Column(modifier = Modifier.padding(16.dp)) {
-                    Row(verticalAlignment = Alignment.CenterVertically) {
-                        Icon(
-                            imageVector = Icons.Default.Security,
-                            contentDescription = null,
-                            tint = Success,
-                            modifier = Modifier.size(18.dp)
-                        )
-                        Spacer(modifier = Modifier.width(8.dp))
-                        Text(
-                            text = "Sicurezza Google Play Protect",
-                            color = TextPrimary,
-                            fontSize = 15.sp,
-                            fontWeight = FontWeight.SemiBold
-                        )
-                    }
-
-                    Spacer(modifier = Modifier.height(10.dp))
-
-                    Text(
-                        text = "• Zero permessi invasivi (escluso REQUEST_INSTALL_PACKAGES)\n" +
-                                "• Solo connessione HTTPS per sincronizzare nuove convenzioni\n" +
-                                "• Firma permanente RSA-2048 V1+V2 per aggiornamenti in-place\n" +
-                                "• Scansione Play Protect pulita",
-                        color = TextMuted,
-                        fontSize = 12.sp,
-                        lineHeight = 19.sp
-                    )
-                }
-            }
+            // Inset Grouped Card: Sicurezza Play Protect
+            InsetInfoCard(
+                icon = Icons.Default.Security,
+                iconTint = Success,
+                title = "Sicurezza Google Play Protect",
+                items = listOf(
+                    "Zero permessi invasivi (escluso REQUEST_INSTALL_PACKAGES)",
+                    "Solo connessione HTTPS per sincronizzare nuove convenzioni",
+                    "Firma permanente RSA-2048 V1+V2 per aggiornamenti in-place",
+                    "Scansione Play Protect pulita"
+                )
+            )
 
             // Link Sorgente GitHub
             OutlinedButton(
@@ -339,15 +285,15 @@ fun SettingsScreen(
                         context.startActivity(intent)
                     } catch (_: Exception) {}
                 },
-                shape = RoundedCornerShape(10.dp),
-                border = BorderStroke(1.dp, BorderSubtle),
+                shape = RoundedCornerShape(999.dp),
+                border = BorderStroke(1.dp, BorderGlass),
                 colors = ButtonDefaults.outlinedButtonColors(
                     containerColor = BgSurface,
                     contentColor = TextMuted
                 ),
                 modifier = Modifier
                     .fillMaxWidth()
-                    .height(44.dp)
+                    .height(46.dp)
             ) {
                 Icon(
                     imageVector = Icons.Default.Code,
@@ -360,6 +306,67 @@ fun SettingsScreen(
                     fontSize = 13.sp,
                     fontWeight = FontWeight.Medium
                 )
+            }
+        }
+    }
+}
+
+@Composable
+private fun InsetInfoCard(
+    icon: androidx.compose.ui.graphics.vector.ImageVector,
+    iconTint: androidx.compose.ui.graphics.Color,
+    title: String,
+    items: List<String>
+) {
+    Surface(
+        shape = RoundedCornerShape(20.dp),
+        color = BgSurface,
+        border = BorderStroke(1.dp, BorderGlass),
+        modifier = Modifier.fillMaxWidth()
+    ) {
+        Column(modifier = Modifier.padding(18.dp)) {
+            Row(verticalAlignment = Alignment.CenterVertically) {
+                Icon(
+                    imageVector = icon,
+                    contentDescription = null,
+                    tint = iconTint,
+                    modifier = Modifier.size(18.dp)
+                )
+                Spacer(modifier = Modifier.width(8.dp))
+                Text(
+                    text = title,
+                    color = TextPrimary,
+                    fontSize = 15.sp,
+                    fontWeight = FontWeight.SemiBold
+                )
+            }
+
+            Spacer(modifier = Modifier.height(12.dp))
+
+            Surface(
+                shape = RoundedCornerShape(14.dp),
+                color = BgElevated,
+                border = BorderStroke(1.dp, BorderGlass),
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                Column {
+                    items.forEachIndexed { idx, item ->
+                        Text(
+                            text = item,
+                            color = TextMuted,
+                            fontSize = 12.sp,
+                            lineHeight = 18.sp,
+                            modifier = Modifier.padding(horizontal = 14.dp, vertical = 10.dp)
+                        )
+                        if (idx < items.lastIndex) {
+                            HorizontalDivider(
+                                thickness = 1.dp,
+                                color = BorderSubtle,
+                                modifier = Modifier.padding(horizontal = 14.dp)
+                            )
+                        }
+                    }
+                }
             }
         }
     }

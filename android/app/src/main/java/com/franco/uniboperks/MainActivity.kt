@@ -5,11 +5,10 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.activity.enableEdgeToEdge
-import androidx.compose.animation.Crossfade
-import androidx.compose.animation.core.tween
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.WindowInsets
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
@@ -21,6 +20,7 @@ import androidx.compose.material.icons.filled.School
 import androidx.compose.material3.*
 import androidx.compose.runtime.*
 import androidx.compose.runtime.saveable.rememberSaveable
+import androidx.compose.runtime.saveable.rememberSaveableStateHolder
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.hapticfeedback.HapticFeedbackType
@@ -85,6 +85,7 @@ private fun MainAppScreen(
 ) {
     val scope = rememberCoroutineScope()
     val haptic = LocalHapticFeedback.current
+    val saveableStateHolder = rememberSaveableStateHolder()
     var selectedTab by rememberSaveable { mutableIntStateOf(0) }
     var startupUpdateInfo by remember { mutableStateOf<UpdateInfo?>(null) }
     val favoriteIds by repo.favoriteIds.collectAsState()
@@ -99,19 +100,22 @@ private fun MainAppScreen(
         }
     }
 
-    val navItems = listOf(
-        NavItem("Catalogo", Icons.Default.LocalOffer),
-        NavItem("Preferiti", Icons.Default.Bookmark),
-        NavItem("Portali", Icons.Default.School),
-        NavItem("Info", Icons.Default.Info)
-    )
+    val navItems = remember {
+        listOf(
+            NavItem("Catalogo", Icons.Default.LocalOffer),
+            NavItem("Preferiti", Icons.Default.Bookmark),
+            NavItem("Portali", Icons.Default.School),
+            NavItem("Info", Icons.Default.Info)
+        )
+    }
 
     Scaffold(
+        contentWindowInsets = WindowInsets(0, 0, 0, 0),
         bottomBar = {
             Column {
-                HorizontalDivider(thickness = 1.dp, color = BorderSubtle)
+                HorizontalDivider(thickness = 1.dp, color = BorderGlass)
                 NavigationBar(
-                    containerColor = BgSurface,
+                    containerColor = BgGlass,
                     tonalElevation = 0.dp
                 ) {
                     navItems.forEachIndexed { index, item ->
@@ -181,12 +185,8 @@ private fun MainAppScreen(
                 .fillMaxSize()
                 .padding(bottom = innerPadding.calculateBottomPadding())
         ) {
-            Crossfade(
-                targetState = selectedTab,
-                animationSpec = tween(durationMillis = 160),
-                label = "tab_crossfade"
-            ) { tab ->
-                when (tab) {
+            saveableStateHolder.SaveableStateProvider(key = selectedTab) {
+                when (selectedTab) {
                     0 -> CatalogScreen(repo = repo)
                     1 -> FavoritesScreen(repo = repo)
                     2 -> PlatformsScreen(repo = repo)
@@ -200,7 +200,7 @@ private fun MainAppScreen(
             AlertDialog(
                 onDismissRequest = { startupUpdateInfo = null },
                 containerColor = BgSurface,
-                shape = RoundedCornerShape(16.dp),
+                shape = RoundedCornerShape(24.dp),
                 title = {
                     Text(
                         text = "Aggiornamento Disponibile (${update.latestVersion})",
@@ -227,7 +227,7 @@ private fun MainAppScreen(
                             containerColor = Accent,
                             contentColor = TextPrimary
                         ),
-                        shape = RoundedCornerShape(8.dp)
+                        shape = RoundedCornerShape(999.dp)
                     ) {
                         Text(text = "Scarica da Chrome", fontWeight = FontWeight.SemiBold)
                     }
@@ -235,8 +235,8 @@ private fun MainAppScreen(
                 dismissButton = {
                     OutlinedButton(
                         onClick = { startupUpdateInfo = null },
-                        border = BorderStroke(1.dp, BorderSubtle),
-                        shape = RoundedCornerShape(8.dp)
+                        border = BorderStroke(1.dp, BorderGlass),
+                        shape = RoundedCornerShape(999.dp)
                     ) {
                         Text(text = "Più Tardi", color = TextMuted)
                     }

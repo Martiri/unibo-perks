@@ -6,6 +6,8 @@ import androidx.compose.animation.core.Spring
 import androidx.compose.animation.core.animateFloatAsState
 import androidx.compose.animation.core.spring
 import androidx.compose.foundation.BorderStroke
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.interaction.collectIsPressedAsState
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material.icons.Icons
@@ -15,6 +17,7 @@ import androidx.compose.material.icons.outlined.BookmarkBorder
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
+import androidx.compose.runtime.remember
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.graphicsLayer
@@ -39,6 +42,17 @@ fun DiscountCard(
 ) {
     val context = LocalContext.current
     val haptic = LocalHapticFeedback.current
+    val interactionSource = remember { MutableInteractionSource() }
+    val isPressed by interactionSource.collectIsPressedAsState()
+
+    val cardScale by animateFloatAsState(
+        targetValue = if (isPressed) 0.985f else 1f,
+        animationSpec = spring(
+            dampingRatio = Spring.DampingRatioNoBouncy,
+            stiffness = Spring.StiffnessMediumLow
+        ),
+        label = "card_press_scale"
+    )
 
     val bookmarkScale by animateFloatAsState(
         targetValue = if (isFavorite) 1.12f else 1.0f,
@@ -51,13 +65,19 @@ fun DiscountCard(
 
     Surface(
         onClick = onCardClick,
-        shape = RoundedCornerShape(12.dp),
+        interactionSource = interactionSource,
+        shape = RoundedCornerShape(20.dp),
         color = BgSurface,
-        border = BorderStroke(1.dp, BorderSubtle),
-        modifier = modifier.fillMaxWidth()
+        border = BorderStroke(1.dp, BorderGlass),
+        modifier = modifier
+            .fillMaxWidth()
+            .graphicsLayer {
+                scaleX = cardScale
+                scaleY = cardScale
+            }
     ) {
         Column(
-            modifier = Modifier.padding(16.dp)
+            modifier = Modifier.padding(18.dp)
         ) {
             // Riga superiore: Provider · Categoria + badge UniBo + Preferito (48dp)
             Row(
@@ -96,7 +116,7 @@ fun DiscountCard(
 
                     if (discount.isUniboOfficial) {
                         Surface(
-                            shape = RoundedCornerShape(4.dp),
+                            shape = RoundedCornerShape(999.dp),
                             color = AccentSubtle,
                             border = BorderStroke(1.dp, AccentBorder)
                         ) {
@@ -105,7 +125,7 @@ fun DiscountCard(
                                 color = Accent,
                                 fontSize = 10.sp,
                                 fontWeight = FontWeight.SemiBold,
-                                modifier = Modifier.padding(horizontal = 6.dp, vertical = 2.dp)
+                                modifier = Modifier.padding(horizontal = 8.dp, vertical = 2.dp)
                             )
                         }
                     }
@@ -161,16 +181,17 @@ fun DiscountCard(
             HorizontalDivider(thickness = 1.dp, color = BorderSubtle)
             Spacer(modifier = Modifier.height(12.dp))
 
-            // Footer: Badge Sconto & Azione Riscatta
+            // Footer: Badge Sconto & Azione Riscatta a pill morbida
             Row(
                 verticalAlignment = Alignment.CenterVertically,
                 horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier.fillMaxWidth()
             ) {
                 Surface(
-                    shape = RoundedCornerShape(6.dp),
+                    shape = RoundedCornerShape(999.dp),
                     color = BgElevated,
-                    border = BorderStroke(1.dp, BorderSubtle)
+                    border = BorderStroke(1.dp, BorderGlass),
+                    modifier = Modifier.weight(1f, fill = false)
                 ) {
                     Text(
                         text = discount.discountBadge,
@@ -182,7 +203,7 @@ fun DiscountCard(
                         ),
                         maxLines = 1,
                         overflow = TextOverflow.Ellipsis,
-                        modifier = Modifier.padding(horizontal = 10.dp, vertical = 6.dp)
+                        modifier = Modifier.padding(horizontal = 12.dp, vertical = 7.dp)
                     )
                 }
 
@@ -203,8 +224,8 @@ fun DiscountCard(
                         contentColor = TextPrimary
                     ),
                     border = BorderStroke(1.dp, BorderStrong),
-                    shape = RoundedCornerShape(8.dp),
-                    contentPadding = PaddingValues(horizontal = 14.dp, vertical = 8.dp),
+                    shape = RoundedCornerShape(999.dp),
+                    contentPadding = PaddingValues(horizontal = 16.dp, vertical = 8.dp),
                     modifier = Modifier.heightIn(min = 40.dp)
                 ) {
                     Text(
